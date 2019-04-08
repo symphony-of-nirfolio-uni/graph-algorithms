@@ -10,6 +10,8 @@ private:
 public:
 	void used_vertex(int v);
 	bool can_move_on();
+	bool ui_idle();
+	
 	GraphAPI();
 	~GraphAPI();
 };
