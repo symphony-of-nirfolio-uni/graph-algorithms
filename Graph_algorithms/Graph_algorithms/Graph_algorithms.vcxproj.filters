@@ -18,9 +18,15 @@
     <ClInclude Include="GraphAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="api_creation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
