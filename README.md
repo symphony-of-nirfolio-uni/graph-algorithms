@@ -3,6 +3,9 @@
 ### Description
 This is an univesity project with some famous graph algorithms with visualisation and runtime estimation
 
+### Project goal
+Use as many patterns as possible
+
 ### Made by 
 - [Symphony_of_Tranquility] - Artemiy Mysechko
 - [Nirfiolo] - Bohdan Filonenko
