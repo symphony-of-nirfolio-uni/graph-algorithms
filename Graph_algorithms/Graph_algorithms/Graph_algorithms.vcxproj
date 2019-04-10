@@ -112,10 +112,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="api_creation.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphAPI.h" />
     <ClInclude Include="Graph_algo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphAPI.cpp" />
     <ClCompile Include="Graph_algo.cpp" />
     <ClCompile Include="main.cpp" />
