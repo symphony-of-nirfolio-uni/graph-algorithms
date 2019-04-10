@@ -7,6 +7,12 @@ namespace algorithms_on_graphs
 	{
 		graph.clear();
 	}
+
+	Graph::Graph(vector<vector<pair<int, int> > > graph) : graph(graph)
+	{
+
+	}
+
 	
 	Graph::~Graph()
 	{

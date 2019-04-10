@@ -17,6 +17,7 @@ namespace algorithms_on_graphs
 		vector<vector<pair<int, int> > > graph;
 
 		Graph();
+		Graph(vector<vector<pair<int, int> > > graph);
 
 		~Graph();
 	};
