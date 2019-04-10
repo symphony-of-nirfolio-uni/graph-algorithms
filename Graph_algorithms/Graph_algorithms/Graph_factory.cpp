@@ -14,6 +14,14 @@ namespace algorithms_on_graphs
 	}
 
 
+	Graph Graph_factory::make_graph()
+	{
+		Read_graph read_graph = get_read_graph();
+
+		return read_graph.get_graph(prefix);
+	}
+
+
 	Weighted_directed_graph_factory::Weighted_directed_graph_factory() : Graph_factory()
 	{
 
@@ -24,10 +32,9 @@ namespace algorithms_on_graphs
 
 	}
 
-	Graph Weighted_directed_graph_factory::make_graph()
+	Read_graph Weighted_directed_graph_factory::get_read_graph()
 	{
-		Read_graph read_graph = make_shared<Read_graph_builder>()->add_direct()->add_weight()->build();
-		return read_graph.get_graph(prefix);
+		return make_shared<Read_graph_builder>()->add_direct()->add_weight()->build();
 	}
 
 
@@ -41,10 +48,9 @@ namespace algorithms_on_graphs
 
 	}
 
-	Graph Weighted_undirected_graph_factory::make_graph()
+	Read_graph Weighted_undirected_graph_factory::get_read_graph()
 	{
-		Read_graph read_graph = make_shared<Read_graph_builder>()->add_weight()->build();
-		return read_graph.get_graph(prefix);
+		return make_shared<Read_graph_builder>()->add_weight()->build();
 	}
 
 
@@ -58,10 +64,9 @@ namespace algorithms_on_graphs
 
 	}
 
-	Graph Unweighted_directed_graph_factory::make_graph()
+	Read_graph Unweighted_directed_graph_factory::get_read_graph()
 	{
-		Read_graph read_graph = make_shared<Read_graph_builder>()->add_direct()->build();
-		return read_graph.get_graph(prefix);
+		return make_shared<Read_graph_builder>()->add_direct()->build();
 	}
 
 
@@ -75,10 +80,9 @@ namespace algorithms_on_graphs
 
 	}
 
-	Graph Unweighted_undirected_graph_factory::make_graph()
+	Read_graph Unweighted_undirected_graph_factory::get_read_graph()
 	{
-		Read_graph read_graph = make_shared<Read_graph_builder>()->build();
-		return read_graph.get_graph(prefix);
+		return make_shared<Read_graph_builder>()->build();
 	}
 }
 
