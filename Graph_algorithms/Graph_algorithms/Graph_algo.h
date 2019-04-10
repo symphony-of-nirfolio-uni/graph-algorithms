@@ -16,7 +16,7 @@ class Graph_algo
 
 public:
 	Graph_algo();
-	
+
 	~Graph_algo();
 };
 
