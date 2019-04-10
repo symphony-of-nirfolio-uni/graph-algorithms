@@ -13,10 +13,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Graph_algo_test">
+    <Filter Include="Algorithms_on_graphs_test">
       <UniqueIdentifier>{c4a11c11-cb36-410e-8087-e0c5e9920c67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graph_algo_test\Data">
+    <Filter Include="Algorithms_on_graphs_test\Data">
       <UniqueIdentifier>{115da9c8-e0d9-4f0d-8124-b90a42cb315a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -28,16 +28,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Graph_algorithms\Read_graph.h">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\Graph_algorithms\Read_graph_builder.h">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\Graph_algorithms\Graph.h">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\Graph_algorithms\Graph_factory.h">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -48,22 +48,22 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Read_graph_test.cpp">
-      <Filter>Graph_algo_test</Filter>
+      <Filter>Algorithms_on_graphs_test</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Read_graph.cpp">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Read_graph_builder.cpp">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Graph.cpp">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
     <ClCompile Include="Graph_factory_test.cpp">
-      <Filter>Graph_algo_test</Filter>
+      <Filter>Algorithms_on_graphs_test</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Graph_factory.cpp">
-      <Filter>Graph_algo_test\Data</Filter>
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

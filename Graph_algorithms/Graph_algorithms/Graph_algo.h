@@ -1,22 +1,21 @@
 #pragma once
 
 
-#include "GraphAPI.h"
-#include <vector>
-#include <string>
+#include "Algorithm_factory.h"
 
 
-using std::vector;
-using std::pair;
-using std::string;
-
-
-class Graph_algo
+namespace algorithms_on_graphs
 {
+	class Graph_algo
+	{
+		shared_ptr<Algorithm> algorithm;
 
-public:
-	Graph_algo();
+	public:
+		Graph_algo(shared_ptr<Algorithm> algorithm);
 
-	~Graph_algo();
-};
+		~Graph_algo();
 
+		void work(Graph graph);
+		void work_without_stops(Graph graph);
+	};
+}
