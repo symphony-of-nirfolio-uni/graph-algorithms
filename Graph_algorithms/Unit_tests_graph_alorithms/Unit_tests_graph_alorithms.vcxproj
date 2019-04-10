@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Graph_algorithms\Graph.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_factory.h" />
     <ClInclude Include="..\Graph_algorithms\Read_graph.h" />
     <ClInclude Include="..\Graph_algorithms\Read_graph_builder.h" />
     <ClInclude Include="stdafx.h" />
@@ -160,8 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Graph_algorithms\Graph.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_factory.cpp" />
     <ClCompile Include="..\Graph_algorithms\Read_graph.cpp" />
     <ClCompile Include="..\Graph_algorithms\Read_graph_builder.cpp" />
+    <ClCompile Include="Graph_factory_test.cpp" />
     <ClCompile Include="Read_graph_test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

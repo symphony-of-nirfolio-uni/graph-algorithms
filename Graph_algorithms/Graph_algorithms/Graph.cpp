@@ -13,6 +13,11 @@ namespace algorithms_on_graphs
 
 	}
 
+	Graph::Graph(vector<vector<pair<int, int> > > graph, bool weight, bool direct) : graph(graph), weight(weight), direct(direct)
+	{
+
+	}
+
 	
 	Graph::~Graph()
 	{

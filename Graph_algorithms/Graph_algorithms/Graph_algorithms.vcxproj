@@ -115,6 +115,7 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphAPI.h" />
     <ClInclude Include="Graph_algo.h" />
+    <ClInclude Include="Graph_factory.h" />
     <ClInclude Include="Read_graph.h" />
     <ClInclude Include="Read_graph_builder.h" />
   </ItemGroup>
@@ -122,6 +123,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphAPI.cpp" />
     <ClCompile Include="Graph_algo.cpp" />
+    <ClCompile Include="Graph_factory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Read_graph.cpp" />
     <ClCompile Include="Read_graph_builder.cpp" />

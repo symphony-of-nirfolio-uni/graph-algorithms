@@ -36,6 +36,9 @@
     <ClInclude Include="..\Graph_algorithms\Graph.h">
       <Filter>Graph_algo_test\Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Graph_algorithms\Graph_factory.h">
+      <Filter>Graph_algo_test\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +57,12 @@
       <Filter>Graph_algo_test\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Graph.cpp">
+      <Filter>Graph_algo_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_factory_test.cpp">
+      <Filter>Graph_algo_test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Graph_factory.cpp">
       <Filter>Graph_algo_test\Data</Filter>
     </ClCompile>
   </ItemGroup>

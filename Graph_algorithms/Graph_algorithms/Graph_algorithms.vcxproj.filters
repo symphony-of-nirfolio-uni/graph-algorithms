@@ -33,6 +33,9 @@
     <ClInclude Include="Read_graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graph_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphAPI.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Read_graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

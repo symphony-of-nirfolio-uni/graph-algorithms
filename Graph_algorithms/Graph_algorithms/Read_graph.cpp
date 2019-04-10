@@ -92,7 +92,7 @@ namespace algorithms_on_graphs
 			}
 		}
 
-		return Graph(graph);
+		return Graph(graph, weight, direct);
 	}
 
 
