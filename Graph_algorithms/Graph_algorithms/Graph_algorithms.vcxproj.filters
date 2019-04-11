@@ -36,9 +36,6 @@
     <ClInclude Include="Graph_algo.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graph_factory.h">
-      <Filter>Algorithms_on_graphs\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Read_graph.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Graph_algo.cpp">
-      <Filter>Algorithms_on_graphs\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph_factory.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Read_graph.cpp">

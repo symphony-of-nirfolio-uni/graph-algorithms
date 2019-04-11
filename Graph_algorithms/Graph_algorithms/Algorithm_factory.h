@@ -2,7 +2,7 @@
 
 
 #include "Algorithm.h"
-#include "Graph_factory.h"
+#include "Read_graph.h"
 
 
 namespace algorithms_on_graphs
@@ -13,7 +13,7 @@ namespace algorithms_on_graphs
 	public:
 		virtual shared_ptr<Algorithm> get_algorithm() = 0;
 
-		virtual Graph get_graph() = 0;
+		virtual Graph get_graph(string prefix) = 0;
 	};
 
 
@@ -21,17 +21,17 @@ namespace algorithms_on_graphs
 	{
 
 	public:
-		shared_ptr<Algorithm> get_algorithm();
+		static shared_ptr<Algorithm> get_algorithm();
 
-		Graph get_graph();
+		static Graph get_graph(string prefix);
 	};
 
 	class Graph_is_connected_factory : public Algorithm_factory
 	{
 
 	public:
-		shared_ptr<Algorithm> get_algorithm();
+		static shared_ptr<Algorithm> get_algorithm();
 
-		Graph get_graph();
+		static Graph get_graph(string prefix);
 	};
 }

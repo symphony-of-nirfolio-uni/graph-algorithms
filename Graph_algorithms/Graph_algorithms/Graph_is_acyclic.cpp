@@ -5,7 +5,7 @@ namespace algorithms_on_graphs
 {
 	bool Graph_is_acyclic::work(Graph graph)
 	{
-		//work...
+		//TODO work...
 
 		return true;
 	}
