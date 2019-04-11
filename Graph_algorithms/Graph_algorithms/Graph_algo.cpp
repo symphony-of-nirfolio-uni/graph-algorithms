@@ -16,11 +16,11 @@ namespace algorithms_on_graphs
 
 	void Graph_algo::work(Graph graph)
 	{
-		algorithm->work(graph);
+		algorithm->work(graph, true);
 	}
 
 	void Graph_algo::work_without_stops(Graph graph)
 	{
-		algorithm->work(graph);
+		algorithm->work(graph, false);
 	}
 }

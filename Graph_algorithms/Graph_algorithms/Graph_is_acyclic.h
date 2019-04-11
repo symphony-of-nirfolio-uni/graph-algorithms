@@ -10,6 +10,6 @@ namespace algorithms_on_graphs
 	{
 
 	public:
-		bool work(Graph graph);
+		bool work(Graph graph, bool need_to_stop);
 	};
 }

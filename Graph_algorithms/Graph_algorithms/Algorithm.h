@@ -11,6 +11,6 @@ namespace algorithms_on_graphs
 	{
 
 	public:
-		virtual bool work(Graph graph) = 0;
+		virtual bool work(Graph graph, bool need_to_stop) = 0;
 	};
 }
