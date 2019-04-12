@@ -10,10 +10,18 @@ namespace algorithms_on_graphs
 		return make_shared<Graph_is_acyclic>();
 	}
 
-	Graph Graph_is_acyclic_factory::get_graph(string prefix)
+	Graph Graph_is_acyclic_factory::get_graph(string prefix, bool need_direct)
 	{
-		Read_graph read_graph = make_shared<Read_graph_builder>()->add_direct()->build();
-		return read_graph.get_graph(prefix);
+		if (need_direct)
+		{
+			Read_graph read_graph = make_shared<Read_graph_builder>()->add_direct()->build();
+			return read_graph.get_graph(prefix);
+		}
+		else
+		{
+			Read_graph read_graph = make_shared<Read_graph_builder>()->build();
+			return read_graph.get_graph(prefix);
+		}
 	}
 
 
@@ -22,10 +30,9 @@ namespace algorithms_on_graphs
 		return make_shared<Graph_is_connected>();
 	}
 
-	Graph Graph_is_connected_factory::get_graph(string prefix)
+	Graph Graph_is_connected_factory::get_graph(string prefix, bool need_direct)
 	{
-		Read_graph read_graph = make_shared<Read_graph_builder>()->add_direct()->build();
-		return read_graph.get_graph(prefix);
+		return Graph_is_acyclic_factory::get_graph(prefix, need_direct);
 	}
 }
 

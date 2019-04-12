@@ -23,7 +23,7 @@ namespace algorithms_on_graphs
 	public:
 		static shared_ptr<Algorithm> get_algorithm();
 
-		static Graph get_graph(string prefix);
+		static Graph get_graph(string prefix, bool need_direct = true);
 	};
 
 	class Graph_is_connected_factory : public Algorithm_factory
@@ -32,6 +32,6 @@ namespace algorithms_on_graphs
 	public:
 		static shared_ptr<Algorithm> get_algorithm();
 
-		static Graph get_graph(string prefix);
+		static Graph get_graph(string prefix, bool need_direct = true);
 	};
 }
