@@ -123,6 +123,7 @@
     <ClInclude Include="Read_graph_builder.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="Algorithm_factory.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphAPI.cpp" />

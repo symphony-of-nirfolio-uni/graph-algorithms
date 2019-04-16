@@ -8,10 +8,10 @@ namespace algorithms_on_graphs
 		visit[vertex] = 1;
 
 		//GraphAPI part
-		//GraphAPI::instance.highlight_vertex();
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.can_move_on();
+			//GraphAPI::instance.highlight_vertex();
+			//waiting_for_the_next_move();
 		}
 		//
 
@@ -29,17 +29,20 @@ namespace algorithms_on_graphs
 			}
 			else if (visit[new_vertex] == 0)
 			{
-				dfs(visit, graph, new_vertex, vertex, need_to_stop);
+				if (!dfs(visit, graph, new_vertex, vertex, need_to_stop))
+				{
+					return false;
+				}
 			}
 		}
 
 		visit[vertex] = 2;
 
 		//GraphAPI part
-		//GraphAPI::instance.mark_vertex();
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.can_move_on();
+			//GraphAPI::instance.mark_vertex();
+			//waiting_for_the_next_move();
 		}
 		//
 
