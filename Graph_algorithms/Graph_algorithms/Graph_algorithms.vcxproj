@@ -111,12 +111,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="Algorithm_factory.h" />
     <ClInclude Include="api_creation.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphAPI.h" />
+    <ClInclude Include="Graph_algo.h" />
+    <ClInclude Include="Graph_is_connected.h" />
+    <ClInclude Include="Graph_is_acyclic.h" />
+    <ClInclude Include="Read_graph.h" />
+    <ClInclude Include="Read_graph_builder.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="Algorithm_factory.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphAPI.cpp" />
+    <ClCompile Include="Graph_algo.cpp" />
+    <ClCompile Include="Graph_is_connected.cpp" />
+    <ClCompile Include="Graph_is_acyclic.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Read_graph.cpp" />
+    <ClCompile Include="Read_graph_builder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
