@@ -2,6 +2,8 @@
 
 
 #include "Algorithm.h"
+#include "Graph_is_acyclic.h"
+#include "Graph_is_connected.h"
 #include "Read_graph.h"
 
 

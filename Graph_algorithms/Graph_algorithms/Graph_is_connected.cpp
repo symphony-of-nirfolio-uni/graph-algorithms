@@ -29,7 +29,7 @@ namespace algorithms_on_graphs
 	}
 
 
-	bool Graph_is_connected::work(Graph graph, bool need_to_stop)
+	void Graph_is_connected::work(Graph graph, bool need_to_stop)
 	{
 		vector<bool> visit(graph.graph.size(), false);
 
@@ -39,11 +39,25 @@ namespace algorithms_on_graphs
 		{
 			if (visit[i] == false)
 			{
-				return false;
+				//GraphAPI part
+				if (need_to_stop)
+				{
+					//GraphAPI::instance.result(false);
+					//GraphAPI::instance.end_of_the_algorithm();
+				}
+				//
+
+				return;
 			}
 		}
 
-		return true;
+		//GraphAPI part
+		if (need_to_stop)
+		{
+			//GraphAPI::instance.result(true);
+			//GraphAPI::instance.end_of_the_algorithm();
+		}
+		//
 	}
 
 }

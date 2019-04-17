@@ -14,13 +14,13 @@ namespace algorithms_on_graphs
 	}
 
 
-	bool Graph_algo::work(Graph graph)
+	void Graph_algo::work(Graph graph)
 	{
-		return algorithm->work(graph, true);
+		algorithm->work(graph, true);
 	}
 
-	bool Graph_algo::work_without_stops(Graph graph)
+	void Graph_algo::work_without_stops(Graph graph)
 	{
-		return algorithm->work(graph, false);
+		algorithm->work(graph, false);
 	}
 }

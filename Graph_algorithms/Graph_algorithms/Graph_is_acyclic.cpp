@@ -50,7 +50,7 @@ namespace algorithms_on_graphs
 	}
 
 
-	bool Graph_is_acyclic::work(Graph graph, bool need_to_stop)
+	void Graph_is_acyclic::work(Graph graph, bool need_to_stop)
 	{
 		vector<int> visit(graph.graph.size(), 0);
 
@@ -58,11 +58,25 @@ namespace algorithms_on_graphs
 		{
 			if (visit[i] == 0 && !dfs(visit, graph, i, -1, need_to_stop))
 			{
-				return false;
+				//GraphAPI part
+				if (need_to_stop)
+				{
+					//GraphAPI::instance.result(false);
+					//GraphAPI::instance.end_of_the_algorithm();
+				}
+				//
+
+				return;
 			}
 		}
 
-		return true;
+		//GraphAPI part
+		if (need_to_stop)
+		{
+			//GraphAPI::instance.result(true);
+			//GraphAPI::instance.end_of_the_algorithm();
+		}
+		//
 	}
 
 }

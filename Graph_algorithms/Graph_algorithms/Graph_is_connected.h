@@ -11,6 +11,6 @@ namespace algorithms_on_graphs
 		bool dfs(vector<bool> &visit, Graph &graph, int vertex, bool need_to_stop);
 
 	public:
-		bool work(Graph graph, bool need_to_stop);
+		void work(Graph graph, bool need_to_stop);
 	};
 }

@@ -83,8 +83,5 @@
     <ClCompile Include="..\Graph_algorithms\Graph_algo.cpp">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
-    <ClCompile Include="Graph_algo_test.cpp">
-      <Filter>Algorithms_on_graphs_test</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

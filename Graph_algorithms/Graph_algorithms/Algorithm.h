@@ -14,6 +14,7 @@ namespace algorithms_on_graphs
 		void waiting_for_the_next_move();
 
 	public:
-		virtual bool work(Graph graph, bool need_to_stop) = 0;
+		virtual void work(Graph graph, bool need_to_stop) {};
+		virtual void work(Graph graph, int start, int finish, bool need_to_stop) {};
 	};
 }

@@ -1,6 +1,4 @@
 #include "Algorithm_factory.h"
-#include "Graph_is_acyclic.h"
-#include "Graph_is_connected.h"
 
 
 namespace algorithms_on_graphs
