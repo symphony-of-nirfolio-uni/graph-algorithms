@@ -114,6 +114,7 @@
     <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Algorithm_factory.h" />
     <ClInclude Include="api_creation.h" />
+    <ClInclude Include="Build_dots.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphAPI.h" />
     <ClInclude Include="Graph_algo.h" />
@@ -125,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="Algorithm_factory.cpp" />
+    <ClCompile Include="Build_dots.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphAPI.cpp" />
     <ClCompile Include="Graph_algo.cpp" />
