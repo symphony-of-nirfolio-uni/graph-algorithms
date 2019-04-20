@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Algorithms_on_graphs">
+      <UniqueIdentifier>{36dc40b7-254f-4888-a057-1e43ff31accc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms_on_graphs\Header Files">
+      <UniqueIdentifier>{deb6b748-cd2b-4dad-90b3-0255f911c55a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms_on_graphs\Source Files">
+      <UniqueIdentifier>{4365a0d8-52cf-4359-8032-31828aff7bf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphAPI.h">
@@ -21,6 +30,30 @@
     <ClInclude Include="api_creation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph_algo.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Read_graph.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Read_graph_builder.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph_is_acyclic.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph_is_connected.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm_factory.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphAPI.cpp">
@@ -28,6 +61,30 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_algo.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Read_graph.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Read_graph_builder.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_is_acyclic.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_is_connected.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithm_factory.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithm.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
