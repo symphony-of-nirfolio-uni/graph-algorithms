@@ -10,7 +10,8 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.highlight_vertex();
+			//GraphAPI::getInstance().highlight_vertex(vertex);
+			//TempAPI::getInstance().highlight_vertex();
 			//waiting_for_the_next_move();
 		}
 		//
@@ -41,7 +42,7 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.mark_vertex();
+			//GraphAPI:::getInstance().mark_vertex(vertex);
 			//waiting_for_the_next_move();
 		}
 		//

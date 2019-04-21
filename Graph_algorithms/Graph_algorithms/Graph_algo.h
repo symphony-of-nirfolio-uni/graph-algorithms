@@ -10,6 +10,8 @@ namespace algorithms_on_graphs
 	{
 		shared_ptr<Algorithm> algorithm;
 
+		void run_work(Graph &graph, bool need_to_stop);
+
 	public:
 		Graph_algo(shared_ptr<Algorithm> algorithm);
 

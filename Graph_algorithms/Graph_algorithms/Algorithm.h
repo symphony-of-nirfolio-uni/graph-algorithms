@@ -4,6 +4,39 @@
 #include "GraphAPI.h"
 #include "Graph.h"
 
+//#include <iostream>
+//#include <atomic>
+//using std::cout;
+//
+//class TempAPI
+//{
+//public:
+//	std::atomic_bool canm;
+//	TempAPI()
+//	{
+//		canm = false;
+//	}
+//
+//	static TempAPI& getInstance() {
+//		static TempAPI  instance;
+//		return instance;
+//	}
+//
+//	bool can_move_on()
+//	{
+//		if (canm)
+//		{
+//			canm = false;
+//			return true;
+//		}
+//		return canm;
+//	}
+//
+//	void highlight_vertex()
+//	{
+//		cout << "\n*****\n";
+//	}
+//};
 
 namespace algorithms_on_graphs
 {
