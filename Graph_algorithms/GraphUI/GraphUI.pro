@@ -42,7 +42,6 @@ HEADERS += \
     graphwindow.h \
     ../Graph_algorithms/GraphAPI.h \
     ../Graph_algorithms/Graph.h \
-    ../Graph_algorithms/api_creation.h \
     newgraphdialog.h \
     loadgraphdialog.h
 

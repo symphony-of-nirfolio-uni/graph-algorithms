@@ -23,8 +23,8 @@ GraphWindow::~GraphWindow()
 
 void GraphWindow::get_graph_from_api()
 {
-    graph = GraphAPI::instance.get_graph(graph_name.toStdString());
-    vertices_coordinates = GraphAPI::instance.get_vertices_coodrdinates(graph_name.toStdString());
+    graph = GraphAPI::instance().get_graph(graph_name.toStdString());
+    vertices_coordinates = GraphAPI::instance().get_vertices_coodrdinates(graph_name.toStdString());
     chart = new QChartView(this);
 }
 
