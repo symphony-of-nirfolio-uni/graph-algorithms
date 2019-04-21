@@ -5,7 +5,6 @@ namespace algorithms_on_graphs
 {
 	Read_graph::Read_graph(shared_ptr<Read_graph_builder> builder)
 	{
-		weight = builder->weight;
 		direct = builder->direct;
 	}
 
@@ -19,22 +18,13 @@ namespace algorithms_on_graphs
 	{
 		string name;
 
-		if (weight)
-		{
-			name = "Weighted_";
-		}
-		else
-		{
-			name = "Unweighted_";
-		}
-
 		if (direct)
 		{
-			name += "directed_";
+			name += "Directed_";
 		}
 		else
 		{
-			name += "undirected_";
+			name += "Undirected_";
 		}
 
 		name += "graph.dat";
@@ -50,7 +40,7 @@ namespace algorithms_on_graphs
 
 	Graph Read_graph::build_graph(string prefix)
 	{
-		vector<vector<pair<int, int> > > graph;
+		vector<vector<int> > graph;
 
 		ifstream file_in(get_file_name(prefix));
 
@@ -75,24 +65,19 @@ namespace algorithms_on_graphs
 
 			for (int j = 0; j < countVertex; ++j)
 			{
-				int vertex, vertexWeight = -1;
+				int vertex;
 				file_in >> vertex;
-
-				if (weight)
-				{
-					file_in >> vertexWeight;
-				}
-
-				graph[i].push_back({ vertex, vertexWeight });
+				
+				graph[i].push_back(vertex);
 
 				if (!direct)
 				{
-					graph[vertex].push_back({ i, vertexWeight });
+					graph[vertex].push_back(i);
 				}
 			}
 		}
 
-		return Graph(graph, weight, direct);
+		return Graph(graph, direct);
 	}
 
 
@@ -106,11 +91,6 @@ namespace algorithms_on_graphs
 		return build_graph(prefix);
 	}
 
-
-	bool Read_graph::get_weight()
-	{
-		return weight;
-	}
 
 	bool Read_graph::get_direct()
 	{

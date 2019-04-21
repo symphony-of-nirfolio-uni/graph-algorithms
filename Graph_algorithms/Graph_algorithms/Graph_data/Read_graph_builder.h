@@ -20,15 +20,12 @@ namespace algorithms_on_graphs
 	{
 
 	public:
-		bool weight;
 		bool direct;
 
 		Read_graph_builder();
 
 		~Read_graph_builder();
 
-
-		shared_ptr<Read_graph_builder> add_weight();
 
 		shared_ptr<Read_graph_builder> add_direct();
 

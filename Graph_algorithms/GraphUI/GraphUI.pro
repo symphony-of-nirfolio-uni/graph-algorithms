@@ -29,19 +29,17 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        ../Graph_algorithms/GraphAPI.cpp \
     graphwindow.cpp \
-    ../Graph_algorithms/GraphAPI.cpp \
-    ../Graph_algorithms/Graph.cpp \
     newgraphdialog.cpp \
+    ../Graph_algorithms/GraphAPI/GraphAPI.cpp \
+    ../Graph_algorithms/Graph_data/Graph.cpp \
     loadgraphdialog.cpp
 
 HEADERS += \
         mainwindow.h \
-        ../Graph_algorithms/GraphAPI.h \
     graphwindow.h \
-    ../Graph_algorithms/GraphAPI.h \
-    ../Graph_algorithms/Graph.h \
+    ../Graph_algorithms/GraphAPI/GraphAPI.h \
+    ../Graph_algorithms/Graph_data/Graph.h \
     newgraphdialog.h \
     loadgraphdialog.h
 

@@ -27,25 +27,28 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Read_graph.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Read_graph_builder.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm_factory.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Graph.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Algorithm_factory.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_algo.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Graph_is_acyclic.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_is_acyclic.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Graph_is_connected.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_is_connected.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\Graph_algorithms\Graph_algo.h">
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Read_graph.h">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Read_graph_builder.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,28 +62,31 @@
     <ClCompile Include="Read_graph_test.cpp">
       <Filter>Algorithms_on_graphs_test</Filter>
     </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Read_graph.cpp">
-      <Filter>Algorithms_on_graphs_test\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Read_graph_builder.cpp">
-      <Filter>Algorithms_on_graphs_test\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Graph.cpp">
-      <Filter>Algorithms_on_graphs_test\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Algorithm_factory.cpp">
-      <Filter>Algorithms_on_graphs_test\Data</Filter>
-    </ClCompile>
     <ClCompile Include="Algorithm_factory_test.cpp">
       <Filter>Algorithms_on_graphs_test</Filter>
     </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Graph_is_acyclic.cpp">
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm.cpp">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Graph_is_connected.cpp">
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm_factory.cpp">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
-    <ClCompile Include="..\Graph_algorithms\Graph_algo.cpp">
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_algo.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_is_acyclic.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_is_connected.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Read_graph.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Read_graph_builder.cpp">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
   </ItemGroup>

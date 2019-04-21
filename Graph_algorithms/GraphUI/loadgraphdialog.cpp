@@ -22,7 +22,7 @@ LoadGraphDialog::~LoadGraphDialog()
 
 void LoadGraphDialog::load_graphs()
 {
-    QDir *dir = new QDir("../Graph_algorithms/Graph_data");
+    QDir *dir = new QDir("../Graph_algorithms/Graph_data/Data");
     auto list = dir->entryInfoList();
     for(auto file : list)
     {

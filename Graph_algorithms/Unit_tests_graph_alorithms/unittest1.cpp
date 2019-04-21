@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../Graph_algorithms/GraphAPI.h"
+#include "../Graph_algorithms/GraphAPI/GraphAPI.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

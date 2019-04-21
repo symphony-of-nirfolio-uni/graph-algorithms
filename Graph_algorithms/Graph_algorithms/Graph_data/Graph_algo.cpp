@@ -1,4 +1,6 @@
 #include "Graph_algo.h"
+#include <thread>
+#include <chrono>
 
 
 namespace algorithms_on_graphs
@@ -14,9 +16,19 @@ namespace algorithms_on_graphs
 	}
 
 
+	void Graph_algo::run_work(Graph &graph, bool need_to_stop)
+	{
+		algorithm->work(graph, need_to_stop);
+	}	
+
+
 	void Graph_algo::work(Graph graph)
 	{
-		algorithm->work(graph, true);
+		std::thread thread_algo(&Graph_algo::run_work, this, std::ref(graph), true);
+		
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		
+		thread_algo.detach();
 	}
 
 	void Graph_algo::work_without_stops(Graph graph)

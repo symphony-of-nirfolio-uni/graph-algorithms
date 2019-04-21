@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "Graph.h"
+#include "../Graph_data/Graph.h"
 
 using std::vector;
 using std::pair;

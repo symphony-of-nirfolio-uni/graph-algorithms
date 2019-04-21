@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../Graph_algorithms/GraphAPI.h"
+#include "../Graph_algorithms/GraphAPI/GraphAPI.h"
 #include "graphwindow.h"
 #include "loadgraphdialog.h"
 

@@ -152,24 +152,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Graph_algorithms\Algorithm_factory.h" />
-    <ClInclude Include="..\Graph_algorithms\Graph.h" />
-    <ClInclude Include="..\Graph_algorithms\Graph_algo.h" />
-    <ClInclude Include="..\Graph_algorithms\Graph_is_acyclic.h" />
-    <ClInclude Include="..\Graph_algorithms\Graph_is_connected.h" />
-    <ClInclude Include="..\Graph_algorithms\Read_graph.h" />
-    <ClInclude Include="..\Graph_algorithms\Read_graph_builder.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm_factory.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_algo.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_is_acyclic.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_is_connected.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Read_graph.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Read_graph_builder.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Graph_algorithms\Algorithm_factory.cpp" />
-    <ClCompile Include="..\Graph_algorithms\Graph.cpp" />
-    <ClCompile Include="..\Graph_algorithms\Graph_algo.cpp" />
-    <ClCompile Include="..\Graph_algorithms\Graph_is_acyclic.cpp" />
-    <ClCompile Include="..\Graph_algorithms\Graph_is_connected.cpp" />
-    <ClCompile Include="..\Graph_algorithms\Read_graph.cpp" />
-    <ClCompile Include="..\Graph_algorithms\Read_graph_builder.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm_factory.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_algo.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_is_acyclic.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_is_connected.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Read_graph.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Read_graph_builder.cpp" />
     <ClCompile Include="Algorithm_factory_test.cpp" />
     <ClCompile Include="Read_graph_test.cpp" />
     <ClCompile Include="stdafx.cpp">
