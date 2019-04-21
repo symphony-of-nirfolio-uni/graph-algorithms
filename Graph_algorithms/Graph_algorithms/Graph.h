@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 
 using std::vector;
@@ -12,18 +13,34 @@ using std::string;
 
 namespace algorithms_on_graphs
 {
-	struct Graph
+	class Vertex
 	{
-		bool weight;
+		vector<int> adjacent_vertices;
+
+	public:
+		Vertex(vector<int> vertices);
+		~Vertex();
+
+		vector<int> adjacent();
+	};
+
+
+	class Graph
+	{
 		bool direct;
 
-		vector<vector<pair<int, int> > > graph;
+		vector<Vertex> vertices;
 
-
+	public:
 		Graph();
-		Graph(vector<vector<pair<int, int> > > graph);
-		Graph(vector<vector<pair<int, int> > > graph, bool weight, bool direct);
-
+		Graph(vector<vector<int> > vertices);
+		Graph(vector<vector<int> > vertices, bool direct);
+		
 		~Graph();
+
+
+		bool is_direct();
+		int get_size();
+		Vertex at(int index);
 	};
 }

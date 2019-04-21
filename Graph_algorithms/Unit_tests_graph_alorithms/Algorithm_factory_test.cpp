@@ -21,9 +21,8 @@ namespace Unit_tests_graph_alorithms
 				shared_ptr<Algorithm> algorithm = Graph_is_acyclic_factory::get_algorithm();
 				Graph graph = Graph_is_acyclic_factory::get_graph("../Graph_algorithms/Graph_data/");
 
-				Assert::IsFalse(graph.weight);
-				Assert::IsTrue(graph.direct);
-				Assert::IsTrue(graph.graph.size() > 0);
+				Assert::IsTrue(graph.is_direct());
+				Assert::IsTrue(graph.get_size() > 0);
 
 				Assert::IsTrue(typeid(Graph_is_acyclic) == typeid(*algorithm));
 			}
@@ -32,9 +31,8 @@ namespace Unit_tests_graph_alorithms
 				shared_ptr<Algorithm> algorithm = Graph_is_connected_factory::get_algorithm();
 				Graph graph = Graph_is_connected_factory::get_graph("../Graph_algorithms/Graph_data/");
 
-				Assert::IsFalse(graph.weight);
-				Assert::IsTrue(graph.direct);
-				Assert::IsTrue(graph.graph.size() > 0);
+				Assert::IsTrue(graph.is_direct());
+				Assert::IsTrue(graph.get_size() > 0);
 
 				Assert::IsTrue(typeid(Graph_is_connected) == typeid(*algorithm));
 			}

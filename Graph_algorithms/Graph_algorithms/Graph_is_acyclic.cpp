@@ -11,20 +11,19 @@ namespace algorithms_on_graphs
 		if (need_to_stop)
 		{
 			//GraphAPI::getInstance().highlight_vertex(vertex);
-			//TempAPI::getInstance().highlight_vertex();
 			//waiting_for_the_next_move();
 		}
 		//
 
-		for (int i = 0; i < int(graph.graph[vertex].size()); ++i)
+		for (int i = 0; i < int(graph.at(vertex).adjacent().size()); ++i)
 		{
-			int new_vertex = graph.graph[vertex][i].first;
+			int new_vertex = graph.at(vertex).adjacent()[i];
 
-			if (graph.direct && visit[new_vertex] == 1)
+			if (graph.is_direct() && visit[new_vertex] == 1)
 			{
 				return false;
 			}
-			else if (!graph.direct && visit[new_vertex] == 1 && new_vertex != parent)
+			else if (!graph.is_direct() && visit[new_vertex] == 1 && new_vertex != parent)
 			{
 				return false;
 			}
@@ -53,9 +52,9 @@ namespace algorithms_on_graphs
 
 	void Graph_is_acyclic::work(Graph graph, bool need_to_stop)
 	{
-		vector<int> visit(graph.graph.size(), 0);
+		vector<int> visit(graph.get_size(), 0);
 
-		for (int i = 0; i < int(graph.graph.size()); ++i)
+		for (int i = 0; i < graph.get_size(); ++i)
 		{
 			if (visit[i] == 0 && !dfs(visit, graph, i, -1, need_to_stop))
 			{
