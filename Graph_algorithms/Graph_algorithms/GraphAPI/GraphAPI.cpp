@@ -1,5 +1,5 @@
 #include "GraphAPI.h"
-
+#include "../Graph_data/Read_graph.h"
 
 
 vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
@@ -15,9 +15,9 @@ vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string gr
 
 algorithms_on_graphs::Graph GraphAPI::get_graph(std::string graph_file_name)
 {
-    //TODO: make a real implementation
+	string file_name = "../Graph_data/Data/" + graph_file_name + ".dat";
 
-    return Graph({{},{{2,0}},{{1,0}},{{4,0}},{{3,0}}});
+	return algorithms_on_graphs::Read_graph::get_graph_from_file(file_name);
 }
 
 /*GraphAPI & GraphAPI::instance()
