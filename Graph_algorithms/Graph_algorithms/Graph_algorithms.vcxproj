@@ -111,28 +111,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithm.h" />
-    <ClInclude Include="Algorithm_factory.h" />
-    <ClInclude Include="api_creation.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="GraphAPI.h" />
-    <ClInclude Include="Graph_algo.h" />
-    <ClInclude Include="Graph_is_connected.h" />
-    <ClInclude Include="Graph_is_acyclic.h" />
-    <ClInclude Include="Read_graph.h" />
-    <ClInclude Include="Read_graph_builder.h" />
+    <ClInclude Include="GraphAPI\api_creation.h" />
+    <ClInclude Include="GraphAPI\GraphAPI.h" />
+    <ClInclude Include="Graph_data\Algorithm.h" />
+    <ClInclude Include="Graph_data\Algorithm_factory.h" />
+    <ClInclude Include="Graph_data\Graph.h" />
+    <ClInclude Include="Graph_data\Graph_algo.h" />
+    <ClInclude Include="Graph_data\Graph_is_acyclic.h" />
+    <ClInclude Include="Graph_data\Graph_is_connected.h" />
+    <ClInclude Include="Graph_data\Read_graph.h" />
+    <ClInclude Include="Graph_data\Read_graph_builder.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithm.cpp" />
-    <ClCompile Include="Algorithm_factory.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="GraphAPI.cpp" />
-    <ClCompile Include="Graph_algo.cpp" />
-    <ClCompile Include="Graph_is_connected.cpp" />
-    <ClCompile Include="Graph_is_acyclic.cpp" />
+    <ClCompile Include="GraphAPI\GraphAPI.cpp" />
+    <ClCompile Include="Graph_data\Algorithm.cpp" />
+    <ClCompile Include="Graph_data\Algorithm_factory.cpp" />
+    <ClCompile Include="Graph_data\Graph.cpp" />
+    <ClCompile Include="Graph_data\Graph_algo.cpp" />
+    <ClCompile Include="Graph_data\Graph_is_acyclic.cpp" />
+    <ClCompile Include="Graph_data\Graph_is_connected.cpp" />
+    <ClCompile Include="Graph_data\Read_graph.cpp" />
+    <ClCompile Include="Graph_data\Read_graph_builder.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Read_graph.cpp" />
-    <ClCompile Include="Read_graph_builder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

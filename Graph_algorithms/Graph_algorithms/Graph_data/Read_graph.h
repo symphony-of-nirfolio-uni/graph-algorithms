@@ -15,7 +15,6 @@ namespace algorithms_on_graphs
 {
 	class Read_graph
 	{
-		bool weight;
 		bool direct;
 
 		string get_file_name();
@@ -31,7 +30,6 @@ namespace algorithms_on_graphs
 		Graph get_graph();
 		Graph get_graph(string prefix);
 
-		bool get_weight();
 		bool get_direct();
 	};
 

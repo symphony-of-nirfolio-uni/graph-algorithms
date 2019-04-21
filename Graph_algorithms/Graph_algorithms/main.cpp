@@ -1,4 +1,4 @@
-#include "GraphAPI.h"
+#include "GraphAPI/GraphAPI.h"
 
 int main()
 {
