@@ -30,9 +30,14 @@ private:
     Graph graph;
     vector<pair<double, double> > vertices_coordinates;
     vector<QLineSeries*> connection_series;
-
-
     QString graph_name;
+
+
+    void get_graph_from_api();
+    void add_dots_on_chart();
+    void add_lines_on_chart();
+    void axis_and_legend_setup();
+
 };
 
 #endif // GRAPHWINDOW_H
