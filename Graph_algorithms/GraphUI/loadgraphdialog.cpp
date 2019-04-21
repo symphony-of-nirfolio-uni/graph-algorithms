@@ -1,6 +1,7 @@
 #include "loadgraphdialog.h"
 #include "ui_loadgraphdialog.h"
 #include "graphwindow.h"
+#include <QDir>
 
 LoadGraphDialog::LoadGraphDialog(QWidget *parent) :
     QDialog(parent),
@@ -21,6 +22,13 @@ LoadGraphDialog::~LoadGraphDialog()
 
 void LoadGraphDialog::load_graphs()
 {
+    QDir *dir = new QDir("../Graph_algorithms/Graph_data");
+    auto list = dir->entryInfoList();
+    for(auto file : list)
+    {
+        if(file.suffix() == "dat")
+            ui->graphList->addItem(file.baseName());
+    }
     ui->graphList->addItem("test");
 
     ui->graphList->setCurrentItem((ui->graphList->item(0)));
