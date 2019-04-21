@@ -5,8 +5,8 @@
 #include <QtQml>
 #include <QtCharts>
 #include <vector>
-#include "../Graph_algorithms/GraphAPI.h"
-#include "../Graph_algorithms/Graph.h"
+#include "../Graph_algorithms/GraphAPI/GraphAPI.h"
+#include "../Graph_algorithms/Graph_data/Graph.h"
 
 using std::vector;
 using algorithms_on_graphs::Graph;

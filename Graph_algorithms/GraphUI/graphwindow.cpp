@@ -44,12 +44,12 @@ void GraphWindow::add_dots_on_chart()
 
 void GraphWindow::add_lines_on_chart()
 {
-    for(unsigned current_vertex_id = 0; current_vertex_id < graph.graph.size(); ++current_vertex_id)
+    for(unsigned current_vertex_id = 0; current_vertex_id < graph.get_size(); ++current_vertex_id)
     {
-        auto adjacent_vertices_list = graph.graph[current_vertex_id];
-        for(auto adjacent_vertex : adjacent_vertices_list)
+        auto adjacent_vertices_list = graph.at(current_vertex_id);
+        for(auto adjacent_vertex : adjacent_vertices_list.adjacent())
         {
-            unsigned adjacent_vertex_id = unsigned(adjacent_vertex.first);
+            unsigned adjacent_vertex_id = unsigned(adjacent_vertex);
             connection_series.push_back(new QLineSeries());
             if(vertices_coordinates[current_vertex_id].first <  vertices_coordinates[adjacent_vertex_id].first)
             {
