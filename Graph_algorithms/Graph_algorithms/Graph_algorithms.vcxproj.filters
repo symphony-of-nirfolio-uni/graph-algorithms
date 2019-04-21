@@ -27,9 +27,6 @@
     <ClInclude Include="GraphAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="api_creation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Graph.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>

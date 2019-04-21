@@ -113,7 +113,6 @@
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Algorithm_factory.h" />
-    <ClInclude Include="api_creation.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphAPI.h" />
     <ClInclude Include="Graph_algo.h" />

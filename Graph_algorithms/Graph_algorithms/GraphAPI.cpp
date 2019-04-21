@@ -20,10 +20,14 @@ algorithms_on_graphs::Graph GraphAPI::get_graph(std::string graph_file_name)
     return Graph({{},{{2,0}},{{1,0}},{{4,0}},{{3,0}}});
 }
 
-GraphAPI::GraphAPI()
+/*GraphAPI & GraphAPI::instance()
 {
-	
-}
+	static GraphAPI instance;
+	return instance;
+}*/
+
+
+
 
 
 GraphAPI::~GraphAPI()
