@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../Graph_algorithms/Algorithm_factory.h"
-#include "../Graph_algorithms/Graph_is_acyclic.h"
-#include "../Graph_algorithms/Graph_is_connected.h"
+#include "../Graph_algorithms/Graph_data/Algorithm_factory.h"
+#include "../Graph_algorithms/Graph_data/Graph_is_acyclic.h"
+#include "../Graph_algorithms/Graph_data/Graph_is_connected.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -19,7 +19,7 @@ namespace Unit_tests_graph_alorithms
 		{
 			{
 				shared_ptr<Algorithm> algorithm = Graph_is_acyclic_factory::get_algorithm();
-				Graph graph = Graph_is_acyclic_factory::get_graph("../Graph_algorithms/Graph_data/");
+				Graph graph = Graph_is_acyclic_factory::get_graph("../Graph_algorithms/Graph_data/Data/");
 
 				Assert::IsTrue(graph.is_direct());
 				Assert::IsTrue(graph.get_size() > 0);
@@ -29,7 +29,7 @@ namespace Unit_tests_graph_alorithms
 
 			{
 				shared_ptr<Algorithm> algorithm = Graph_is_connected_factory::get_algorithm();
-				Graph graph = Graph_is_connected_factory::get_graph("../Graph_algorithms/Graph_data/");
+				Graph graph = Graph_is_connected_factory::get_graph("../Graph_algorithms/Graph_data/Data/");
 
 				Assert::IsTrue(graph.is_direct());
 				Assert::IsTrue(graph.get_size() > 0);

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "GraphAPI.h"
+#include "../GraphAPI/GraphAPI.h"
 #include "Graph.h"
 
 //#include <iostream>
