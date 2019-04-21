@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
-
+    window = new GraphWindow(this);
     //GraphAPI::instance;
 
     connect(ui->newGraphButton,SIGNAL(clicked()), this, SLOT(show_graph_window()));
@@ -25,8 +25,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::show_graph_window()
 {
-    chartView = new ChartView();
-    window.setCentralWidget(chartView);
-    window.resize(400, 300);
-    window.show();
+    window->resize(400, 300);
+    window->show();
 }

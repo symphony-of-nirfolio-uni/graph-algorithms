@@ -5,15 +5,18 @@
 #include <QtQml>
 #include <QtCharts>
 #include <vector>
+#include "../Graph_algorithms/GraphAPI.h"
+#include "../Graph_algorithms/Graph.h"
 
 using std::vector;
+using algorithms_on_graphs::Graph;
 using namespace QtCharts;
 
 namespace Ui {
 class GraphWindow;
 }
 
-class GraphWindow : public QDialog
+class GraphWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -24,7 +27,12 @@ public:
 private:
     Ui::GraphWindow *ui;
     QChartView* chart;
-    vector<QPointF> vertices;
+    Graph graph;
+    vector<pair<double, double> > vertices_coordinates;
+    vector<QLineSeries*> connection_series;
+
+
+    QString graph_name;
 };
 
 #endif // GRAPHWINDOW_H

@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include "chartview.h"
+#include "graphwindow.h"
 #include <QtCharts/QScatterSeries>
 #include <QtCharts/QLegendMarker>
 
@@ -21,8 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    ChartView *chartView;
-    QMainWindow window;
+    GraphWindow* window;
 
 public slots:
     void show_graph_window();

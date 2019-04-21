@@ -31,13 +31,18 @@ SOURCES += \
         mainwindow.cpp \
         ../Graph_algorithms/GraphAPI.cpp \
     graphwindow.cpp \
-    chartview.cpp
+    chartview.cpp \
+    ../Graph_algorithms/GraphAPI.cpp \
+    ../Graph_algorithms/Graph.cpp
 
 HEADERS += \
         mainwindow.h \
         ../Graph_algorithms/GraphAPI.h \
     graphwindow.h \
-    chartview.h
+    chartview.h \
+    ../Graph_algorithms/GraphAPI.h \
+    ../Graph_algorithms/Graph.h \
+    ../Graph_algorithms/api_creation.h
 
 FORMS += \
         mainwindow.ui \

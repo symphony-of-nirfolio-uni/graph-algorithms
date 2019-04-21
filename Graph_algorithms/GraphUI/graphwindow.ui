@@ -1,40 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>GraphWindow</class>
- <widget class="QDialog" name="GraphWindow">
+ <widget class="QMainWindow" name="GraphWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>273</width>
+    <width>262</width>
     <height>301</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>260</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
   <widget class="QScrollArea" name="scrollArea">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>251</width>
-     <height>211</height>
-    </rect>
-   </property>
    <property name="widgetResizable">
     <bool>true</bool>
    </property>
@@ -43,8 +22,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>249</width>
-      <height>209</height>
+      <width>260</width>
+      <height>299</height>
      </rect>
     </property>
    </widget>

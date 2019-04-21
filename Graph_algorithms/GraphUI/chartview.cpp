@@ -40,8 +40,6 @@ ChartView::ChartView(QWidget *parent) :
 
     chart()->axisX()->hide();
     chart()->axisY()->hide();
-
-
     chart()->legend()->hide();
 }
 
