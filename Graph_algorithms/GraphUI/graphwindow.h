@@ -21,7 +21,7 @@ class GraphWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit GraphWindow(QWidget *parent = nullptr);
+    explicit GraphWindow(QString graph_file_name, QWidget *parent = nullptr);
     ~GraphWindow();
 
 private:

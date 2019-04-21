@@ -21,10 +21,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    GraphWindow* window;
+    vector<GraphWindow*> windows;
 
 public slots:
     void show_graph_window();
+    void load_graph_dialog();
 };
 
 #endif // MAINWINDOW_H

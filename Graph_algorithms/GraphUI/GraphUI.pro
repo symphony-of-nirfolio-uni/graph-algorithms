@@ -32,7 +32,9 @@ SOURCES += \
         ../Graph_algorithms/GraphAPI.cpp \
     graphwindow.cpp \
     ../Graph_algorithms/GraphAPI.cpp \
-    ../Graph_algorithms/Graph.cpp
+    ../Graph_algorithms/Graph.cpp \
+    newgraphdialog.cpp \
+    loadgraphdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,11 +42,15 @@ HEADERS += \
     graphwindow.h \
     ../Graph_algorithms/GraphAPI.h \
     ../Graph_algorithms/Graph.h \
-    ../Graph_algorithms/api_creation.h
+    ../Graph_algorithms/api_creation.h \
+    newgraphdialog.h \
+    loadgraphdialog.h
 
 FORMS += \
         mainwindow.ui \
-    graphwindow.ui
+    graphwindow.ui \
+    newgraphdialog.ui \
+    loadgraphdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

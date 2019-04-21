@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "../Graph_algorithms/GraphAPI.h"
 #include "graphwindow.h"
+#include "loadgraphdialog.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -11,10 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
-    window = new GraphWindow(this);
-    //GraphAPI::instance;
+    windows.push_back(new GraphWindow("test" ,this));
 
-    connect(ui->newGraphButton,SIGNAL(clicked()), this, SLOT(show_graph_window()));
+    connect(ui->loadGraphButton, SIGNAL(clicked()), this, SLOT(load_graph_dialog()));
+    connect(ui->newGraphButton, SIGNAL(clicked()), this, SLOT(show_graph_window()));
 }
 
 MainWindow::~MainWindow()
@@ -25,6 +26,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::show_graph_window()
 {
-    window->resize(400, 300);
-    window->show();
+    windows.back()->resize(400, 300);
+    windows.back()->show();
+}
+
+void MainWindow::load_graph_dialog()
+{
+    LoadGraphDialog* dialog = new LoadGraphDialog();
+    dialog->exec();
 }

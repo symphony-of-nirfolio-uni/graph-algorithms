@@ -2,11 +2,12 @@
 #include "ui_graphwindow.h"
 
 
-GraphWindow::GraphWindow(QWidget *parent) :
+GraphWindow::GraphWindow(QString graph_file_name, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::GraphWindow)
 {
     ui->setupUi(this);
+    graph_name = graph_file_name + ".dat";
 
     get_graph_from_api();
     add_lines_on_chart();
@@ -22,8 +23,8 @@ GraphWindow::~GraphWindow()
 
 void GraphWindow::get_graph_from_api()
 {
-    graph = GraphAPI::instance.get_graph("test.dat");
-    vertices_coordinates = GraphAPI::instance.get_vertices_coodrdinates("test.dat");
+    graph = GraphAPI::instance.get_graph(graph_name.toStdString());
+    vertices_coordinates = GraphAPI::instance.get_vertices_coodrdinates(graph_name.toStdString());
     chart = new QChartView(this);
 }
 
