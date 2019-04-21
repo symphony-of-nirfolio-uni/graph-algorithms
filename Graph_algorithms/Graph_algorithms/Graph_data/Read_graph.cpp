@@ -40,9 +40,26 @@ namespace algorithms_on_graphs
 
 	Graph Read_graph::build_graph(string prefix)
 	{
+		return Read_graph::get_graph_from_file(get_file_name(prefix), direct);
+	}
+
+
+	Graph Read_graph::get_graph()
+	{
+		return build_graph("");
+	}
+
+	Graph Read_graph::get_graph(string prefix)
+	{
+		return build_graph(prefix);
+	}
+
+
+	Graph Read_graph::get_graph_from_file(string file_name, bool direct)
+	{
 		vector<vector<int> > graph;
 
-		ifstream file_in(get_file_name(prefix));
+		ifstream file_in(file_name);
 
 		string number_str;
 		file_in >> number_str;
@@ -59,7 +76,7 @@ namespace algorithms_on_graphs
 		{
 			int countVertex;
 			file_in >> countVertex;
-			
+
 			string separator;
 			file_in >> separator;
 
@@ -67,7 +84,7 @@ namespace algorithms_on_graphs
 			{
 				int vertex;
 				file_in >> vertex;
-				
+
 				graph[i].push_back(vertex);
 
 				if (!direct)
@@ -78,17 +95,6 @@ namespace algorithms_on_graphs
 		}
 
 		return Graph(graph, direct);
-	}
-
-
-	Graph Read_graph::get_graph()
-	{
-		return build_graph("");
-	}
-
-	Graph Read_graph::get_graph(string prefix)
-	{
-		return build_graph(prefix);
 	}
 
 
