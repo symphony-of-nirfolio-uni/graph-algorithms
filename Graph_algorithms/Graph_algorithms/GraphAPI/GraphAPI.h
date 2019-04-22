@@ -16,7 +16,10 @@ private:
     GraphAPI(const GraphAPI&) {}
     GraphAPI operator=(GraphAPI&);
 public:
-	void used_vertex(int v);
+	void highlight_vertex(int vertex);
+	void mark_vertex(int vertex);
+	void result(bool result);
+	void end_of_the_algorithm();
 	bool can_move_on();
 	bool ui_idle();
     vector<pair<double, double> > get_vertices_coodrdinates(string graph_file_name);
