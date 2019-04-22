@@ -16,12 +16,10 @@ namespace build_dots
 	
 	Point::~Point() {}
 	
-	Point getDot(Point mainDot, double angle, int i, double radius)
+	Point getDot(double angle, int i, double radius)
 	{
-		Point resPoint;
-		double helpY = radius*cos(pi*double(i)*angle / 360.0);
-		resPoint.y = mainDot.y - helpY;
-		resPoint.x = sqrt(radius * radius - helpY * helpY);
+		double radAngle = pi * double(i)*angle / 360.0;
+		Point resPoint(radius * sin(radAngle), radius * cos(radAngle));
 		return resPoint;
 	}
 }
