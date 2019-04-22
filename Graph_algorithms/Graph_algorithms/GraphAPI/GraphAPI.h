@@ -2,11 +2,13 @@
 #include <vector>
 #include <string>
 #include "../Graph_data/Graph.h"
+#include "../Build_dots/Build_dots.h"
 
 using std::vector;
 using std::pair;
 using std::string;
 using algorithms_on_graphs::Graph;
+using build_dots::Point;
 
 class GraphAPI // singleton
 {
@@ -22,7 +24,7 @@ public:
 	void end_of_the_algorithm();
 	bool can_move_on();
 	bool ui_idle();
-    vector<pair<double, double> > get_vertices_coordinates(string graph_file_name);
+    vector<Point> get_vertices_coodrdinates(string graph_file_name);
     Graph get_graph(string graph_file_name);
 	static GraphAPI& instance()
 	{
