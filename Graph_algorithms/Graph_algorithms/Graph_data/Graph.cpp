@@ -69,12 +69,12 @@ namespace algorithms_on_graphs
 	}
 
 
-	Graph::Graph()
+	Graph::Graph() : highlight(-1)
 	{
 
 	}
 
-	Graph::Graph(vector<vector<int> > vertices)
+	Graph::Graph(vector<vector<int> > vertices) : Graph()
 	{
 		this->vertices.clear();
 		for (int i = 0; i < int(vertices.size()); ++i)
@@ -127,5 +127,47 @@ namespace algorithms_on_graphs
 		index = std::min(index, size() - 1);
 
 		return vertices[index];
+	}
+
+	void Graph::set_used_mark(vector<int> verteces)
+	{
+		used_mark = verteces;
+	}
+
+	void Graph::add_used_mark(int vertex)
+	{
+		used_mark.push_back(vertex);
+	}
+
+	vector<int> Graph::get_used_mark()
+	{
+		return used_mark;
+	}
+
+
+	void Graph::set_black_mark(vector<int> verteces)
+	{
+		black_mark = verteces;
+	}
+
+	void Graph::add_black_mark(int vertex)
+	{
+		black_mark.push_back(vertex);
+	}
+
+	vector<int> Graph::get_black_mark()
+	{
+		return black_mark;
+	}
+
+
+	void Graph::set_highlight(int vertex)
+	{
+		highlight = vertex;
+	}
+
+	int Graph::get_highlight()
+	{
+		return highlight;
 	}
 }

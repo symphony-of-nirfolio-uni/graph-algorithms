@@ -60,6 +60,11 @@ namespace algorithms_on_graphs
 
 		vector<Vertex> vertices;
 
+		vector<int> used_mark,
+			black_mark;
+
+		int highlight;
+
 	public:
 		Graph();
 		Graph(vector<vector<int> > vertices);
@@ -76,5 +81,16 @@ namespace algorithms_on_graphs
 		unsigned size();
 		Vertex at(int index);
 		Vertex at(unsigned index);
+
+		void set_used_mark(vector<int> verteces);
+		void add_used_mark(int vertex);
+		vector<int> get_used_mark();
+
+		void set_black_mark(vector<int> verteces);
+		void add_black_mark(int vertex);
+		vector<int> get_black_mark();
+
+		void set_highlight(int vertex);
+		int get_highlight();
 	};
 }
