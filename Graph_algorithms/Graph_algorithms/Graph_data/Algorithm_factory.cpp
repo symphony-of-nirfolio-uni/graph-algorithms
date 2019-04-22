@@ -32,5 +32,16 @@ namespace algorithms_on_graphs
 	{
 		return Graph_is_acyclic_factory::get_graph(prefix, need_direct);
 	}
+
+
+	shared_ptr<Algorithm> Finding_shortest_path_factory::get_algorithm()
+	{
+		return make_shared<Finding_shortest_path>();
+	}
+
+	Graph Finding_shortest_path_factory::get_graph(string prefix, bool need_direct)
+	{
+		return Graph_is_acyclic_factory::get_graph(prefix, need_direct);
+	}
 }
 

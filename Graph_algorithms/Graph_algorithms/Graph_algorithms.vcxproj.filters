@@ -47,6 +47,9 @@
     <ClInclude Include="GraphAPI\GraphAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graph_data\Finding_shortest_path.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="GraphAPI\GraphAPI.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_data\Finding_shortest_path.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
