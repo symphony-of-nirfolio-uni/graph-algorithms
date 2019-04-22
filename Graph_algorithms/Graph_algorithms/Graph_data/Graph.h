@@ -4,11 +4,14 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <memory>
 
 
 using std::vector;
 using std::pair;
 using std::string;
+using std::shared_ptr;
+using std::make_shared;
 
 
 namespace algorithms_on_graphs
@@ -25,6 +28,21 @@ namespace algorithms_on_graphs
 	};
 
 
+	class Graph;
+
+
+	class Graph_iterator
+	{
+		unsigned index;
+		Graph &graph;
+
+	public:
+		Graph_iterator(Graph &graph, unsigned index);
+		
+		Graph_iterator &operator ++();
+	};
+
+	   
 	class Graph
 	{
 		bool direct;
@@ -37,6 +55,10 @@ namespace algorithms_on_graphs
 		Graph(vector<vector<int> > vertices, bool direct);
 		
 		~Graph();
+
+
+		auto begin();
+		auto end();
 
 
 		bool is_direct();
