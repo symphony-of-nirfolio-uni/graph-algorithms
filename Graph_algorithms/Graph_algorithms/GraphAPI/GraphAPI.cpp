@@ -10,9 +10,16 @@ vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string gr
 
 	vector<pair<double, double> > position;
 
-	for (int i = 0; i < graph.get_size(); ++i)
+	int counter = 0;
+	double cell_count = sqrt(graph.get_size()) + 1;
+	double cell_size = 100.0 / cell_count;
+
+	for (int i = 0; i < int(cell_count); ++i)
 	{
-		position.push_back({ double(rand() % 100), double(rand() % 100) });
+		for (int j = 0; j < int(cell_count) && counter < graph.get_size(); ++j, ++counter)
+		{
+			position.push_back({ double(i * cell_size + cell_size * 0.5), double(j * cell_size + cell_size * 0.5) });
+		}
 	}
 
 	return position;
