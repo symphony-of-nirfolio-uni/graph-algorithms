@@ -18,7 +18,7 @@ vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string gr
 	{
 		for (int j = 0; j < int(cell_count) && counter < graph.get_size(); ++j, ++counter)
 		{
-			position.push_back({ double(i * cell_size + cell_size * 0.5 + 0.67 * double(rand() % 200 - 100) / 100.0), double(j * cell_size + cell_size * 0.5 + 0.67 * double(rand() % 200 - 100) / 100.0) });
+            position.push_back({ double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)), double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)) });
 		}
 	}
 
@@ -30,7 +30,7 @@ algorithms_on_graphs::Graph GraphAPI::get_graph(std::string graph_file_name)
 
     string file_name = "../Graph_data/Data/" + graph_file_name;
 
-#ifdef QT_DEPRECATED_WARNINGS
+#ifdef QT_GRAPH_API
     file_name = "../Graph_algorithms/Graph_data/Data/" + graph_file_name;
 #endif
 
