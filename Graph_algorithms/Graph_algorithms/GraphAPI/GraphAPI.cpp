@@ -20,7 +20,12 @@ vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string gr
 
 algorithms_on_graphs::Graph GraphAPI::get_graph(std::string graph_file_name)
 {
-	string file_name = "../Graph_data/Data/" + graph_file_name + ".dat";
+
+    string file_name = "../Graph_data/Data/" + graph_file_name;
+
+#ifdef QT_DEPRECATED_WARNINGS
+    file_name = "../Graph_algorithms/Graph_data/Data/" + graph_file_name;
+#endif
 
 	return algorithms_on_graphs::Read_graph::get_graph_from_file(file_name);
 }

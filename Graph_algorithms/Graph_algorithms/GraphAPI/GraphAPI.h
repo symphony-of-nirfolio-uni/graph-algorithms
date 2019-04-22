@@ -12,9 +12,9 @@ class GraphAPI // singleton
 {
 private:
 
-	GraphAPI() {};
-	GraphAPI(const GraphAPI&) {};
-	GraphAPI operator=(GraphAPI&) {};
+    GraphAPI() {}
+    GraphAPI(const GraphAPI&) {}
+    GraphAPI operator=(GraphAPI&);
 public:
 	void used_vertex(int v);
 	bool can_move_on();
@@ -25,7 +25,7 @@ public:
 	{
 		static GraphAPI instance;
 		return instance;
-	};
+    }
 	
 	~GraphAPI();
 };
