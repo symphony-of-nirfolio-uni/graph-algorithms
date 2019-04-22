@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-vector<Point> GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
+vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 {
 	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
 
@@ -12,7 +12,7 @@ vector<Point> GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
 
 	double cell_count = graph.get_size();
 	double angle = 360.0 / cell_count;
-
+	//double radius = 
 	for (int i = 0; i < graph.get_size(); ++i)
 	{
 
