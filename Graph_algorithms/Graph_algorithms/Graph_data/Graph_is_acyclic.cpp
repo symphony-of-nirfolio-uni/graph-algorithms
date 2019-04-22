@@ -15,10 +15,8 @@ namespace algorithms_on_graphs
 		}
 		//
 
-		for (int i = 0; i < int(graph.at(vertex).adjacent().size()); ++i)
+		for (auto new_vertex : graph.at(vertex))
 		{
-			int new_vertex = graph.at(vertex).adjacent()[i];
-
 			if (graph.is_direct() && visit[new_vertex] == 1)
 			{
 				return false;
@@ -52,11 +50,11 @@ namespace algorithms_on_graphs
 
 	void Graph_is_acyclic::work(Graph graph, bool need_to_stop)
 	{
-		vector<int> visit(graph.get_size(), 0);
+		vector<int> visit(graph.size(), 0);
 
-		for (int i = 0; i < graph.get_size(); ++i)
+		for (auto vertex : graph)
 		{
-			if (visit[i] == 0 && !dfs(visit, graph, i, -1, need_to_stop))
+			if (visit[vertex.id()] == 0 && !dfs(visit, graph, vertex.id(), -1, need_to_stop))
 			{
 				//GraphAPI part
 				if (need_to_stop)

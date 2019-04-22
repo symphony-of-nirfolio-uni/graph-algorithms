@@ -18,7 +18,7 @@ namespace algorithms_on_graphs
 			}
 			//
 
-			for (auto new_vertex : graph.at(vertex).adjacent())
+			for (auto new_vertex : graph.at(vertex))
 			{
 				if (direction[new_vertex] != -1)
 				{
@@ -45,7 +45,7 @@ namespace algorithms_on_graphs
 
 	Graph Finding_shortest_path::create_route(Graph &graph, vector<int> &direction, int start, int finish)
 	{
-		vector<vector<int> > new_graph(graph.get_size());
+		vector<vector<int> > new_graph(graph.size());
 
 		int index = finish;
 		
@@ -62,7 +62,7 @@ namespace algorithms_on_graphs
 
 	void Finding_shortest_path::work(Graph graph, int start, int finish, bool need_to_stop)
 	{
-		vector<int> direction(graph.get_size(), -1);
+		vector<int> direction(graph.size(), -1);
 
 		queue<int> next_verteces;
 		next_verteces.push(start);

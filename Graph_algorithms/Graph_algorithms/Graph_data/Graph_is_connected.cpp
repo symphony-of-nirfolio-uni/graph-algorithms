@@ -15,10 +15,8 @@ namespace algorithms_on_graphs
 		}
 		//
 
-		for (int i = 0; i < int(graph.at(vertex).adjacent().size()); ++i)
+		for (auto new_vertex : graph.at(vertex))
 		{
-			int new_vertex = graph.at(vertex).adjacent()[i];
-
 			if (visit[new_vertex] == false)
 			{
 				dfs(visit, graph, new_vertex, need_to_stop);
@@ -31,13 +29,13 @@ namespace algorithms_on_graphs
 
 	void Graph_is_connected::work(Graph graph, bool need_to_stop)
 	{
-		vector<bool> visit(graph.get_size(), false);
+		vector<bool> visit(graph.size(), false);
 
 		dfs(visit, graph, 0, need_to_stop);
 
-		for (int i = 0; i < graph.get_size(); ++i)
+		for (auto vertex : graph)
 		{
-			if (visit[i] == false)
+			if (visit[vertex.id()] == false)
 			{
 				//GraphAPI part
 				if (need_to_stop)

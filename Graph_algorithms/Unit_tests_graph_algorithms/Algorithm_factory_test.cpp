@@ -23,7 +23,7 @@ namespace Unit_tests_graph_alorithms
 				Graph graph = Graph_is_acyclic_factory::get_graph("../Graph_algorithms/Graph_data/Data/");
 
 				Assert::IsTrue(graph.is_direct());
-				Assert::IsTrue(graph.get_size() > 0);
+				Assert::IsTrue(graph.size() > 0);
 
 				for (auto i : graph)
 				{
@@ -41,7 +41,7 @@ namespace Unit_tests_graph_alorithms
 				Graph graph = Graph_is_connected_factory::get_graph("../Graph_algorithms/Graph_data/Data/");
 
 				Assert::IsTrue(graph.is_direct());
-				Assert::IsTrue(graph.get_size() > 0);
+				Assert::IsTrue(graph.size() > 0);
 
 				Assert::IsTrue(typeid(Graph_is_connected) == typeid(*algorithm));
 			}
@@ -51,7 +51,7 @@ namespace Unit_tests_graph_alorithms
 				Graph graph = Finding_shortest_path_factory::get_graph("../Graph_algorithms/Graph_data/Data/");
 
 				Assert::IsTrue(graph.is_direct());
-				Assert::IsTrue(graph.get_size() > 0);
+				Assert::IsTrue(graph.size() > 0);
 
 				Assert::IsTrue(typeid(Finding_shortest_path) == typeid(*algorithm));
 			}

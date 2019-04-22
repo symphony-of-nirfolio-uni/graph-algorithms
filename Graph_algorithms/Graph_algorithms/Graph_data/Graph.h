@@ -18,12 +18,18 @@ namespace algorithms_on_graphs
 {
 	class Vertex
 	{
+		int vertex;
 		vector<int> adjacent_vertices;
 
 	public:
 		Vertex(vector<int> vertices);
+		Vertex(vector<int> vertices, int vertex);
 		~Vertex();
 
+		vector<int>::iterator begin();
+		vector<int>::iterator end();
+
+		int id();
 		vector<int> adjacent();
 	};
 
@@ -42,7 +48,7 @@ namespace algorithms_on_graphs
 		unsigned get_index();
 
 		Graph_iterator &operator ++();
-		vector<int> operator *();
+		Vertex operator *();
 
 		bool operator != (Graph_iterator &right);
 	};
@@ -67,7 +73,8 @@ namespace algorithms_on_graphs
 
 
 		bool is_direct();
-		int get_size();
+		unsigned size();
 		Vertex at(int index);
+		Vertex at(unsigned index);
 	};
 }

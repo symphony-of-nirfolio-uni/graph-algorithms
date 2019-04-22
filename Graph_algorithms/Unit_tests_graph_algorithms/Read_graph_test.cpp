@@ -32,7 +32,7 @@ namespace Unit_tests_graph_alorithms
 			Read_graph read_graph = make_shared<Read_graph_builder>()->build();
 			Graph graph = read_graph.get_graph("../Graph_algorithms/Graph_data/Data/");
 
-			Assert::IsTrue(graph.get_size() > 0);
+			Assert::IsTrue(graph.size() > 0);
 		}
 	};
 }

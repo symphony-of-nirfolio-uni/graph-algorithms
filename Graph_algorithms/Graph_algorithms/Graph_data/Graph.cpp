@@ -8,9 +8,30 @@ namespace algorithms_on_graphs
 
 	}
 
+	Vertex::Vertex(vector<int> vertices, int vertex) : adjacent_vertices(vertices), vertex(vertex)
+	{
+
+	}
+
+
 	Vertex::~Vertex()
 	{
 		adjacent_vertices.clear();
+	}
+
+	vector<int>::iterator Vertex::begin()
+	{
+		return adjacent_vertices.begin();
+	}
+	vector<int>::iterator Vertex::end()
+	{
+		return adjacent_vertices.end();
+	}
+
+
+	int Vertex::id()
+	{
+		return vertex;
 	}
 
 	vector<int> Vertex::adjacent()
@@ -36,9 +57,9 @@ namespace algorithms_on_graphs
 		return *this;
 	}
 
-	vector<int> Graph_iterator::operator *()
+	Vertex Graph_iterator::operator *()
 	{
-		return graph.at(index).adjacent();
+		return graph.at(index);
 	}
 
 
@@ -58,7 +79,7 @@ namespace algorithms_on_graphs
 		this->vertices.clear();
 		for (int i = 0; i < int(vertices.size()); ++i)
 		{
-			this->vertices.push_back(Vertex(vertices[i]));
+			this->vertices.push_back(Vertex(vertices[i], i));
 		}
 	}
 
@@ -81,7 +102,7 @@ namespace algorithms_on_graphs
 
 	Graph_iterator Graph::end()
 	{
-		return Graph_iterator(*this, get_size() - 1);
+		return Graph_iterator(*this, size() - 1);
 	}
 
 
@@ -90,15 +111,20 @@ namespace algorithms_on_graphs
 		return direct;
 	}
 
-	int Graph::get_size()
+	unsigned Graph::size()
 	{
 		return int(vertices.size());
 	}
 
 	Vertex Graph::at(int index)
 	{
-		index = std::max(index, 0);
-		index = std::min(index, get_size() - 1);
+		return at(unsigned(index));
+	}
+
+	Vertex Graph::at(unsigned index)
+	{
+		index = std::max(index, unsigned(0));
+		index = std::min(index, size() - 1);
 
 		return vertices[index];
 	}
