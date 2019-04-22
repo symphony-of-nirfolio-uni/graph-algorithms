@@ -4,11 +4,11 @@
 #include <cmath>
 
 
-vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
+vector<Point> GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
 {
 	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
 
-	vector<pair<double, double> > position;
+	vector<Point> position;
 
 	int counter = 0;
 	double cell_count = sqrt(graph.get_size()) + 1;
@@ -18,7 +18,7 @@ vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string gr
 	{
 		for (int j = 0; j < int(cell_count) && counter < graph.get_size(); ++j, ++counter)
 		{
-            position.push_back({ double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)), double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)) });
+            position.push_back(Point(double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)), double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)) ));
 		}
 	}
 
