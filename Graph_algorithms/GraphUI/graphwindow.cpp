@@ -25,7 +25,7 @@ GraphWindow::~GraphWindow()
 void GraphWindow::get_graph_from_api()
 {
     graph = GraphAPI::instance().get_graph(graph_name.toStdString());
-    vertices_coordinates = GraphAPI::instance().get_vertices_coodrdinates(graph_name.toStdString());
+    vertices_coordinates = GraphAPI::instance().get_vertices_coordinates(graph_name.toStdString());
     chart = new QChartView(this);
 }
 
@@ -35,7 +35,7 @@ void GraphWindow::add_dots_on_chart()
     vertices_series->setMarkerShape(QScatterSeries::MarkerShapeCircle);
     for(auto vertex_coordinate : vertices_coordinates)
     {
-        *vertices_series << QPointF(vertex_coordinate.first, vertex_coordinate.second);
+        *vertices_series << QPointF(vertex_coordinate.x, vertex_coordinate.y);
     }
 
     vertices_series->setColor(QColor(0,0,255));
@@ -52,9 +52,9 @@ void GraphWindow::add_lines_on_chart()
         {
             unsigned adjacent_vertex_id = unsigned(adjacent_vertex);
             connection_series.push_back(new QLineSeries());
-            if(vertices_coordinates[current_vertex_id].first <  vertices_coordinates[adjacent_vertex_id].first)
+            if(vertices_coordinates[current_vertex_id].x <  vertices_coordinates[adjacent_vertex_id].y)
             {
-                *(connection_series.back()) << QPointF(vertices_coordinates[current_vertex_id].first, vertices_coordinates[current_vertex_id].second) << QPointF(vertices_coordinates[adjacent_vertex_id].first, vertices_coordinates[adjacent_vertex_id].second);
+                *(connection_series.back()) << QPointF(vertices_coordinates[current_vertex_id].x, vertices_coordinates[current_vertex_id].y) << QPointF(vertices_coordinates[adjacent_vertex_id].x, vertices_coordinates[adjacent_vertex_id].y);
                 connection_series.back()->setColor(QColor(255,0,0));
                 chart->chart()->addSeries(connection_series.back());
             }
@@ -70,7 +70,7 @@ void GraphWindow::axis_and_legend_setup()
     chart->chart()->legend()->setMarkerShape(QLegend::MarkerShapeFromSeries);
 
 
-    chart->chart()->axisX()->setRange(-5,105);
+    chart->chart()->axisX()->setRange(-5,105); // hardcoded, maybe need to change
     chart->chart()->axisY()->setRange(-5,105);
     chart->chart()->axisX()->hide();
     chart->chart()->axisY()->hide();

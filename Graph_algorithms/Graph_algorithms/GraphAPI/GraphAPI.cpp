@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-vector<Point> GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
+vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 {
 	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
 
