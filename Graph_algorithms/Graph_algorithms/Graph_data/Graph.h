@@ -39,7 +39,12 @@ namespace algorithms_on_graphs
 	public:
 		Graph_iterator(Graph &graph, unsigned index);
 		
+		unsigned get_index();
+
 		Graph_iterator &operator ++();
+		vector<int> operator *();
+
+		bool operator != (Graph_iterator &right);
 	};
 
 	   
@@ -57,8 +62,8 @@ namespace algorithms_on_graphs
 		~Graph();
 
 
-		auto begin();
-		auto end();
+		Graph_iterator begin();
+		Graph_iterator end();
 
 
 		bool is_direct();
