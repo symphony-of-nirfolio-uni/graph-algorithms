@@ -18,7 +18,7 @@ namespace build_dots
 	
 	Point getDot(double angle, int i, double radius)
 	{
-		double radAngle = pi * double(i)*angle / 360.0;
+        double radAngle = 2 * pi * double(i)*angle / 360.0;
 		Point resPoint(radius * sin(radAngle), radius * cos(radAngle));
 		return resPoint;
 	}
