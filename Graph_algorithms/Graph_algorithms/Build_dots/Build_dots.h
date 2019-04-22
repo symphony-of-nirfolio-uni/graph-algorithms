@@ -16,5 +16,5 @@ namespace build_dots
 		~Point();
 	};
 
-	Point getDot(Point mainDot, double angle, int i, double radius);
+	Point getDot(double angle, int i, double radius);
 }
