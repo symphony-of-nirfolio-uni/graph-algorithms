@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Algorithms_on_graphs">
       <UniqueIdentifier>{36dc40b7-254f-4888-a057-1e43ff31accc}</UniqueIdentifier>
     </Filter>
@@ -33,73 +29,78 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphAPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="api_creation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
+    <ClInclude Include="Graph_data\Algorithm.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graph_algo.h">
+    <ClInclude Include="Graph_data\Algorithm_factory.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Read_graph.h">
+    <ClInclude Include="Graph_data\Graph.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Read_graph_builder.h">
+    <ClInclude Include="Graph_data\Graph_algo.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithm.h">
+    <ClInclude Include="Graph_data\Graph_is_acyclic.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graph_is_acyclic.h">
+    <ClInclude Include="Graph_data\Graph_is_connected.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graph_is_connected.h">
+    <ClInclude Include="Graph_data\Read_graph.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithm_factory.h">
+    <ClInclude Include="Graph_data\Read_graph_builder.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Build_dots.h">
       <Filter>Build_dots\Header Files</Filter>
     </ClInclude>
+||||||| merged common ancestors
+=======
+    <ClInclude Include="GraphAPI\GraphAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GraphAPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graph.cpp">
+    <ClCompile Include="Graph_data\Algorithm.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graph_algo.cpp">
+    <ClCompile Include="Graph_data\Algorithm_factory.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Read_graph.cpp">
+    <ClCompile Include="Graph_data\Graph.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Read_graph_builder.cpp">
+    <ClCompile Include="Graph_data\Graph_algo.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graph_is_acyclic.cpp">
+    <ClCompile Include="Graph_data\Graph_is_acyclic.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graph_is_connected.cpp">
+    <ClCompile Include="Graph_data\Graph_is_connected.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithm_factory.cpp">
+    <ClCompile Include="Graph_data\Read_graph.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithm.cpp">
+    <ClCompile Include="Graph_data\Read_graph_builder.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Build_dots.cpp">
       <Filter>Build_dots\Source Files</Filter>
     </ClCompile>
+||||||| merged common ancestors
+=======
+    <ClCompile Include="GraphAPI\GraphAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> develop
   </ItemGroup>
 </Project>

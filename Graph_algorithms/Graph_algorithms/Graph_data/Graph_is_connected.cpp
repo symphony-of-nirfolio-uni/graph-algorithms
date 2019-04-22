@@ -10,14 +10,14 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.mark_vertex();
+			//GraphAPI::instance.mark_vertex(vertex);
 			//waiting_for_the_next_move();
 		}
 		//
 
-		for (int i = 0; i < int(graph.graph[vertex].size()); ++i)
+		for (int i = 0; i < int(graph.at(vertex).adjacent().size()); ++i)
 		{
-			int new_vertex = graph.graph[vertex][i].first;
+			int new_vertex = graph.at(vertex).adjacent()[i];
 
 			if (visit[new_vertex] == false)
 			{
@@ -31,11 +31,11 @@ namespace algorithms_on_graphs
 
 	void Graph_is_connected::work(Graph graph, bool need_to_stop)
 	{
-		vector<bool> visit(graph.graph.size(), false);
+		vector<bool> visit(graph.get_size(), false);
 
 		dfs(visit, graph, 0, need_to_stop);
 
-		for (int i = 0; i < int(graph.graph.size()); ++i)
+		for (int i = 0; i < graph.get_size(); ++i)
 		{
 			if (visit[i] == false)
 			{
