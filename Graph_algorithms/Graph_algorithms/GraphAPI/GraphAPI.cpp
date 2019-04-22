@@ -1,16 +1,21 @@
 #include "GraphAPI.h"
 #include "../Graph_data/Read_graph.h"
 
+#include <cmath>
+
 
 vector<pair<double, double> > GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
 {
-    //TODO: make a real implementation
+	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
 
-    return {{0, 6},
-            {2, 4},
-            {3, 8},
-            {7, 4},
-        {10, 5}};
+	vector<pair<double, double> > position;
+
+	for (int i = 0; i < graph.get_size(); ++i)
+	{
+		position.push_back({ double(rand() % 100), double(rand() % 100) });
+	}
+
+	return position;
 }
 
 algorithms_on_graphs::Graph GraphAPI::get_graph(std::string graph_file_name)
