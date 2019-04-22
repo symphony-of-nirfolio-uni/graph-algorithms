@@ -22,7 +22,7 @@ public:
 	void end_of_the_algorithm();
 	bool can_move_on();
 	bool ui_idle();
-    vector<pair<double, double> > get_vertices_coodrdinates(string graph_file_name);
+    vector<pair<double, double> > get_vertices_coordinates(string graph_file_name);
     Graph get_graph(string graph_file_name);
 	static GraphAPI& instance()
 	{
