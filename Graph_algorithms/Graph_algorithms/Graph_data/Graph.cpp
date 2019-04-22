@@ -19,6 +19,35 @@ namespace algorithms_on_graphs
 	}
 
 
+	Graph_iterator::Graph_iterator(Graph &graph, unsigned index) : graph(graph), index(index)
+	{
+
+	}
+
+	unsigned Graph_iterator::get_index()
+	{
+		return index;
+	}
+
+
+	Graph_iterator &Graph_iterator::operator ++()
+	{
+		++index;
+		return *this;
+	}
+
+	vector<int> Graph_iterator::operator *()
+	{
+		return graph.at(index).adjacent();
+	}
+
+
+	bool Graph_iterator::operator != (Graph_iterator &right)
+	{
+		return index != right.get_index();
+	}
+
+
 	Graph::Graph()
 	{
 
@@ -42,6 +71,17 @@ namespace algorithms_on_graphs
 	Graph::~Graph()
 	{
 		vertices.clear();
+	}
+
+
+	Graph_iterator Graph::begin()
+	{
+		return Graph_iterator(*this, 0);
+	}
+
+	Graph_iterator Graph::end()
+	{
+		return Graph_iterator(*this, get_size() - 1);
 	}
 
 

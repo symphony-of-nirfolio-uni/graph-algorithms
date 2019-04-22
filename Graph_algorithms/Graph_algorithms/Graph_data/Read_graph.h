@@ -30,6 +30,8 @@ namespace algorithms_on_graphs
 		Graph get_graph();
 		Graph get_graph(string prefix);
 
+		static Graph get_graph_from_file(string file_name, bool direct = false);
+
 		bool get_direct();
 	};
 

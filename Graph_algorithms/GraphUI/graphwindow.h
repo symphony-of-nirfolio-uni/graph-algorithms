@@ -28,7 +28,7 @@ private:
     Ui::GraphWindow *ui;
     QChartView* chart;
     Graph graph;
-    vector<pair<double, double> > vertices_coordinates;
+    vector<Point> vertices_coordinates;
     vector<QLineSeries*> connection_series;
     QString graph_name;
 

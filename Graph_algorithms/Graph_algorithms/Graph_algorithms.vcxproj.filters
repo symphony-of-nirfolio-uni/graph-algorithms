@@ -18,6 +18,15 @@
     <Filter Include="Algorithms_on_graphs\Source Files">
       <UniqueIdentifier>{4365a0d8-52cf-4359-8032-31828aff7bf5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Build_dots">
+      <UniqueIdentifier>{dbf87732-c06c-4546-865b-883b47c58f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Build_dots\Header Files">
+      <UniqueIdentifier>{aa9bd030-38bd-4bf2-80dd-7803eccb368f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Build_dots\Source Files">
+      <UniqueIdentifier>{15957b7c-7733-4b4e-86fe-25760a15693e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph_data\Algorithm.h">
@@ -44,11 +53,11 @@
     <ClInclude Include="Graph_data\Read_graph_builder.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphAPI\api_creation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GraphAPI\GraphAPI.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Build_dots\Build_dots.h">
+      <Filter>Build_dots\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="GraphAPI\GraphAPI.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Build_dots\Build_dots.cpp">
+      <Filter>Build_dots\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

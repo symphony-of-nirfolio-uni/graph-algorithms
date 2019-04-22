@@ -18,6 +18,7 @@ TEMPLATE = app
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += QT_GRAPH_API
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -33,7 +34,16 @@ SOURCES += \
     newgraphdialog.cpp \
     ../Graph_algorithms/GraphAPI/GraphAPI.cpp \
     ../Graph_algorithms/Graph_data/Graph.cpp \
-    loadgraphdialog.cpp
+    loadgraphdialog.cpp \
+    ../Graph_algorithms/Graph_data/Algorithm.cpp \
+    ../Graph_algorithms/Graph_data/Algorithm_factory.cpp \
+    ../Graph_algorithms/Graph_data/Graph.cpp \
+    ../Graph_algorithms/Graph_data/Graph_algo.cpp \
+    ../Graph_algorithms/Graph_data/Graph_is_acyclic.cpp \
+    ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
+    ../Graph_algorithms/Graph_data/Read_graph.cpp \
+    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
+    ../Graph_algorithms/Build_dots/Build_dots.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +51,16 @@ HEADERS += \
     ../Graph_algorithms/GraphAPI/GraphAPI.h \
     ../Graph_algorithms/Graph_data/Graph.h \
     newgraphdialog.h \
-    loadgraphdialog.h
+    loadgraphdialog.h \
+    ../Graph_algorithms/Graph_data/Algorithm.h \
+    ../Graph_algorithms/Graph_data/Algorithm_factory.h \
+    ../Graph_algorithms/Graph_data/Graph.h \
+    ../Graph_algorithms/Graph_data/Graph_algo.h \
+    ../Graph_algorithms/Graph_data/Graph_is_acyclic.h \
+    ../Graph_algorithms/Graph_data/Graph_is_connected.h \
+    ../Graph_algorithms/Graph_data/Read_graph.h \
+    ../Graph_algorithms/Graph_data/Read_graph_builder.h \
+    ../Graph_algorithms/Build_dots/Build_dots.h
 
 FORMS += \
         mainwindow.ui \
