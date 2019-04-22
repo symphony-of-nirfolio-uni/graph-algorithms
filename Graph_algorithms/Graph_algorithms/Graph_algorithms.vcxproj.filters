@@ -44,9 +44,6 @@
     <ClInclude Include="Graph_data\Read_graph_builder.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphAPI\api_creation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GraphAPI\GraphAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>

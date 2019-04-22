@@ -8,6 +8,7 @@ GraphWindow::GraphWindow(QString graph_file_name, QWidget *parent) :
 {
     ui->setupUi(this);
     graph_name = graph_file_name + ".dat";
+    setWindowTitle(graph_file_name);
 
     get_graph_from_api();
     add_lines_on_chart();
@@ -69,8 +70,8 @@ void GraphWindow::axis_and_legend_setup()
     chart->chart()->legend()->setMarkerShape(QLegend::MarkerShapeFromSeries);
 
 
-    chart->chart()->axisX()->setRange(-5,15);
-    chart->chart()->axisY()->setRange(-5,20);
+    chart->chart()->axisX()->setRange(-5,105);
+    chart->chart()->axisY()->setRange(-5,105);
     chart->chart()->axisX()->hide();
     chart->chart()->axisY()->hide();
     chart->chart()->legend()->hide();
