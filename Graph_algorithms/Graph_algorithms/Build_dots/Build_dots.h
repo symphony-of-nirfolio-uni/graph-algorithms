@@ -7,6 +7,7 @@ namespace build_dots
 {
 	class Point
 	{
+	public:
 		double x, y;
 	};
 }

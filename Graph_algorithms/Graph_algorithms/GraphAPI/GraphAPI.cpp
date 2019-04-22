@@ -18,7 +18,10 @@ vector<Point> GraphAPI::get_vertices_coodrdinates(std::string graph_file_name)
 	{
 		for (int j = 0; j < int(cell_count) && counter < graph.get_size(); ++j, ++counter)
 		{
-            position.push_back(Point(double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)), double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)) ));
+			Point tempX;
+			tempX.x = double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0));
+			tempX.y = double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0));
+            position.push_back(tempX);
 		}
 	}
 
