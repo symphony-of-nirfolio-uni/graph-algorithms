@@ -14,18 +14,17 @@ vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 
 	double cell_count = graph.get_size();
 	double angle = 360.0 / cell_count;
-	double radius = 49 - 49 / cell_count;
-	Point mainDot(0, radius);
+	double radius = 49.0 - 49.0 / cell_count;
+	Point mainDot(0.0, radius);
 	for (int i = 0; i < graph.get_size()/2 + graph.get_size()%2; ++i)
-	{
 		positions.push_back(build_dots::getDot(mainDot, angle, i, radius));
-	}
+
 	Point tempDot;
 	if (graph.get_size() % 2 == 1)
 	{
 		for (int i = int(positions.size() - 1); i >= graph.get_size() % 2; --i)
 		{
-			tempDot = positions[i];
+			tempDot = positions[unsigned int(i)];
 			tempDot.x = -tempDot.x;
 			positions.push_back(tempDot);
 		}
@@ -34,13 +33,18 @@ vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 	{
 		for (int i = int(positions.size() - 1); i >= 0; --i)
 		{
-			tempDot = positions[i];
+			tempDot = positions[unsigned int(i)];
 			tempDot.x = -tempDot.x;
 			tempDot.y = -tempDot.y;
 			positions.push_back(tempDot);
 		}
 	}
 
+	for (unsigned int i = 0; i < positions.size(); ++i)
+	{
+		positions[i].x += 50;
+		positions[i].y += 50;
+	}
 	return positions;
 }
 
