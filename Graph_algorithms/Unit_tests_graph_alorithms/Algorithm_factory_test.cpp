@@ -24,6 +24,14 @@ namespace Unit_tests_graph_alorithms
 				Assert::IsTrue(graph.is_direct());
 				Assert::IsTrue(graph.get_size() > 0);
 
+				for (auto i : graph)
+				{
+					for (auto j : i)
+					{
+						Assert::IsTrue(j >= 0);
+					}
+				}
+
 				Assert::IsTrue(typeid(Graph_is_acyclic) == typeid(*algorithm));
 			}
 
