@@ -4,25 +4,96 @@
 #include <cmath>
 
 
-vector<pair<double, double> > GraphAPI::get_vertices_coordinates(std::string graph_file_name)
+GraphAPI::GraphAPI()
+{
+    current_highlighted = 0;
+}
+
+void GraphAPI::set_highlighted(unsigned vertex)
+{
+    current_highlighted = vertex;
+}
+
+void GraphAPI::set_black_mark(unsigned vertex)
+{
+    black_marked.push_back(new atomic<unsigned>(vertex));
+}
+
+void GraphAPI::set_used_mark(unsigned vertex)
+{
+    use_marked.push_back(new atomic<unsigned>(vertex));
+}
+
+unsigned GraphAPI::get_current_highlighted()
+{
+    current_highlighted = (current_highlighted + 1)%10;
+    return current_highlighted;
+}
+
+vector<unsigned> GraphAPI::get_black_marked()
+{
+    vector<unsigned> res;
+    for(auto i : black_marked)
+    {
+        res.push_back(*i);
+    }
+    return {0,2};
+    return res;
+}
+
+vector<unsigned> GraphAPI::get_used_marked()
+{
+    vector<unsigned> res;
+    for(auto i : use_marked)
+    {
+        res.push_back(*i);
+    }
+    return {0,1};
+    return res;
+}
+
+vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 {
 	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
 
-	vector<pair<double, double> > position;
+	vector<Point> positions;
+	if (graph.get_size() == 0)
+		return positions;
 
-	int counter = 0;
-	double cell_count = sqrt(graph.get_size()) + 1;
-	double cell_size = 100.0 / cell_count;
+	double cell_count = graph.get_size();
+    double angle =  360.0 / cell_count;
+    double radius = 49.0 - 49.0 / cell_count;
 
-	for (int i = 0; i < int(cell_count); ++i)
+	for (int i = 0; i < graph.get_size()/2 + graph.get_size()%2; ++i)
+		positions.push_back(build_dots::getDot(angle, i, radius));
+
+	Point tempDot;
+	if (graph.get_size() % 2 == 1)
 	{
-		for (int j = 0; j < int(cell_count) && counter < graph.get_size(); ++j, ++counter)
+		for (int i = int(positions.size() - 1); i >= graph.get_size() % 2; --i)
 		{
-            position.push_back({ double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)), double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)) });
+            tempDot = positions[unsigned(i)];
+			tempDot.x = -tempDot.x;
+			positions.push_back(tempDot);
+		}
+	}
+	else
+	{
+		for (int i = int(positions.size() - 1); i >= 0; --i)
+		{
+            tempDot = positions[unsigned(i)];
+			tempDot.x = -tempDot.x;
+			tempDot.y = -tempDot.y;
+			positions.push_back(tempDot);
 		}
 	}
 
-	return position;
+	for (unsigned int i = 0; i < positions.size(); ++i)
+	{
+		positions[i].x += 50.0;
+		positions[i].y += 50.0;
+	}
+	return positions;
 }
 
 algorithms_on_graphs::Graph GraphAPI::get_graph(std::string graph_file_name)

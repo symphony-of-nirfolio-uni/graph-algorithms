@@ -28,15 +28,27 @@ private:
     Ui::GraphWindow *ui;
     QChartView* chart;
     Graph graph;
-    vector<pair<double, double> > vertices_coordinates;
+    vector<Point> vertices_coordinates;
     vector<QLineSeries*> connection_series;
+    QScatterSeries *main_graph;
+    QScatterSeries *used_graph;
+    QScatterSeries *black_graph;
     QString graph_name;
+    int plot_min;
+    int plot_max;
+
+
+
 
 
     void get_graph_from_api();
     void add_dots_on_chart();
     void add_lines_on_chart();
     void axis_and_legend_setup();
+
+
+
+
 
 };
 

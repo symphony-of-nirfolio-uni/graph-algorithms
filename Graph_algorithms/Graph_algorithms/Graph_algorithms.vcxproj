@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Build_dots\Build_dots.h" />
     <ClInclude Include="GraphAPI\GraphAPI.h" />
     <ClInclude Include="Graph_data\Algorithm.h" />
     <ClInclude Include="Graph_data\Algorithm_factory.h" />
@@ -123,6 +124,7 @@
     <ClInclude Include="Graph_data\Read_graph_builder.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Build_dots\Build_dots.cpp" />
     <ClCompile Include="GraphAPI\GraphAPI.cpp" />
     <ClCompile Include="Graph_data\Algorithm.cpp" />
     <ClCompile Include="Graph_data\Algorithm_factory.cpp" />

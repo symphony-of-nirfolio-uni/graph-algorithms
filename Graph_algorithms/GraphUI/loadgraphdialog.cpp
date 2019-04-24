@@ -37,7 +37,10 @@ void LoadGraphDialog::load_graphs()
 void LoadGraphDialog::create_graph_visualisation()
 {
 
-    GraphWindow* window = new GraphWindow(ui->graphList->currentItem()->text(), parent);
-    window->show();
+    //GraphWindow* window_1 = new GraphWindow(ui->graphList->currentItem()->text(), parent);
+    //window_1->show();
+
+    GraphPlotWindow* window_2 = new GraphPlotWindow(ui->graphList->currentItem()->text(), parent);
+    new_window(window_2);
     this->close();
 }

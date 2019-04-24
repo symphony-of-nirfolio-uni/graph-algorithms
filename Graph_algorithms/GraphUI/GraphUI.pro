@@ -8,7 +8,7 @@ QT += core gui
 QT += charts
 QT += qml
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = GraphUI
 TEMPLATE = app
@@ -42,7 +42,11 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Graph_is_acyclic.cpp \
     ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
     ../Graph_algorithms/Graph_data/Read_graph.cpp \
-    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp
+    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
+    ../Graph_algorithms/Build_dots/Build_dots.cpp \
+    QtCustomPlot/qcustomplot.cpp \
+    graphplotwindow.cpp \
+    Factories/linefactory.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -58,13 +62,18 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Graph_is_acyclic.h \
     ../Graph_algorithms/Graph_data/Graph_is_connected.h \
     ../Graph_algorithms/Graph_data/Read_graph.h \
-    ../Graph_algorithms/Graph_data/Read_graph_builder.h
+    ../Graph_algorithms/Graph_data/Read_graph_builder.h \
+    ../Graph_algorithms/Build_dots/Build_dots.h \
+    QtCustomPlot/qcustomplot.h \
+    graphplotwindow.h \
+    Factories/linefactory.h
 
 FORMS += \
         mainwindow.ui \
     graphwindow.ui \
     newgraphdialog.ui \
-    loadgraphdialog.ui
+    loadgraphdialog.ui \
+    graphplotwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
