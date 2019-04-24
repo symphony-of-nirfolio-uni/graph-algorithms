@@ -45,7 +45,8 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
     ../Graph_algorithms/Build_dots/Build_dots.cpp \
     QtCustomPlot/qcustomplot.cpp \
-    graphplotwindow.cpp
+    graphplotwindow.cpp \
+    Factories/linefactory.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -64,7 +65,8 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Read_graph_builder.h \
     ../Graph_algorithms/Build_dots/Build_dots.h \
     QtCustomPlot/qcustomplot.h \
-    graphplotwindow.h
+    graphplotwindow.h \
+    Factories/linefactory.h
 
 FORMS += \
         mainwindow.ui \

@@ -29,11 +29,12 @@ private:
     vector<Point> vertices_coordinates;
 
     QCPGraph *dots;
-    vector<QCPGraph*> lines;
+    vector<QCPItemLine*> lines;
     vector<QCPItemLine*> arrows;
 
 
     QString graph_name;
+    double scatter_radius;
     int plot_min;
     int plot_max;
 

@@ -1,5 +1,6 @@
 #include "graphplotwindow.h"
 #include "ui_graphplotwindow.h"
+#include "../GraphUI/Factories/linefactory.h"
 
 GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +10,7 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
 
     graph_name = graph_file_name + ".dat";
     setWindowTitle(graph_file_name);
+    scatter_radius = 50;
 
     get_graph_from_api();
     add_lines_on_chart();
@@ -37,7 +39,7 @@ void GraphPlotWindow::add_dots_on_chart()
     }
 
     dots->setLineStyle(QCPGraph::lsNone);
-    dots->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::blue, Qt::blue, 10));
+    dots->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::blue, Qt::blue, scatter_radius));
 
     dots->setData(x, y);
 
@@ -45,6 +47,7 @@ void GraphPlotWindow::add_dots_on_chart()
 
 void GraphPlotWindow::add_lines_on_chart()
 {
+
     for(unsigned current_vertex_id = 0; current_vertex_id < graph.get_size(); ++current_vertex_id)
     {
         auto adjacent_vertices_list = graph.at(current_vertex_id);
@@ -52,23 +55,24 @@ void GraphPlotWindow::add_lines_on_chart()
         {
             unsigned adjacent_vertex_id = unsigned(adjacent_vertex);
 
+            QPointF from = {vertices_coordinates[current_vertex_id].x, vertices_coordinates[current_vertex_id].y};
+            QPointF to = {vertices_coordinates[adjacent_vertex_id].x, vertices_coordinates[adjacent_vertex_id].y};
+
             if(graph.is_direct())
             {
-                QCPItemLine *arrow = new QCPItemLine(plot);
+                QCPItemLine *arrow = LineFactory::get_line_between_dots(plot, from, to, Qt::red, scatter_radius, scatter_radius);
                 arrows.push_back(arrow);
-                arrow->start->setCoords(vertices_coordinates[current_vertex_id].x, vertices_coordinates[current_vertex_id].y);
-                arrow->end->setCoords(vertices_coordinates[adjacent_vertex_id].x, vertices_coordinates[adjacent_vertex_id].y);
-                arrow->setHead(QCPLineEnding::esSpikeArrow);
+                arrow->setHead(QCPLineEnding::esLineArrow);//esSpikeArrow);
+                //QCPItemLine *arrow = new QCPItemLine(plot);
+                //arrow->start->setParentAnchor(data->at(current_vertex_id));
+                //arrow->end->setParentAnchor();
             }
             else
             {
                 if(current_vertex_id < adjacent_vertex_id)
                 {
-                    plot->addGraph();
-                    lines.push_back(plot->graph(plot->graphCount() - 1));
-                    auto current_line = lines.back();
-                    current_line->addData({vertices_coordinates[current_vertex_id].x, vertices_coordinates[adjacent_vertex_id].x},
-                    {vertices_coordinates[current_vertex_id].y, vertices_coordinates[adjacent_vertex_id].y});
+                    QCPItemLine *line = LineFactory::get_line_between_dots(plot, from, to, Qt::red, scatter_radius, scatter_radius);
+                    lines.push_back(line);
                 }
             }
 
@@ -83,6 +87,9 @@ void GraphPlotWindow::axis_and_legend_setup()
 
     plot->xAxis->setRange(plot_min, plot_max);
     plot->yAxis->setRange(plot_min, plot_max);
+
+    plot->xAxis->setVisible(false);
+    plot->yAxis->setVisible(false);
 }
 
 GraphPlotWindow::~GraphPlotWindow()

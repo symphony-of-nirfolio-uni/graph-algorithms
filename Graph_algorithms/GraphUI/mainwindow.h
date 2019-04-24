@@ -2,8 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 
 #include "graphwindow.h"
+#include "graphplotwindow.h"
 #include <QtCharts/QScatterSeries>
 #include <QtCharts/QLegendMarker>
 
@@ -11,7 +13,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public QCloseEvent
 {
     Q_OBJECT
 
@@ -21,11 +23,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    vector<GraphWindow*> windows;
+    vector<GraphPlotWindow*> windows;
 
 public slots:
     void show_graph_window();
     void load_graph_dialog();
+    void get_new_window(GraphPlotWindow*);
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H
