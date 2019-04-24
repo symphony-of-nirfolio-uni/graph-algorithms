@@ -1,10 +1,9 @@
 #pragma once
 #include "../Graph_data/Graph.h"
 
-using algorithms_on_graphs::Graph;
-
 namespace build_dots
 {
+	using algorithms_on_graphs::Graph;
 	const double pi = 3.14159265358979;
 
 	class Point
@@ -17,4 +16,5 @@ namespace build_dots
 	};
 
 	Point getDot(double angle, int i, double radius);
+	vector<Point> getAllDots(Graph graph);
 }
