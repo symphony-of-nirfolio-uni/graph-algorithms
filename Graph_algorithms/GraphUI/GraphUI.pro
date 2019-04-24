@@ -46,7 +46,16 @@ SOURCES += \
     ../Graph_algorithms/Build_dots/Build_dots.cpp \
     QtCustomPlot/qcustomplot.cpp \
     graphplotwindow.cpp \
-    Factories/linefactory.cpp
+    Factories/linefactory.cpp \
+    ../Graph_algorithms/Graph_data/Algorithm.cpp \
+    ../Graph_algorithms/Graph_data/Algorithm_factory.cpp \
+    ../Graph_algorithms/Graph_data/Finding_shortest_path.cpp \
+    ../Graph_algorithms/Graph_data/Graph.cpp \
+    ../Graph_algorithms/Graph_data/Graph_algo.cpp \
+    ../Graph_algorithms/Graph_data/Graph_is_acyclic.cpp \
+    ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
+    ../Graph_algorithms/Graph_data/Read_graph.cpp \
+    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -66,7 +75,16 @@ HEADERS += \
     ../Graph_algorithms/Build_dots/Build_dots.h \
     QtCustomPlot/qcustomplot.h \
     graphplotwindow.h \
-    Factories/linefactory.h
+    Factories/linefactory.h \
+    ../Graph_algorithms/Graph_data/Algorithm.h \
+    ../Graph_algorithms/Graph_data/Algorithm_factory.h \
+    ../Graph_algorithms/Graph_data/Finding_shortest_path.h \
+    ../Graph_algorithms/Graph_data/Graph.h \
+    ../Graph_algorithms/Graph_data/Graph_algo.h \
+    ../Graph_algorithms/Graph_data/Graph_is_acyclic.h \
+    ../Graph_algorithms/Graph_data/Graph_is_connected.h \
+    ../Graph_algorithms/Graph_data/Read_graph.h \
+    ../Graph_algorithms/Graph_data/Read_graph_builder.h
 
 FORMS += \
         mainwindow.ui \
