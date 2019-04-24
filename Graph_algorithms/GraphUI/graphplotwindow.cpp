@@ -29,7 +29,7 @@ void GraphPlotWindow::get_graph_from_api()
     vertices_coordinates = GraphAPI::instance().get_vertices_coordinates(graph_name.toStdString());
     plot = new QCustomPlot(this);
 
-    scatter_radius = graph.get_size() < 30 ? 50 : 5;
+    scatter_radius = graph.get_size() < 30 ? 50 : 13;
 }
 
 void GraphPlotWindow::add_dots_on_chart()
@@ -52,7 +52,7 @@ void GraphPlotWindow::add_dots_on_chart()
 
     plot->addGraph();
     used = plot->graph(plot->graphCount() - 1);
-    make_scatter(used, Qt::lightGray, scatter_radius);
+    make_scatter(used, Qt::darkGray, scatter_radius);
 
     plot->addGraph();
     black = plot->graph(plot->graphCount() - 1);
@@ -111,7 +111,16 @@ void GraphPlotWindow::axis_and_legend_setup()
         QCPItemText *textLabel = new QCPItemText(plot);
         textLabel->position->setCoords(vertex_coordinate.x, vertex_coordinate.y);
         textLabel->setText(QString::number(i++));
-        textLabel->setFont(QFont(font().family(), 16));
+        if(graph.get_size() < 30)
+        {
+            textLabel->setFont(QFont(font().family(), 16));
+        }
+        else
+        {
+            textLabel->setFont(QFont(font().family(), 10));
+        }
+        //textLabel->setSelectedPen(QPen(Qt::white));
+        textLabel->setColor(Qt::white);
     }
 }
 

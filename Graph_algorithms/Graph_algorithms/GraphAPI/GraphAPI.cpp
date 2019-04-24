@@ -37,7 +37,7 @@ vector<unsigned> GraphAPI::get_black_marked()
     {
         res.push_back(*i);
     }
-    //return {0,2};
+    return {0,2};
     return res;
 }
 
@@ -48,7 +48,7 @@ vector<unsigned> GraphAPI::get_used_marked()
     {
         res.push_back(*i);
     }
-    //return {0,1};
+    return {0,1};
     return res;
 }
 
