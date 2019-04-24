@@ -1,7 +1,6 @@
 #include "graphplotwindow.h"
 #include "ui_graphplotwindow.h"
 #include "../GraphUI/Factories/linefactory.h"
-#include <iostream>
 
 GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     QMainWindow(parent),
@@ -17,6 +16,7 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     get_graph_from_api();
     add_lines_on_chart();
     add_dots_on_chart();
+
     axis_and_legend_setup();
     this->setCentralWidget(plot);
     setup_update_timer();
@@ -105,6 +105,14 @@ void GraphPlotWindow::axis_and_legend_setup()
 
     plot->xAxis->setVisible(false);
     plot->yAxis->setVisible(false);
+    int i = 0;
+    for(auto vertex_coordinate : vertices_coordinates)
+    {
+        QCPItemText *textLabel = new QCPItemText(plot);
+        textLabel->position->setCoords(vertex_coordinate.x, vertex_coordinate.y);
+        textLabel->setText(QString::number(i++));
+        textLabel->setFont(QFont(font().family(), 16));
+    }
 }
 
 void GraphPlotWindow::make_scatter(QCPGraph* graph, QColor color, double radius)
@@ -153,8 +161,6 @@ void GraphPlotWindow::update_graph()
         add_black_vertex(b[i]);
     }
     plot->replot();
-    //std::cout << ".";
-    //dots->setVisible(false);
 
 }
 

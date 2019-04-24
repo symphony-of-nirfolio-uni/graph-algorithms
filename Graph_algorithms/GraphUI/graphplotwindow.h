@@ -56,6 +56,7 @@ private:
     void add_black_vertex(unsigned vertex);
     void make_highlighted(unsigned vertex);
 
+
 private slots:
     void update_graph();
 };
