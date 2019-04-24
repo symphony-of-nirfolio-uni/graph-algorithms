@@ -69,10 +69,14 @@ void GraphWindow::axis_and_legend_setup()
     chart->chart()->setDropShadowEnabled(false);
     chart->chart()->legend()->setMarkerShape(QLegend::MarkerShapeFromSeries);
 
+    plot_min = -5; // hardcoded, maybe need to change
+    plot_max = 105;
 
-    chart->chart()->axisX()->setRange(-5,105); // hardcoded, maybe need to change
-    chart->chart()->axisY()->setRange(-5,105);
+
+    chart->chart()->axisX()->setRange(plot_min, plot_max);
+    chart->chart()->axisY()->setRange(plot_min, plot_max);
     chart->chart()->axisX()->hide();
     chart->chart()->axisY()->hide();
     chart->chart()->legend()->hide();
 }
+
