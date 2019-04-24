@@ -16,7 +16,7 @@ class GraphAPI // singleton
 {
 private:
 
-    GraphAPI() {}
+    GraphAPI();
     GraphAPI(const GraphAPI&) {}
     GraphAPI operator=(GraphAPI&);
 

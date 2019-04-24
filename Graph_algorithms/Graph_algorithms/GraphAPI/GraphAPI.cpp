@@ -4,6 +4,11 @@
 #include <cmath>
 
 
+GraphAPI::GraphAPI()
+{
+    current_highlighted = 0;
+}
+
 void GraphAPI::set_highlighted(unsigned vertex)
 {
     current_highlighted = vertex;
@@ -21,6 +26,7 @@ void GraphAPI::set_used_mark(unsigned vertex)
 
 unsigned GraphAPI::get_current_highlighted()
 {
+    current_highlighted = (current_highlighted + 1)%10;
     return current_highlighted;
 }
 
@@ -31,6 +37,7 @@ vector<unsigned> GraphAPI::get_black_marked()
     {
         res.push_back(*i);
     }
+    //return {0,2};
     return res;
 }
 
@@ -41,6 +48,7 @@ vector<unsigned> GraphAPI::get_used_marked()
     {
         res.push_back(*i);
     }
+    //return {0,1};
     return res;
 }
 

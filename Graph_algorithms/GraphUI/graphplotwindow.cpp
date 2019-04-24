@@ -1,6 +1,7 @@
 #include "graphplotwindow.h"
 #include "ui_graphplotwindow.h"
 #include "../GraphUI/Factories/linefactory.h"
+#include <iostream>
 
 GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +10,7 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     ui->setupUi(this);
 
     graph_name = graph_file_name + ".dat";
+    timer = new QTimer();
     setWindowTitle(graph_file_name);
     scatter_radius = 50;
 
@@ -17,6 +19,8 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     add_dots_on_chart();
     axis_and_legend_setup();
     this->setCentralWidget(plot);
+    setup_update_timer();
+
 }
 
 void GraphPlotWindow::get_graph_from_api()
@@ -31,19 +35,28 @@ void GraphPlotWindow::get_graph_from_api()
 void GraphPlotWindow::add_dots_on_chart()
 {
     plot->addGraph();
-
     dots = plot->graph(plot->graphCount() - 1);
+
     QVector<double> x, y;
     for(auto vertex_coordinate : vertices_coordinates)
     {
         x.push_back(vertex_coordinate.x);
         y.push_back(vertex_coordinate.y);
     }
-
-    dots->setLineStyle(QCPGraph::lsNone);
-    dots->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::blue, Qt::blue, scatter_radius));
-
+    make_scatter(dots, Qt::blue, scatter_radius);
     dots->setData(x, y);
+
+    plot->addGraph();
+    highlighted = plot->graph(plot->graphCount() - 1);
+    make_scatter(highlighted, Qt::green, scatter_radius);
+
+    plot->addGraph();
+    used = plot->graph(plot->graphCount() - 1);
+    make_scatter(used, Qt::lightGray, scatter_radius);
+
+    plot->addGraph();
+    black = plot->graph(plot->graphCount() - 1);
+    make_scatter(black, Qt::black, scatter_radius);
 
 }
 
@@ -92,6 +105,57 @@ void GraphPlotWindow::axis_and_legend_setup()
 
     plot->xAxis->setVisible(false);
     plot->yAxis->setVisible(false);
+}
+
+void GraphPlotWindow::make_scatter(QCPGraph* graph, QColor color, double radius)
+{
+    graph->setLineStyle(QCPGraph::lsNone);
+    graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color, color, radius));
+
+}
+
+void GraphPlotWindow::setup_update_timer()
+{
+    timer->setInterval(200);
+    timer->start();
+
+    connect(timer,SIGNAL(timeout()), this, SLOT(update_graph()));
+}
+
+void GraphPlotWindow::add_used_vertex(unsigned vertex)
+{
+    used->addData(vertices_coordinates[vertex].x, vertices_coordinates[vertex].y);
+}
+
+void GraphPlotWindow::add_black_vertex(unsigned vertex)
+{
+    black->addData(vertices_coordinates[vertex].x, vertices_coordinates[vertex].y);
+}
+
+void GraphPlotWindow::make_highlighted(unsigned vertex)
+{
+    highlighted->setData({vertices_coordinates[vertex].x}, {vertices_coordinates[vertex].y});
+}
+
+void GraphPlotWindow::update_graph()
+{
+    auto h = GraphAPI::instance().get_current_highlighted();
+    make_highlighted(h);
+
+    auto u = GraphAPI::instance().get_used_marked();
+    for(unsigned i = unsigned(used_v.size()); i < u.size(); ++i)
+    {
+        add_used_vertex(u[i]);
+    }
+    auto b = GraphAPI::instance().get_black_marked();
+    for(unsigned i = unsigned(black_v.size()); i < b.size(); ++i)
+    {
+        add_black_vertex(b[i]);
+    }
+    plot->replot();
+    //std::cout << ".";
+    //dots->setVisible(false);
+
 }
 
 GraphPlotWindow::~GraphPlotWindow()

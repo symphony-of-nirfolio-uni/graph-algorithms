@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <QTimer>
 #include "../GraphUI/QtCustomPlot/qcustomplot.h"
 
 #include <vector>
@@ -29,8 +30,15 @@ private:
     vector<Point> vertices_coordinates;
 
     QCPGraph *dots;
+    QCPGraph *used;
+    QCPGraph *black;
+    QCPGraph *highlighted;
     vector<QCPItemLine*> lines;
     vector<QCPItemLine*> arrows;
+    QTimer *timer;
+    vector<unsigned> black_v;
+    vector<unsigned> used_v;
+
 
 
     QString graph_name;
@@ -42,6 +50,14 @@ private:
     void add_dots_on_chart();
     void add_lines_on_chart();
     void axis_and_legend_setup();
+    void make_scatter(QCPGraph* graph, QColor color, double radius);
+    void setup_update_timer();
+    void add_used_vertex(unsigned vertex);
+    void add_black_vertex(unsigned vertex);
+    void make_highlighted(unsigned vertex);
+
+private slots:
+    void update_graph();
 };
 
 #endif // GRAPHPLOTWINDOW_H
