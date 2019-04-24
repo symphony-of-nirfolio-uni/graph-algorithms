@@ -79,7 +79,8 @@ vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 	}
 	else
 	{
-		for (int i = 0; i < int(positions.size()); ++i)
+		int temp_size = int(positions.size());
+		for (int i = 0; i < temp_size; ++i)
 		{
             tempDot = positions[unsigned(i)];
 			tempDot.x = -tempDot.x;
