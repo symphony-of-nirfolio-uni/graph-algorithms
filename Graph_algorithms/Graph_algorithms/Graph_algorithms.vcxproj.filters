@@ -59,6 +59,9 @@
     <ClInclude Include="Build_dots\Build_dots.h">
       <Filter>Build_dots\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graph_data\Finding_shortest_path.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="Build_dots\Build_dots.cpp">
       <Filter>Build_dots\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_data\Finding_shortest_path.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
