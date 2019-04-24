@@ -57,22 +57,22 @@ vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
 
 	vector<Point> positions;
-	if (graph.get_size() == 0)
+	if (graph.size() == 0)
 		return positions;
 
-	double cell_count = graph.get_size();
+	double cell_count = graph.size();
     double angle =  360.0 / cell_count;
     double radius = 49.0 - 49.0 / cell_count;
 
-	for (int i = 0; i < graph.get_size()/2 + graph.get_size()%2; ++i)
-		positions.push_back(build_dots::getDot(angle, i, radius));
+	for (unsigned i = 0; i < graph.size()/2 + graph.size()%2; ++i)
+		positions.push_back(build_dots::getDot(angle, int(i), radius));
 
 	Point tempDot;
-	if (graph.get_size() % 2 == 1)
+	if (graph.size() % 2 == 1)
 	{
-		for (int i = int(positions.size() - 1); i >= graph.get_size() % 2; --i)
+		for (unsigned i = int(positions.size() - 1); i >= graph.size() % 2; --i)
 		{
-            tempDot = positions[unsigned(i)];
+            tempDot = positions[i];
 			tempDot.x = -tempDot.x;
 			positions.push_back(tempDot);
 		}

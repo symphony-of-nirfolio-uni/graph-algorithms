@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm_factory.h" />
+    <ClInclude Include="..\Graph_algorithms\Graph_data\Finding_shortest_path.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Graph.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_algo.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Graph_is_acyclic.h" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm_factory.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Graph_data\Finding_shortest_path.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Graph.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_algo.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Graph_is_acyclic.cpp" />
