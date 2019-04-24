@@ -4,6 +4,7 @@
 #include "Algorithm.h"
 #include "Graph_is_acyclic.h"
 #include "Graph_is_connected.h"
+#include "Finding_shortest_path.h"
 #include "Read_graph.h"
 
 
@@ -29,6 +30,15 @@ namespace algorithms_on_graphs
 	};
 
 	class Graph_is_connected_factory : public Algorithm_factory
+	{
+
+	public:
+		static shared_ptr<Algorithm> get_algorithm();
+
+		static Graph get_graph(string prefix, bool need_direct = true);
+	};
+
+	class Finding_shortest_path_factory : public Algorithm_factory
 	{
 
 	public:

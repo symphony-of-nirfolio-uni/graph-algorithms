@@ -68,8 +68,8 @@
     <ClInclude Include="Build_dots\Build_dots.h">
       <Filter>Build_dots\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Control_data_time\Control_data_time.h">
-      <Filter>Control_data_time\Header Files</Filter>
+    <ClInclude Include="Graph_data\Finding_shortest_path.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -106,8 +106,8 @@
     <ClCompile Include="Build_dots\Build_dots.cpp">
       <Filter>Build_dots\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Control_data_time\Control_data_time.cpp">
-      <Filter>Control_data_time\Source Files</Filter>
+    <ClCompile Include="Graph_data\Finding_shortest_path.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
