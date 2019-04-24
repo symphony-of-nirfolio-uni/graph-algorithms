@@ -24,6 +24,8 @@ void GraphPlotWindow::get_graph_from_api()
     graph = GraphAPI::instance().get_graph(graph_name.toStdString());
     vertices_coordinates = GraphAPI::instance().get_vertices_coordinates(graph_name.toStdString());
     plot = new QCustomPlot(this);
+
+    scatter_radius = graph.get_size() < 30 ? 50 : 5;
 }
 
 void GraphPlotWindow::add_dots_on_chart()

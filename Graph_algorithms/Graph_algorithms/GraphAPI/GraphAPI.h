@@ -20,13 +20,19 @@ private:
     GraphAPI(const GraphAPI&) {}
     GraphAPI operator=(GraphAPI&);
 
-    atomic<int> current_highlighted;
-    vector<atomic<int> > marked;
+    atomic<unsigned> current_highlighted;
+    vector<atomic<unsigned>*> black_marked;
+    vector<atomic<unsigned>*> use_marked;
 
 public:
-	void highlight_vertex(int vertex);
-    void black_mark_vertex(int vertex);
-    void used_mark_vertex(int vertex);
+    void set_highlighted(unsigned vertex);
+    void set_black_mark(unsigned vertex);
+    void set_used_mark(unsigned vertex);
+
+    unsigned get_current_highlighted();
+    vector<unsigned> get_black_marked();
+    vector<unsigned> get_used_marked();
+
 	void result(bool result);
 	void end_of_the_algorithm();
 	bool can_move_on();

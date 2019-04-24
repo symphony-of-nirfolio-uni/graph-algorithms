@@ -4,6 +4,46 @@
 #include <cmath>
 
 
+void GraphAPI::set_highlighted(unsigned vertex)
+{
+    current_highlighted = vertex;
+}
+
+void GraphAPI::set_black_mark(unsigned vertex)
+{
+    black_marked.push_back(new atomic<unsigned>(vertex));
+}
+
+void GraphAPI::set_used_mark(unsigned vertex)
+{
+    use_marked.push_back(new atomic<unsigned>(vertex));
+}
+
+unsigned GraphAPI::get_current_highlighted()
+{
+    return current_highlighted;
+}
+
+vector<unsigned> GraphAPI::get_black_marked()
+{
+    vector<unsigned> res;
+    for(auto i : black_marked)
+    {
+        res.push_back(*i);
+    }
+    return res;
+}
+
+vector<unsigned> GraphAPI::get_used_marked()
+{
+    vector<unsigned> res;
+    for(auto i : use_marked)
+    {
+        res.push_back(*i);
+    }
+    return res;
+}
+
 vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 {
 	algorithms_on_graphs::Graph graph = get_graph(graph_file_name);
