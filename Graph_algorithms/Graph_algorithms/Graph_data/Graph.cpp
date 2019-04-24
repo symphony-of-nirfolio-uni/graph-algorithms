@@ -118,7 +118,7 @@ namespace algorithms_on_graphs
 
 	unsigned Graph::size()
 	{
-		return vertices.size();
+		return unsigned(vertices.size());
 	}
 
 	Vertex Graph::at(int index)
