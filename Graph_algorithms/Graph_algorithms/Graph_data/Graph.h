@@ -78,6 +78,7 @@ namespace algorithms_on_graphs
 
 
 		bool is_direct();
+		int get_size();
 		unsigned size();
 		Vertex at(int index);
 		Vertex at(unsigned index);

@@ -10,13 +10,13 @@ vector<pair<double, double> > GraphAPI::get_vertices_coordinates(std::string gra
 
 	vector<pair<double, double> > position;
 
-	unsigned counter = 0;
-	double cell_count = sqrt(graph.size()) + 1;
+	int counter = 0;
+	double cell_count = sqrt(graph.get_size()) + 1;
 	double cell_size = 100.0 / cell_count;
 
 	for (int i = 0; i < int(cell_count); ++i)
 	{
-		for (int j = 0; j < int(cell_count) && counter <= graph.size(); ++j, ++counter)
+		for (int j = 0; j < int(cell_count) && counter < graph.get_size(); ++j, ++counter)
 		{
             position.push_back({ double(i * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)), double(j * cell_size + cell_size * (0.5 + 0.67 * double(rand() % 200 - 100) / 100.0)) });
 		}
