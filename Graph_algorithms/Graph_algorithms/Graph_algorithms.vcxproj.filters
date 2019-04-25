@@ -71,6 +71,9 @@
     <ClInclude Include="Graph_data\Finding_shortest_path.h">
       <Filter>Algorithms_on_graphs\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Control_data_time\Control_data_time.h">
+      <Filter>Control_data_time\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -108,6 +111,9 @@
     </ClCompile>
     <ClCompile Include="Graph_data\Finding_shortest_path.cpp">
       <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Control_data_time\Control_data_time.cpp">
+      <Filter>Control_data_time\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
