@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QTimer>
+#include <QCloseEvent>
 #include "../GraphUI/QtCustomPlot/qcustomplot.h"
 
 #include <vector>
@@ -14,7 +15,7 @@ namespace Ui {
 class GraphPlotWindow;
 }
 
-class GraphPlotWindow : public QMainWindow
+class GraphPlotWindow : public QMainWindow, public QCloseEvent
 {
     Q_OBJECT
 
@@ -59,6 +60,7 @@ private:
 
 private slots:
     void update_graph();
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // GRAPHPLOTWINDOW_H

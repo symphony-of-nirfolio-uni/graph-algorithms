@@ -173,6 +173,16 @@ void GraphPlotWindow::update_graph()
 
 }
 
+void GraphPlotWindow::closeEvent(QCloseEvent *event)
+{
+
+    delete dots;
+    delete used;
+    delete black;
+    delete highlighted;
+    delete timer;
+}
+
 GraphPlotWindow::~GraphPlotWindow()
 {
     delete ui;
