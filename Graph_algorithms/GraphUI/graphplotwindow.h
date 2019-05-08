@@ -56,6 +56,7 @@ private:
     void add_used_vertex(unsigned vertex);
     void add_black_vertex(unsigned vertex);
     void make_highlighted(unsigned vertex);
+    void setup_buttons();
 
 
 private slots:

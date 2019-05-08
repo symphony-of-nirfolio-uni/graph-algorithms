@@ -20,7 +20,8 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     axis_and_legend_setup();
     ui->plot->setWidget(plot);
     //this->setCentralWidget(plot);
-    setup_update_timer();
+    //setup_update_timer();
+    setup_buttons();
 
 }
 
@@ -155,6 +156,11 @@ void GraphPlotWindow::make_highlighted(unsigned vertex)
     highlighted->setData({vertices_coordinates[vertex].x}, {vertices_coordinates[vertex].y});
 }
 
+void GraphPlotWindow::setup_buttons()
+{
+    connect(ui->next_step_button, SIGNAL(clicked()), this, SLOT(update_graph()));
+}
+
 void GraphPlotWindow::update_graph()
 {
     auto h = GraphAPI::instance().get_current_highlighted();
@@ -171,6 +177,7 @@ void GraphPlotWindow::update_graph()
         add_black_vertex(b[i]);
     }
     plot->replot();
+    GraphAPI::instance().continue_algo();
 
 }
 
