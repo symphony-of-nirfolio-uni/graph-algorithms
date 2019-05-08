@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "../Graph_algorithms/GraphAPI/GraphAPI.h"
-#include "graphwindow.h"
 #include "loadgraphdialog.h"
 
 
@@ -15,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->loadGraphButton, SIGNAL(clicked()), this, SLOT(load_graph_dialog()));
     connect(ui->newGraphButton, SIGNAL(clicked()), this, SLOT(show_graph_window()));
-    }
+}
 
 MainWindow::~MainWindow()
 {

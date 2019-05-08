@@ -18,7 +18,8 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     add_dots_on_chart();
 
     axis_and_legend_setup();
-    this->setCentralWidget(plot);
+    ui->plot->setWidget(plot);
+    //this->setCentralWidget(plot);
     setup_update_timer();
 
 }

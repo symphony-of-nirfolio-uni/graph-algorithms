@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QCloseEvent>
 
-#include "graphwindow.h"
 #include "graphplotwindow.h"
 #include <QtCharts/QScatterSeries>
 #include <QtCharts/QLegendMarker>

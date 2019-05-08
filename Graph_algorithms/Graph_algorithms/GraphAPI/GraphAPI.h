@@ -20,9 +20,13 @@ private:
     GraphAPI(const GraphAPI&) {}
     GraphAPI operator=(GraphAPI&);
 
-    atomic<unsigned> current_highlighted;
-    vector<atomic<unsigned>*> black_marked;
-    vector<atomic<unsigned>*> use_marked;
+    unsigned current_highlighted;
+    vector<unsigned> black_marked;
+    vector<unsigned> use_marked;
+    string result;
+
+    atomic<bool> can_move;
+    atomic<bool> algo_ended;
 
 public:
     void set_highlighted(unsigned vertex);
@@ -33,10 +37,14 @@ public:
     vector<unsigned> get_black_marked();
     vector<unsigned> get_used_marked();
 
-	void result(bool result);
+
+    void set_result(string result);
 	void end_of_the_algorithm();
-	bool can_move_on();
-	bool ui_idle();
+    bool can_move_on();
+
+    void continue_algo();
+
+
     vector<Point> get_vertices_coordinates(string graph_file_name);
     Graph get_graph(string graph_file_name);
 	static GraphAPI& instance()

@@ -30,7 +30,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    graphwindow.cpp \
     newgraphdialog.cpp \
     ../Graph_algorithms/GraphAPI/GraphAPI.cpp \
     ../Graph_algorithms/Graph_data/Graph.cpp \
@@ -59,7 +58,6 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    graphwindow.h \
     ../Graph_algorithms/GraphAPI/GraphAPI.h \
     ../Graph_algorithms/Graph_data/Graph.h \
     newgraphdialog.h \
@@ -88,7 +86,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    graphwindow.ui \
     newgraphdialog.ui \
     loadgraphdialog.ui \
     graphplotwindow.ui
