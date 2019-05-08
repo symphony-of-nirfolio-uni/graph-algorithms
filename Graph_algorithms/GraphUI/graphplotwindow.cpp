@@ -51,16 +51,16 @@ void GraphPlotWindow::add_dots_on_chart()
     dots->setData(x, y);
 
     plot->addGraph();
-    highlighted = plot->graph(plot->graphCount() - 1);
-    make_scatter(highlighted, Qt::green, scatter_radius);
-
-    plot->addGraph();
     used = plot->graph(plot->graphCount() - 1);
     make_scatter(used, Qt::darkGray, scatter_radius);
 
     plot->addGraph();
     black = plot->graph(plot->graphCount() - 1);
     make_scatter(black, Qt::black, scatter_radius);
+
+    plot->addGraph();
+    highlighted = plot->graph(plot->graphCount() - 1);
+    make_scatter(highlighted, Qt::green, scatter_radius);
 
 }
 
@@ -166,17 +166,17 @@ void GraphPlotWindow::setup_buttons()
 
 void GraphPlotWindow::setup_algo_list()
 {
-    ui->algo_list->addItems({"dfs", "bfs"});
+    ui->algo_list->addItems({"Finding_shortest_path", "Graph_is_acyclic", "Graph_is_connected"});
 }
 
 void GraphPlotWindow::update_status()
 {
-    //TODO when API is ready
+    GraphAPI::instance().continue_algo();
 }
 
 void GraphPlotWindow::get_algo_result()
 {
-    //TODO when API is ready
+    algo_result = QString::fromStdString(GraphAPI::instance().get_result());
 }
 
 void GraphPlotWindow::exec_message_dialog(QString message)
@@ -189,12 +189,23 @@ void GraphPlotWindow::update_graph()
 {
     if(current_status == working)
     {
-        update_highlighted();
-        update_used();
-        update_black();
+        if(GraphAPI::instance().algorithm_is_ended())
+        {
 
-        plot->replot();
-        GraphAPI::instance().continue_algo();
+            get_algo_result();
+            end_algo();
+        }
+        else
+        {
+            update_highlighted();
+            update_used();
+            update_black();
+
+            plot->replot();
+
+            update_status();
+        }
+
     }
     else
     {
@@ -242,7 +253,19 @@ void GraphPlotWindow::choose_algo()
     if(current_status != working)
     {
         QString algo_name = ui->algo_list->currentText();
-        //TODO send to ui
+        if(algo_name == "Finding_shortest_path")
+        {
+            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Finding_shortest_path, graph);
+        }
+        else if(algo_name == "Graph_is_acyclic")
+        {
+            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Graph_is_acyclic, graph);
+        }
+        else if(algo_name == "Graph_is_connected")
+        {
+            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Graph_is_connected, graph);
+        }
+
         ui->algo_name_label->setText(algo_name);
         algo_result = "None";
         current_status = working;
@@ -258,6 +281,7 @@ void GraphPlotWindow::choose_algo()
 void GraphPlotWindow::end_algo()
 {
     current_status = ended;
+    exec_message_dialog("algorithm ended with result\n" + algo_result);
 }
 
 void GraphPlotWindow::closeEvent(QCloseEvent *event)

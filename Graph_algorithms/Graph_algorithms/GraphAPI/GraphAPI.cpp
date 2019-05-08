@@ -30,7 +30,6 @@ void GraphAPI::set_used_mark(unsigned vertex)
 
 unsigned GraphAPI::get_current_highlighted()
 {
-    current_highlighted = (current_highlighted + 1)%10;
     return current_highlighted;
 }
 
@@ -71,6 +70,16 @@ bool GraphAPI::can_move_on()
 void GraphAPI::continue_algo()
 {
     can_move = true;
+}
+
+bool GraphAPI::algorithm_is_ended()
+{
+    return algo_ended;
+}
+
+std::string GraphAPI::get_result()
+{
+    return result;
 }
 
 

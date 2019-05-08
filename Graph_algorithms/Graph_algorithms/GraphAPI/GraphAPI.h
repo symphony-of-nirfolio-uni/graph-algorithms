@@ -51,6 +51,8 @@ public:
     bool can_move_on();
 
     void continue_algo();
+    bool algorithm_is_ended();
+    string get_result();
 
 
 	void start_algorithm(Algorithm algorithm_name, Graph graph);
