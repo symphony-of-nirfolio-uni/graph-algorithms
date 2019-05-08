@@ -179,6 +179,13 @@ void GraphPlotWindow::get_algo_result()
     algo_result = QString::fromStdString(GraphAPI::instance().get_result());
 }
 
+void GraphPlotWindow::dots_reset()
+{
+    used->setData({},{});
+    black->setData({},{});
+    highlighted->setData({},{});
+}
+
 void GraphPlotWindow::exec_message_dialog(QString message)
 {
     MessageDialog *dialog = new MessageDialog(message, this);
@@ -200,9 +207,7 @@ void GraphPlotWindow::update_graph()
             update_highlighted();
             update_used();
             update_black();
-
             plot->replot();
-
             update_status();
         }
 
@@ -235,6 +240,7 @@ void GraphPlotWindow::update_used()
     auto u = GraphAPI::instance().get_used_marked();
     for(unsigned i = unsigned(used_v.size()); i < u.size(); ++i)
     {
+        used_v.push_back(i);
         add_used_vertex(u[i]);
     }
 }
@@ -244,6 +250,7 @@ void GraphPlotWindow::update_black()
     auto b = GraphAPI::instance().get_black_marked();
     for(unsigned i = unsigned(black_v.size()); i < b.size(); ++i)
     {
+        black_v.push_back(i);
         add_black_vertex(b[i]);
     }
 }
@@ -268,7 +275,13 @@ void GraphPlotWindow::choose_algo()
 
         ui->algo_name_label->setText(algo_name);
         algo_result = "None";
+        if(current_status == ended)
+        {
+            dots_reset();
+            //GraphAPI::instance().
+        }
         current_status = working;
+
     }
     else
     {
@@ -280,6 +293,7 @@ void GraphPlotWindow::choose_algo()
 
 void GraphPlotWindow::end_algo()
 {
+    GraphAPI::instance().end_of_the_algorithm();
     current_status = ended;
     exec_message_dialog("algorithm ended with result\n" + algo_result);
 }
