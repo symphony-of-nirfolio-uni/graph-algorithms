@@ -1,5 +1,7 @@
 #include "GraphAPI.h"
 #include "../Graph_data/Read_graph.h"
+#include "../Graph_data/Graph_algo.h"
+
 
 #include <cmath>
 
@@ -34,24 +36,12 @@ unsigned GraphAPI::get_current_highlighted()
 
 vector<unsigned> GraphAPI::get_black_marked()
 {
-    vector<unsigned> res;
-    for(auto i : black_marked)
-    {
-        res.push_back(i);
-    }
-    return {0,2};
-    return res;
+    return black_marked;
 }
 
 vector<unsigned> GraphAPI::get_used_marked()
 {
-    vector<unsigned> res;
-    for(auto i : use_marked)
-    {
-        res.push_back(i);
-    }
-    return {0,1};
-    return res;
+    return use_marked;
 }
 
 void GraphAPI::set_result(std::string result)
@@ -82,6 +72,30 @@ void GraphAPI::continue_algo()
 {
     can_move = true;
 }
+
+
+void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph)
+{
+	shared_ptr<algorithms_on_graphs::Algorithm> algorithm;
+
+	if (algorithm_name == Algorithm::Graph_is_acyclic)
+	{
+		algorithm = algorithms_on_graphs::Graph_is_acyclic_factory::get_algorithm();
+	}
+	else if (algorithm_name == Algorithm::Graph_is_connected)
+	{
+		algorithm = algorithms_on_graphs::Graph_is_connected_factory::get_algorithm();
+	}
+	else if (algorithm_name == Algorithm::Finding_shortest_path)
+	{
+		algorithm = algorithms_on_graphs::Finding_shortest_path_factory::get_algorithm();
+	}
+
+	algorithms_on_graphs::Graph_algo graph_algo(algorithm);
+
+	graph_algo.work(graph);
+}
+
 
 vector<Point> GraphAPI::get_vertices_coordinates(std::string graph_file_name)
 {
