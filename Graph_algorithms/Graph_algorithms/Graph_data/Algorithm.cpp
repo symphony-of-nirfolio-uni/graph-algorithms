@@ -1,7 +1,5 @@
 #include "Algorithm.h"
 
-#include <exception>
-
 
 namespace algorithms_on_graphs
 {
@@ -10,11 +8,6 @@ namespace algorithms_on_graphs
 		while (!GraphAPI::instance().can_move_on() || GraphAPI::instance().algorithm_is_ended())
 		{
 
-		}
-
-		if (GraphAPI::instance().algorithm_is_ended())
-		{
-			std::terminate();
 		}
 	}
 }
