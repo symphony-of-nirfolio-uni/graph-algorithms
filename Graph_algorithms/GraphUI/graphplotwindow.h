@@ -63,6 +63,7 @@ private:
     void make_highlighted(unsigned vertex);
     void update_status();
     void get_algo_result();
+    void dots_reset();
 
     void exec_message_dialog(QString message);
 
