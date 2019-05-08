@@ -10,8 +10,8 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::getInstance().highlight_vertex(vertex);
-			//waiting_for_the_next_move();
+			GraphAPI::instance().set_highlighted(vertex);
+			waiting_for_the_next_move();
 		}
 		//
 
@@ -27,22 +27,34 @@ namespace algorithms_on_graphs
 			}
 			else if (visit[new_vertex] == 0)
 			{
+				//GraphAPI part
+				if (need_to_stop)
+				{
+					GraphAPI::instance().set_used_mark(vertex);
+				}
+
 				if (!dfs(visit, graph, new_vertex, vertex, need_to_stop))
 				{
 					return false;
+				}
+
+				//GraphAPI part
+				if (need_to_stop)
+				{
+					GraphAPI::instance().set_highlighted(vertex);
+					waiting_for_the_next_move();
 				}
 			}
 		}
 
 		visit[vertex] = 2;
 
+
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI:::getInstance().mark_vertex(vertex);
-			//waiting_for_the_next_move();
+			GraphAPI::instance().set_black_mark(vertex);
 		}
-		//
 
 		return true;
 	}
@@ -59,8 +71,8 @@ namespace algorithms_on_graphs
 				//GraphAPI part
 				if (need_to_stop)
 				{
-					//GraphAPI::instance.result(false);
-					//GraphAPI::instance.end_of_the_algorithm();
+					GraphAPI::instance().set_result("Graph is not acyclic");
+					GraphAPI::instance().end_of_the_algorithm();
 				}
 				//
 
@@ -71,8 +83,8 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.result(true);
-			//GraphAPI::instance.end_of_the_algorithm();
+			GraphAPI::instance().set_result("Graph is acyclic");
+			GraphAPI::instance().end_of_the_algorithm();
 		}
 		//
 	}

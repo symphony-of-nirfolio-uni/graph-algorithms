@@ -76,6 +76,13 @@ void GraphAPI::continue_algo()
 
 void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph)
 {
+	current_highlighted = 0;
+	black_marked.clear();
+	use_marked.clear();
+	result = "";
+	algo_ended = false;
+
+
 	shared_ptr<algorithms_on_graphs::Algorithm> algorithm;
 
 	if (algorithm_name == Algorithm::Graph_is_acyclic)

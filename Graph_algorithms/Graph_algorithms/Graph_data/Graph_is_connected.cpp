@@ -21,11 +21,24 @@ namespace algorithms_on_graphs
 				//GraphAPI part
 				if (need_to_stop)
 				{
-					GraphAPI::instance().set_black_mark(vertex);
+					GraphAPI::instance().set_used_mark(vertex);
 				}
 
 				dfs(visit, graph, new_vertex, need_to_stop);
+
+				//GraphAPI part
+				if (need_to_stop)
+				{
+					GraphAPI::instance().set_highlighted(vertex);
+					waiting_for_the_next_move();
+				}
 			}
+		}
+
+		//GraphAPI part
+		if (need_to_stop)
+		{
+			GraphAPI::instance().set_black_mark(vertex);
 		}
 
 		return true;
