@@ -15,6 +15,11 @@ namespace algorithms_on_graphs
 			{
 				GraphAPI::instance().set_highlighted(vertex);
 				waiting_for_the_next_move();
+				
+				if (GraphAPI::instance().algorithm_is_ended())
+				{
+					return;
+				}
 			}
 
 			for (auto new_vertex : graph.at(vertex))
@@ -29,6 +34,11 @@ namespace algorithms_on_graphs
 					{
 						GraphAPI::instance().set_used_mark(new_vertex);
 						waiting_for_the_next_move();
+
+						if (GraphAPI::instance().algorithm_is_ended())
+						{
+							return;
+						}
 					}
 
 					if (new_vertex == finish)
@@ -73,6 +83,15 @@ namespace algorithms_on_graphs
 		direction[start] = start;
 
 		bfs(graph, next_verteces, direction, finish, need_to_stop);
+
+		//GraphAPI part
+		if (need_to_stop)
+		{
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return;
+			}
+		}
 
 		if (direction[finish] == -1)
 		{

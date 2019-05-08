@@ -12,6 +12,11 @@ namespace algorithms_on_graphs
 		{
 			GraphAPI::instance().set_highlighted(vertex);
 			waiting_for_the_next_move();
+
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return false;
+			}
 		}
 
 		for (auto new_vertex : graph.at(vertex))
@@ -29,8 +34,22 @@ namespace algorithms_on_graphs
 				//GraphAPI part
 				if (need_to_stop)
 				{
+					if (GraphAPI::instance().algorithm_is_ended())
+					{
+						return false;
+					}
+				}
+
+				//GraphAPI part
+				if (need_to_stop)
+				{
 					GraphAPI::instance().set_highlighted(vertex);
 					waiting_for_the_next_move();
+
+					if (GraphAPI::instance().algorithm_is_ended())
+					{
+						return false;
+					}
 				}
 			}
 		}
@@ -50,6 +69,15 @@ namespace algorithms_on_graphs
 		vector<bool> visit(graph.size(), false);
 
 		dfs(visit, graph, 0, need_to_stop);
+
+		//GraphAPI part
+		if (need_to_stop)
+		{
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return;
+			}
+		}
 
 		for (auto vertex : graph)
 		{
