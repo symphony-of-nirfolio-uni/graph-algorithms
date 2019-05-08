@@ -166,7 +166,7 @@ void GraphPlotWindow::setup_buttons()
 
 void GraphPlotWindow::setup_algo_list()
 {
-    ui->algo_list->addItems({"Finding_shortest_path", "Graph_is_acyclic", "Graph_is_connected"});
+    ui->algo_list->addItems({"Graph_is_connected", "Graph_is_acyclic", "Finding_shortest_path"});
 }
 
 void GraphPlotWindow::update_status()
@@ -184,6 +184,8 @@ void GraphPlotWindow::dots_reset()
     used->setData({},{});
     black->setData({},{});
     highlighted->setData({},{});
+    used_v.clear();
+    black_v.clear();
 }
 
 void GraphPlotWindow::exec_message_dialog(QString message)
@@ -221,7 +223,7 @@ void GraphPlotWindow::update_graph()
         }
         else
         {
-            message = "Algorithm ended with result: " + algo_result;
+            message = "Algorithm ended with result:\n" + algo_result;
         }
         exec_message_dialog(message);
     }
@@ -278,7 +280,6 @@ void GraphPlotWindow::choose_algo()
         if(current_status == ended)
         {
             dots_reset();
-            //GraphAPI::instance().
         }
         current_status = working;
 
