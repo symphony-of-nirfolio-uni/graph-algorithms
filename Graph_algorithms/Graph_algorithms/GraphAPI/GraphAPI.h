@@ -29,6 +29,14 @@ private:
     atomic<bool> algo_ended;
 
 public:
+	enum Algorithm
+	{
+		Graph_is_acyclic,
+		Graph_is_connected,
+		Finding_shortest_path
+	};
+
+
     void set_highlighted(unsigned vertex);
     void set_black_mark(unsigned vertex);
     void set_used_mark(unsigned vertex);
@@ -44,6 +52,8 @@ public:
 
     void continue_algo();
 
+
+	void start_algorithm(Algorithm algorithm_name, Graph graph);
 
     vector<Point> get_vertices_coordinates(string graph_file_name);
     Graph get_graph(string graph_file_name);

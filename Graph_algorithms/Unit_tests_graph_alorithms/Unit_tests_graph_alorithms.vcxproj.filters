@@ -54,6 +54,12 @@
     <ClInclude Include="..\Graph_algorithms\Graph_data\Finding_shortest_path.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Graph_algorithms\GraphAPI\GraphAPI.h">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graph_algorithms\Build_dots\Build_dots.h">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -93,6 +99,12 @@
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Graph_data\Finding_shortest_path.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\GraphAPI\GraphAPI.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Build_dots\Build_dots.cpp">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
   </ItemGroup>

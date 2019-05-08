@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Graph_algorithms\Build_dots\Build_dots.h" />
+    <ClInclude Include="..\Graph_algorithms\GraphAPI\GraphAPI.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm_factory.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Finding_shortest_path.h" />
@@ -166,6 +168,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Graph_algorithms\Build_dots\Build_dots.cpp" />
+    <ClCompile Include="..\Graph_algorithms\GraphAPI\GraphAPI.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm_factory.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Finding_shortest_path.cpp" />

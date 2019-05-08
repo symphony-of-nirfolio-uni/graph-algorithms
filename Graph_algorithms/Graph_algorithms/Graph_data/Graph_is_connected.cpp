@@ -10,15 +10,20 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.mark_vertex(vertex);
-			//waiting_for_the_next_move();
+			GraphAPI::instance().set_highlighted(vertex);
+			waiting_for_the_next_move();
 		}
-		//
 
 		for (auto new_vertex : graph.at(vertex))
 		{
 			if (visit[new_vertex] == false)
 			{
+				//GraphAPI part
+				if (need_to_stop)
+				{
+					GraphAPI::instance().set_black_mark(vertex);
+				}
+
 				dfs(visit, graph, new_vertex, need_to_stop);
 			}
 		}
@@ -40,10 +45,9 @@ namespace algorithms_on_graphs
 				//GraphAPI part
 				if (need_to_stop)
 				{
-					//GraphAPI::instance.result(false);
-					//GraphAPI::instance.end_of_the_algorithm();
+					GraphAPI::instance().set_result("Graph is not connected");
+					GraphAPI::instance().end_of_the_algorithm();
 				}
-				//
 
 				return;
 			}
@@ -52,10 +56,9 @@ namespace algorithms_on_graphs
 		//GraphAPI part
 		if (need_to_stop)
 		{
-			//GraphAPI::instance.result(true);
-			//GraphAPI::instance.end_of_the_algorithm();
+			GraphAPI::instance().set_result("Graph is connected");
+			GraphAPI::instance().end_of_the_algorithm();
 		}
-		//
 	}
 
 }
