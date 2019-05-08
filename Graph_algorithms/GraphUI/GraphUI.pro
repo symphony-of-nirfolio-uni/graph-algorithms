@@ -54,7 +54,8 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Graph_is_acyclic.cpp \
     ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
     ../Graph_algorithms/Graph_data/Read_graph.cpp \
-    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp
+    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
+    messagedialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -82,13 +83,15 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Graph_is_acyclic.h \
     ../Graph_algorithms/Graph_data/Graph_is_connected.h \
     ../Graph_algorithms/Graph_data/Read_graph.h \
-    ../Graph_algorithms/Graph_data/Read_graph_builder.h
+    ../Graph_algorithms/Graph_data/Read_graph_builder.h \
+    messagedialog.h
 
 FORMS += \
         mainwindow.ui \
     newgraphdialog.ui \
     loadgraphdialog.ui \
-    graphplotwindow.ui
+    graphplotwindow.ui \
+    messagedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
