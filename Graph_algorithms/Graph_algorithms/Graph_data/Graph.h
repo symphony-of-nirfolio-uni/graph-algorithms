@@ -17,9 +17,9 @@ using std::make_shared;
 namespace algorithms_on_graphs
 {
 	class Vertex
-	{
-		int vertex;
-		vector<int> adjacent_vertices;
+    {
+        int vertex;
+        vector<int> adjacent_vertices;
 
 	public:
 		Vertex(vector<int> vertices);
