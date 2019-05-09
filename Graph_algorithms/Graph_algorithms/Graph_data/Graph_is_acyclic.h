@@ -11,6 +11,8 @@ namespace algorithms_on_graphs
 		bool dfs(vector<int> &visit, Graph &graph, int vertex, int parent, bool need_to_stop);
 
 	public:
+		~Graph_is_acyclic() {}
+
 		void work(Graph graph, bool need_to_stop);
 	};
 }

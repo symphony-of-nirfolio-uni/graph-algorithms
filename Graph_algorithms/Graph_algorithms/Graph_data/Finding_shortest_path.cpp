@@ -13,10 +13,14 @@ namespace algorithms_on_graphs
 			//GraphAPI part
 			if (need_to_stop)
 			{
-				//GraphAPI::getInstance().highlight_vertex(vertex);
-				//waiting_for_the_next_move();
+				GraphAPI::instance().set_highlighted(vertex);
+				waiting_for_the_next_move();
+				
+				if (GraphAPI::instance().algorithm_is_ended())
+				{
+					return;
+				}
 			}
-			//
 
 			for (auto new_vertex : graph.at(vertex))
 			{
@@ -24,6 +28,18 @@ namespace algorithms_on_graphs
 				{
 					next_verteces.push(new_vertex);
 					direction[new_vertex] = vertex;
+
+					//GraphAPI part
+					if (need_to_stop)
+					{
+						GraphAPI::instance().set_used_mark(new_vertex);
+						waiting_for_the_next_move();
+
+						if (GraphAPI::instance().algorithm_is_ended())
+						{
+							return;
+						}
+					}
 
 					if (new_vertex == finish)
 					{
@@ -35,10 +51,8 @@ namespace algorithms_on_graphs
 			//GraphAPI part
 			if (need_to_stop)
 			{
-				//GraphAPI:::getInstance().mark_vertex(vertex);
-				//waiting_for_the_next_move();
+				GraphAPI::instance().set_black_mark(vertex);
 			}
-			//
 		}
 	}
 
@@ -70,7 +84,33 @@ namespace algorithms_on_graphs
 
 		bfs(graph, next_verteces, direction, finish, need_to_stop);
 
+		//GraphAPI part
+		if (need_to_stop)
+		{
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return;
+			}
+		}
 
+		if (direction[finish] == -1)
+		{
+			//GraphAPI part
+			if (need_to_stop)
+			{
+				GraphAPI::instance().set_result("There is no way between the verteces");
+				GraphAPI::instance().end_of_the_algorithm();
+			}
+		}
+		else
+		{
+			//GraphAPI part
+			if (need_to_stop)
+			{
+				GraphAPI::instance().set_result("Route exist");
+				GraphAPI::instance().end_of_the_algorithm();
+			}
+		}
 	}
 
 }

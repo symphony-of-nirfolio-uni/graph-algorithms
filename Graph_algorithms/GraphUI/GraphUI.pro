@@ -30,7 +30,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    graphwindow.cpp \
     newgraphdialog.cpp \
     ../Graph_algorithms/GraphAPI/GraphAPI.cpp \
     ../Graph_algorithms/Graph_data/Graph.cpp \
@@ -55,11 +54,11 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Graph_is_acyclic.cpp \
     ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
     ../Graph_algorithms/Graph_data/Read_graph.cpp \
-    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp
+    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
+    messagedialog.cpp
 
 HEADERS += \
         mainwindow.h \
-    graphwindow.h \
     ../Graph_algorithms/GraphAPI/GraphAPI.h \
     ../Graph_algorithms/Graph_data/Graph.h \
     newgraphdialog.h \
@@ -84,14 +83,15 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Graph_is_acyclic.h \
     ../Graph_algorithms/Graph_data/Graph_is_connected.h \
     ../Graph_algorithms/Graph_data/Read_graph.h \
-    ../Graph_algorithms/Graph_data/Read_graph_builder.h
+    ../Graph_algorithms/Graph_data/Read_graph_builder.h \
+    messagedialog.h
 
 FORMS += \
         mainwindow.ui \
-    graphwindow.ui \
     newgraphdialog.ui \
     loadgraphdialog.ui \
-    graphplotwindow.ui
+    graphplotwindow.ui \
+    messagedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../Graph_algorithms/Graph_data/Algorithm_factory.h"
-#include "../Graph_algorithms/Graph_data/Graph_is_acyclic.h"
-#include "../Graph_algorithms/Graph_data/Graph_is_connected.h"
-#include "../Graph_algorithms/Graph_data/Finding_shortest_path.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QTimer>
+#include <QCloseEvent>
 #include "../GraphUI/QtCustomPlot/qcustomplot.h"
 
 #include <vector>
@@ -14,7 +15,7 @@ namespace Ui {
 class GraphPlotWindow;
 }
 
-class GraphPlotWindow : public QMainWindow
+class GraphPlotWindow : public QMainWindow, public QCloseEvent
 {
     Q_OBJECT
 
@@ -23,6 +24,7 @@ public:
     ~GraphPlotWindow();
 
 private:
+    enum status {preparing, working, ended};
     Ui::GraphPlotWindow *ui;
 
     QCustomPlot* plot;
@@ -38,10 +40,12 @@ private:
     QTimer *timer;
     vector<unsigned> black_v;
     vector<unsigned> used_v;
+    status current_status;
 
 
 
     QString graph_name;
+    QString algo_result;
     double scatter_radius;
     int plot_min;
     int plot_max;
@@ -52,13 +56,29 @@ private:
     void axis_and_legend_setup();
     void make_scatter(QCPGraph* graph, QColor color, double radius);
     void setup_update_timer();
+    void setup_buttons();
+    void setup_algo_list();
     void add_used_vertex(unsigned vertex);
     void add_black_vertex(unsigned vertex);
     void make_highlighted(unsigned vertex);
+    void update_status();
+    void get_algo_result();
+    void dots_reset();
+
+    void exec_message_dialog(QString message);
 
 
 private slots:
     void update_graph();
+
+    void update_highlighted();
+    void update_used();
+    void update_black();
+
+    void choose_algo();
+    void end_algo();
+
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // GRAPHPLOTWINDOW_H

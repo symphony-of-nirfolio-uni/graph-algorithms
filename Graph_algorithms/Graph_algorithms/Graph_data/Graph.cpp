@@ -77,9 +77,9 @@ namespace algorithms_on_graphs
 	Graph::Graph(vector<vector<int> > vertices) : Graph()
 	{
 		this->vertices.clear();
-		for (int i = 0; i < int(vertices.size()); ++i)
+        for (size_t i = 0; i < vertices.size(); ++i)
 		{
-			this->vertices.push_back(Vertex(vertices[i], i));
+			this->vertices.push_back(Vertex(vertices[i], int(i)));
 		}
 	}
 
@@ -109,11 +109,6 @@ namespace algorithms_on_graphs
 	bool Graph::is_direct()
 	{
 		return direct;
-	}
-
-	int Graph::get_size()
-	{
-		return int(vertices.size());
 	}
 
 	unsigned Graph::size()
