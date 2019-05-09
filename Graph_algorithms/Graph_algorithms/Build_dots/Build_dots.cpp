@@ -1,4 +1,5 @@
 #include "Build_dots.h"
+#include <cmath>
 
 namespace build_dots 
 {
@@ -14,8 +15,6 @@ namespace build_dots
 		y = _y;
 	}
 	
-	Point::~Point() {}
-	
 	Point getDot(double angle, int i, double radius)
 	{
         double radAngle = 2 * pi * double(i)*angle / 360.0;
@@ -26,20 +25,20 @@ namespace build_dots
 	vector<Point> getAllDots(Graph graph)
 	{
 		vector<Point> positions;
-		if (graph.get_size() == 0)
+		if (graph.size() == 0)
 			return positions;
 
-		double cell_count = graph.get_size();
+		double cell_count = double(graph.size());
 		double angle = 360.0 / cell_count;
 		double radius = 50.0 - 50.0 / cell_count;
 
-		for (int i = 0; i < graph.get_size() / 2 + graph.get_size() % 2; ++i)
+		for (int i = 0; i < int(graph.size()) / 2 + int(graph.size()) % 2; ++i)
 			positions.push_back(build_dots::getDot(angle, i, radius));
 
 		Point tempDot;
-		if (graph.get_size() % 2 == 1)
+		if (graph.size() % 2 == 1)
 		{
-			for (int i = int(positions.size() - 1); i >= graph.get_size() % 2; --i)
+			for (int i = int(positions.size() - 1); i >= int(graph.size()) % 2; --i)
 			{
 				tempDot = positions[unsigned(i)];
 				tempDot.x = -tempDot.x;

@@ -166,7 +166,7 @@ void GraphPlotWindow::setup_buttons()
 
 void GraphPlotWindow::setup_algo_list()
 {
-    ui->algo_list->addItems({"Finding_shortest_path", "Graph_is_acyclic", "Graph_is_connected"});
+    ui->algo_list->addItems({"Graph_is_connected", "Graph_is_acyclic", "Finding_shortest_path"});
 }
 
 void GraphPlotWindow::update_status()
@@ -177,6 +177,15 @@ void GraphPlotWindow::update_status()
 void GraphPlotWindow::get_algo_result()
 {
     algo_result = QString::fromStdString(GraphAPI::instance().get_result());
+}
+
+void GraphPlotWindow::dots_reset()
+{
+    used->setData({},{});
+    black->setData({},{});
+    highlighted->setData({},{});
+    used_v.clear();
+    black_v.clear();
 }
 
 void GraphPlotWindow::exec_message_dialog(QString message)
@@ -200,9 +209,7 @@ void GraphPlotWindow::update_graph()
             update_highlighted();
             update_used();
             update_black();
-
             plot->replot();
-
             update_status();
         }
 
@@ -216,7 +223,7 @@ void GraphPlotWindow::update_graph()
         }
         else
         {
-            message = "Algorithm ended with result: " + algo_result;
+            message = "Algorithm ended with result:\n" + algo_result;
         }
         exec_message_dialog(message);
     }
@@ -235,6 +242,7 @@ void GraphPlotWindow::update_used()
     auto u = GraphAPI::instance().get_used_marked();
     for(unsigned i = unsigned(used_v.size()); i < u.size(); ++i)
     {
+        used_v.push_back(i);
         add_used_vertex(u[i]);
     }
 }
@@ -244,6 +252,7 @@ void GraphPlotWindow::update_black()
     auto b = GraphAPI::instance().get_black_marked();
     for(unsigned i = unsigned(black_v.size()); i < b.size(); ++i)
     {
+        black_v.push_back(i);
         add_black_vertex(b[i]);
     }
 }
@@ -268,7 +277,12 @@ void GraphPlotWindow::choose_algo()
 
         ui->algo_name_label->setText(algo_name);
         algo_result = "None";
+        if(current_status == ended)
+        {
+            dots_reset();
+        }
         current_status = working;
+
     }
     else
     {
@@ -280,6 +294,7 @@ void GraphPlotWindow::choose_algo()
 
 void GraphPlotWindow::end_algo()
 {
+    GraphAPI::instance().end_of_the_algorithm();
     current_status = ended;
     exec_message_dialog("algorithm ended with result\n" + algo_result);
 }
