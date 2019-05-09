@@ -1,4 +1,5 @@
 #include "Build_dots.h"
+#include <cmath>
 
 namespace build_dots 
 {
@@ -13,8 +14,6 @@ namespace build_dots
 		x = _x;
 		y = _y;
 	}
-	
-	Point::~Point() {}
 	
 	Point getDot(double angle, int i, double radius)
 	{
