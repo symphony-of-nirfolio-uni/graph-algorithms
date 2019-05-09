@@ -8,6 +8,6 @@ namespace control_data_time
 {
 	using algorithms_on_graphs::Graph;
 
-	string timeOfWork();//(GraphAPI::Algorithm, Graph graph)		need new version
-	string dataUsed();//(GraphAPI::Algorithm, Graph graph)			need new version
+	string timeOfWork(GraphAPI::Algorithm algorithm_name, Graph graph);
+	string dataUsed(GraphAPI::Algorithm algorithm_name, Graph graph);
 }
