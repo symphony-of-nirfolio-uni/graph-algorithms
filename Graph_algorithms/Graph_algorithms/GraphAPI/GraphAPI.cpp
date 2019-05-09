@@ -1,5 +1,4 @@
 #include "GraphAPI.h"
-#include "../Graph_data/Read_graph.h"
 #include "../Graph_data/Graph_algo.h"
 
 
@@ -83,6 +82,26 @@ std::string GraphAPI::get_result()
 }
 
 
+shared_ptr<algorithms_on_graphs::Algorithm> get_algorithm_for_GraphAPI(GraphAPI::Algorithm algorithm_name)
+{
+	shared_ptr<algorithms_on_graphs::Algorithm> algorithm;
+
+	if (algorithm_name == GraphAPI::Algorithm::Graph_is_acyclic)
+	{
+		algorithm = algorithms_on_graphs::Graph_is_acyclic_factory::get_algorithm();
+	}
+	else if (algorithm_name == GraphAPI::Algorithm::Graph_is_connected)
+	{
+		algorithm = algorithms_on_graphs::Graph_is_connected_factory::get_algorithm();
+	}
+	else if (algorithm_name == GraphAPI::Algorithm::Finding_shortest_path)
+	{
+		algorithm = algorithms_on_graphs::Finding_shortest_path_factory::get_algorithm();
+	}
+
+	return algorithm;
+}
+
 void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph)
 {
 	current_highlighted = 0;
@@ -92,24 +111,21 @@ void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph)
 	algo_ended = false;
 
 
-	shared_ptr<algorithms_on_graphs::Algorithm> algorithm;
-
-	if (algorithm_name == Algorithm::Graph_is_acyclic)
-	{
-		algorithm = algorithms_on_graphs::Graph_is_acyclic_factory::get_algorithm();
-	}
-	else if (algorithm_name == Algorithm::Graph_is_connected)
-	{
-		algorithm = algorithms_on_graphs::Graph_is_connected_factory::get_algorithm();
-	}
-	else if (algorithm_name == Algorithm::Finding_shortest_path)
-	{
-		algorithm = algorithms_on_graphs::Finding_shortest_path_factory::get_algorithm();
-	}
+	shared_ptr<algorithms_on_graphs::Algorithm> algorithm = get_algorithm_for_GraphAPI(algorithm_name);
 
 	algorithms_on_graphs::Graph_algo graph_algo(algorithm);
 
 	graph_algo.work(graph);
+}
+
+
+void GraphAPI::start_algorithm_without_stops(Algorithm algorithm_name, Graph graph)
+{
+	shared_ptr<algorithms_on_graphs::Algorithm> algorithm = get_algorithm_for_GraphAPI(algorithm_name);
+
+	algorithms_on_graphs::Graph_algo graph_algo(algorithm);
+
+	graph_algo.work_without_stops(graph);
 }
 
 

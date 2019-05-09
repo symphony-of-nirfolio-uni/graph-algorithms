@@ -3,12 +3,12 @@
 
 namespace algorithms_on_graphs
 {
-	shared_ptr<Algorithm> Graph_is_acyclic_factory::get_algorithm()
+	shared_ptr<Algorithm> Graph_is_acyclic_factory::get_algorithm_private()
 	{
 		return make_shared<Graph_is_acyclic>();
 	}
 
-	Graph Graph_is_acyclic_factory::get_graph(string prefix, bool need_direct)
+	Graph Graph_is_acyclic_factory::get_graph_private(string prefix, bool need_direct)
 	{
 		if (need_direct)
 		{
@@ -23,25 +23,25 @@ namespace algorithms_on_graphs
 	}
 
 
-	shared_ptr<Algorithm> Graph_is_connected_factory::get_algorithm()
+	shared_ptr<Algorithm> Graph_is_connected_factory::get_algorithm_private()
 	{
 		return make_shared<Graph_is_connected>();
 	}
 
-	Graph Graph_is_connected_factory::get_graph(string prefix, bool need_direct)
+	Graph Graph_is_connected_factory::get_graph_private(string prefix, bool need_direct)
 	{
-		return Graph_is_acyclic_factory::get_graph(prefix, need_direct);
+		return Graph_is_acyclic_factory::get_graph_private(prefix, need_direct);
 	}
 
 
-	shared_ptr<Algorithm> Finding_shortest_path_factory::get_algorithm()
+	shared_ptr<Algorithm> Finding_shortest_path_factory::get_algorithm_private()
 	{
 		return make_shared<Finding_shortest_path>();
 	}
 
-	Graph Finding_shortest_path_factory::get_graph(string prefix, bool need_direct)
+	Graph Finding_shortest_path_factory::get_graph_private(string prefix, bool need_direct)
 	{
-		return Graph_is_acyclic_factory::get_graph(prefix, need_direct);
+		return Graph_is_acyclic_factory::get_graph_private(prefix, need_direct);
 	}
 }
 

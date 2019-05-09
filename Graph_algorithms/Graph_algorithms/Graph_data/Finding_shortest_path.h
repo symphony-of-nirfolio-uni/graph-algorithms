@@ -18,6 +18,8 @@ namespace algorithms_on_graphs
 		Graph create_route(Graph &graph, vector<int> &direction, int start, int finish);
 
 	public:
+		~Finding_shortest_path() {}
+
 		void work(Graph graph, int start, int finish, bool need_to_stop);
 	};
 }
