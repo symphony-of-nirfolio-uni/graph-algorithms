@@ -111,11 +111,6 @@ namespace algorithms_on_graphs
 		return direct;
 	}
 
-	int Graph::get_size()
-	{
-		return int(vertices.size());
-	}
-
 	unsigned Graph::size()
 	{
 		return unsigned(vertices.size());
