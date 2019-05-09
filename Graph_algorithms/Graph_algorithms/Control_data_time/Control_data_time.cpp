@@ -16,4 +16,9 @@ namespace control_data_time
 		}
 		return std::to_string(double(duration)) + result;
 	}
+
+	string dataUsed()//(GraphAPI::Algorithm, Graph graph)			need new version
+	{
+		return string();
+	}
 }
