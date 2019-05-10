@@ -26,6 +26,9 @@
     <property name="text">
      <string>New Graph</string>
     </property>
+    <property name="autoDefault">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="loadGraphButton">
     <property name="geometry">
@@ -38,6 +41,9 @@
     </property>
     <property name="text">
      <string>Load graph</string>
+    </property>
+    <property name="autoDefault">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
