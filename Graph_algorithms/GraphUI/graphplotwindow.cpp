@@ -4,16 +4,18 @@
 #include "messagedialog.h"
 
 GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
-    QMainWindow(parent),
+    QDialog(parent),
     ui(new Ui::GraphPlotWindow)
 {
     ui->setupUi(this);
 
+    _is_closed = false;
     current_status = preparing;
     graph_name = graph_file_name + ".dat";
     timer = new QTimer();
     setWindowTitle(graph_file_name);
     scatter_radius = 50;
+    //connect(this, SIGNAL(close()), this, SLOT(end_algo()));
 
     get_graph_from_api();
     add_lines_on_chart();
@@ -21,7 +23,7 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
 
     axis_and_legend_setup();
     ui->plot->setWidget(plot);
-    //setup_update_timer();
+    setup_update_timer();
     setup_buttons();
     setup_algo_list();
 
@@ -136,10 +138,11 @@ void GraphPlotWindow::make_scatter(QCPGraph* graph, QColor color, double radius)
 
 void GraphPlotWindow::setup_update_timer()
 {
+
+    connect(timer,SIGNAL(timeout()), this, SLOT(end_test()));
     timer->setInterval(200);
     timer->start();
 
-    connect(timer,SIGNAL(timeout()), this, SLOT(update_graph()));
 }
 
 void GraphPlotWindow::add_used_vertex(unsigned vertex)
@@ -294,22 +297,41 @@ void GraphPlotWindow::choose_algo()
 
 void GraphPlotWindow::end_algo()
 {
+    end_algo_mute();
+    exec_message_dialog("algorithm ended with result\n" + algo_result);
+}
+
+void GraphPlotWindow::end_algo_mute()
+{
     GraphAPI::instance().end_of_the_algorithm();
     current_status = ended;
-    exec_message_dialog("algorithm ended with result\n" + algo_result);
 }
 
 void GraphPlotWindow::closeEvent(QCloseEvent *event)
 {
-
+    end_algo_mute();
     delete dots;
     delete used;
     delete black;
     delete highlighted;
     delete timer;
+    _is_closed = true;
+}
+
+void GraphPlotWindow::end_test()
+{
+    QString str = ui->algo_label->text();
+    str.resize(ui->algo_label->text().size() - 1);
+
+    ui->algo_label->setText( str + QString::number(GraphAPI::instance().algorithm_is_ended()));
 }
 
 GraphPlotWindow::~GraphPlotWindow()
 {
     delete ui;
+}
+
+bool GraphPlotWindow::is_closed()
+{
+    return _is_closed;
 }
