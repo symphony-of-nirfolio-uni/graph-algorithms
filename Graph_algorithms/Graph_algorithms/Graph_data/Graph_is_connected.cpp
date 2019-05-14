@@ -11,10 +11,7 @@ namespace algorithms_on_graphs
 		if (need_to_stop)
 		{
 			GraphAPI::instance().set_highlighted(vertex);
-            if(waiting_for_the_next_move())
-            {
-                return false;
-            }
+            waiting_for_the_next_move();
 
 			if (GraphAPI::instance().algorithm_is_ended())
 			{
