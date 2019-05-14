@@ -86,7 +86,6 @@ private slots:
     void end_algo_mute();
 
     void closeEvent(QCloseEvent *event);
-    void end_test();
 };
 
 #endif // GRAPHPLOTWINDOW_H
