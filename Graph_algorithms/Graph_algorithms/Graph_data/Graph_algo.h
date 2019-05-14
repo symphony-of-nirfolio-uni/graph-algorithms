@@ -18,6 +18,7 @@ namespace algorithms_on_graphs
 		~Graph_algo();
 
 		void work(Graph graph);
+		void work(Graph graph, bool &can_move_on);
 		void work_without_stops(Graph graph);
 	};
 }

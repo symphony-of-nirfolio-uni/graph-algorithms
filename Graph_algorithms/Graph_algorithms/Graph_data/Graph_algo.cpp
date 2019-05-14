@@ -24,15 +24,20 @@ namespace algorithms_on_graphs
 
 	void Graph_algo::work(Graph graph)
 	{
-		std::thread thread_algo(&Graph_algo::run_work, this, std::ref(graph), true);
+		std::thread thread_algo(&Graph_algo::run_work, this, std::ref(graph), 1);
 		
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		
 		thread_algo.detach();
 	}
 
+	void Graph_algo::work(Graph graph, bool &can_move_on)
+	{
+		algorithm->work(graph, -1, can_move_on);
+	}
+
 	void Graph_algo::work_without_stops(Graph graph)
 	{
-		algorithm->work(graph, false);
+		algorithm->work(graph, 0);
 	}
 }

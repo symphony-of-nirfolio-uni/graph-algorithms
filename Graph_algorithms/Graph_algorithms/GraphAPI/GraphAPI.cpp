@@ -119,6 +119,16 @@ void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph)
 }
 
 
+void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph, bool &can_move_on)
+{
+	shared_ptr<algorithms_on_graphs::Algorithm> algorithm = get_algorithm_for_GraphAPI(algorithm_name);
+
+	algorithms_on_graphs::Graph_algo graph_algo(algorithm);
+
+	graph_algo.work(graph, can_move_on);
+}
+
+
 void GraphAPI::start_algorithm_without_stops(Algorithm algorithm_name, Graph graph)
 {
 	shared_ptr<algorithms_on_graphs::Algorithm> algorithm = get_algorithm_for_GraphAPI(algorithm_name);

@@ -56,6 +56,7 @@ public:
 
 
 	void start_algorithm(Algorithm algorithm_name, Graph graph);
+	void start_algorithm(Algorithm algorithm_name, Graph graph, bool &can_move_on);
 	void start_algorithm_without_stops(Algorithm algorithm_name, Graph graph);
 
     vector<Point> get_vertices_coordinates(string graph_file_name);
