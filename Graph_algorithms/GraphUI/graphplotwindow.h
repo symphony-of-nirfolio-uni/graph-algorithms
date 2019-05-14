@@ -2,6 +2,7 @@
 #define GRAPHPLOTWINDOW_H
 
 #include <QMainWindow>
+#include <QDialog>
 #include <QVector>
 #include <QTimer>
 #include <QCloseEvent>
@@ -15,13 +16,15 @@ namespace Ui {
 class GraphPlotWindow;
 }
 
-class GraphPlotWindow : public QMainWindow, public QCloseEvent
+class GraphPlotWindow : public QDialog, public QCloseEvent
 {
     Q_OBJECT
 
 public:
     explicit GraphPlotWindow(QString graph_file_name, QWidget *parent = nullptr);
     ~GraphPlotWindow();
+
+    bool is_closed();
 
 private:
     enum status {preparing, working, ended};
@@ -30,6 +33,8 @@ private:
     QCustomPlot* plot;
     Graph graph;
     vector<Point> vertices_coordinates;
+
+    bool _is_closed;
 
     QCPGraph *dots;
     QCPGraph *used;
@@ -41,6 +46,7 @@ private:
     vector<unsigned> black_v;
     vector<unsigned> used_v;
     status current_status;
+
 
 
 
@@ -77,6 +83,7 @@ private slots:
 
     void choose_algo();
     void end_algo();
+    void end_algo_mute();
 
     void closeEvent(QCloseEvent *event);
 };
