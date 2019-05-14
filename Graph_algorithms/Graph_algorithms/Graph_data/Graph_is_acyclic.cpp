@@ -3,12 +3,12 @@
 
 namespace algorithms_on_graphs
 {
-	bool Graph_is_acyclic::dfs(vector<int> &visit, Graph &graph, int vertex, int parent, bool need_to_stop)
+	bool Graph_is_acyclic::dfs(vector<int> &visit, Graph &graph, int vertex, int parent, int stop_type, bool &can_move_on)
 	{
 		visit[vertex] = 1;
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
 			GraphAPI::instance().set_highlighted(vertex);
 			waiting_for_the_next_move();
@@ -18,6 +18,11 @@ namespace algorithms_on_graphs
 				return false;
 			}
 		}
+		else if (stop_type == -1)
+		{
+			waiting_for_the_next_move(can_move_on);
+		}
+
 
 		for (auto new_vertex : graph.at(vertex))
 		{
@@ -32,18 +37,18 @@ namespace algorithms_on_graphs
 			else if (visit[new_vertex] == 0)
 			{
 				//GraphAPI part
-				if (need_to_stop)
+				if (stop_type == 1)
 				{
 					GraphAPI::instance().set_used_mark(vertex);
 				}
 
-				if (!dfs(visit, graph, new_vertex, vertex, need_to_stop))
+				if (!dfs(visit, graph, new_vertex, vertex, stop_type, can_move_on))
 				{
 					return false;
 				}
 
 				//GraphAPI part
-				if (need_to_stop)
+				if (stop_type == 1)
 				{
 					GraphAPI::instance().set_highlighted(vertex);
 					waiting_for_the_next_move();
@@ -53,6 +58,10 @@ namespace algorithms_on_graphs
 						return false;
 					}
 				}
+				else if (stop_type == -1)
+				{
+					waiting_for_the_next_move(can_move_on);
+				}
 			}
 		}
 
@@ -60,7 +69,7 @@ namespace algorithms_on_graphs
 
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
 			GraphAPI::instance().set_black_mark(vertex);
 		}
@@ -69,16 +78,16 @@ namespace algorithms_on_graphs
 	}
 
 
-	void Graph_is_acyclic::work(Graph graph, bool need_to_stop)
+	void Graph_is_acyclic::work(Graph graph, int stop_type, bool &can_move_on)
 	{
 		vector<int> visit(graph.size(), 0);
 
 		for (auto vertex : graph)
 		{
-			if (visit[vertex.id()] == 0 && !dfs(visit, graph, vertex.id(), -1, need_to_stop))
+			if (visit[vertex.id()] == 0 && !dfs(visit, graph, vertex.id(), -1, stop_type, can_move_on))
 			{
 				//GraphAPI part
-				if (need_to_stop)
+				if (stop_type == 1)
 				{
 					if (GraphAPI::instance().algorithm_is_ended())
 					{
@@ -94,7 +103,7 @@ namespace algorithms_on_graphs
 		}
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
 			if (GraphAPI::instance().algorithm_is_ended())
 			{

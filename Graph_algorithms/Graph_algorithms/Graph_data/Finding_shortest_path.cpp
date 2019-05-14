@@ -3,7 +3,7 @@
 
 namespace algorithms_on_graphs
 {
-	void Finding_shortest_path::bfs(Graph &graph, queue<int> &next_verteces, vector<int> &direction, int finish, bool need_to_stop)
+	void Finding_shortest_path::bfs(Graph &graph, queue<int> &next_verteces, vector<int> &direction, int finish, int stop_type, bool &can_move_on)
 	{
 		while (!next_verteces.empty())
 		{
@@ -11,7 +11,7 @@ namespace algorithms_on_graphs
 			next_verteces.pop();
 
 			//GraphAPI part
-			if (need_to_stop)
+			if (stop_type == 1)
 			{
 				GraphAPI::instance().set_highlighted(vertex);
 				waiting_for_the_next_move();
@@ -21,6 +21,11 @@ namespace algorithms_on_graphs
 					return;
 				}
 			}
+			else if (stop_type == -1)
+			{
+				waiting_for_the_next_move(can_move_on);
+			}
+
 
 			for (auto new_vertex : graph.at(vertex))
 			{
@@ -30,7 +35,7 @@ namespace algorithms_on_graphs
 					direction[new_vertex] = vertex;
 
 					//GraphAPI part
-					if (need_to_stop)
+					if (stop_type == 1)
 					{
 						GraphAPI::instance().set_used_mark(new_vertex);
 						waiting_for_the_next_move();
@@ -39,6 +44,10 @@ namespace algorithms_on_graphs
 						{
 							return;
 						}
+					}
+					else if (stop_type == -1)
+					{
+						waiting_for_the_next_move(can_move_on);
 					}
 
 					if (new_vertex == finish)
@@ -49,7 +58,7 @@ namespace algorithms_on_graphs
 			}
 
 			//GraphAPI part
-			if (need_to_stop)
+			if (stop_type == 1)
 			{
 				GraphAPI::instance().set_black_mark(vertex);
 			}
@@ -74,7 +83,7 @@ namespace algorithms_on_graphs
 	}
 
 
-	void Finding_shortest_path::work(Graph graph, int start, int finish, bool need_to_stop)
+	void Finding_shortest_path::work(Graph graph, int start, int finish, int stop_type, bool &can_move_on)
 	{
 		vector<int> direction(graph.size(), -1);
 
@@ -82,10 +91,10 @@ namespace algorithms_on_graphs
 		next_verteces.push(start);
 		direction[start] = start;
 
-		bfs(graph, next_verteces, direction, finish, need_to_stop);
+		bfs(graph, next_verteces, direction, finish, stop_type, can_move_on);
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
 			if (GraphAPI::instance().algorithm_is_ended())
 			{
@@ -96,7 +105,7 @@ namespace algorithms_on_graphs
 		if (direction[finish] == -1)
 		{
 			//GraphAPI part
-			if (need_to_stop)
+			if (stop_type == 1)
 			{
 				GraphAPI::instance().set_result("There is no way between the verteces");
 				GraphAPI::instance().end_of_the_algorithm();
@@ -105,7 +114,7 @@ namespace algorithms_on_graphs
 		else
 		{
 			//GraphAPI part
-			if (need_to_stop)
+			if (stop_type == 1)
 			{
 				GraphAPI::instance().set_result("Route exist");
 				GraphAPI::instance().end_of_the_algorithm();
