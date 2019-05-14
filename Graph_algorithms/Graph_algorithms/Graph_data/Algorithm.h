@@ -10,7 +10,7 @@ namespace algorithms_on_graphs
 	{
 
 	protected:
-		void waiting_for_the_next_move();
+        void waiting_for_the_next_move();
 
 	public:
 		virtual ~Algorithm() {}

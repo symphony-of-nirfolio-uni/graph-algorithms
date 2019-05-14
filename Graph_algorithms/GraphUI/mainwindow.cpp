@@ -45,6 +45,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     for(unsigned i = 0; i < windows.size(); ++i)
     {
-        windows[i]->close();
+        if(!windows[i]->is_closed())
+            windows[i]->close();
     }
 }
