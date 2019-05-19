@@ -6,23 +6,22 @@
 
 namespace control_data_time 
 {
-	void start_algorithm_for_data(GraphAPI::Algorithm algorithm_name, Graph graph, int &can_move)
+	void start_algorithm_for_data(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph, int &can_move)
 	{
-		GraphAPI::instance().start_algorithm(algorithm_name, graph, can_move);
-
+		GraphAPI::instance().start_algorithm(current_algorithm, current_graph, can_move);
 	}
 
-	void start_algorithm_for_data_start_finish(GraphAPI::Algorithm algorithm_name, Graph graph, int start, int finish, int &can_move)
+	void start_algorithm_for_data_start_finish(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph, int st, int fin, int &can_move)
 	{
-		GraphAPI::instance().start_algorithm(algorithm_name, graph, start, finish, can_move);
-
+		GraphAPI::instance().start_algorithm(current_algorithm, current_graph, st, fin, can_move);
 	}
 
-	string timeOfWork(GraphAPI::Algorithm algorithm_name, Graph graph)
+
+	string time_of_work(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph)
 	{
 		std::chrono::high_resolution_clock::time_point start_time = std::chrono::high_resolution_clock::now();
 
-		GraphAPI::instance().start_algorithm_without_stops(algorithm_name, graph);
+		GraphAPI::instance().start_algorithm_without_stops(current_algorithm, current_graph);
 
 		std::chrono::high_resolution_clock::time_point end_time = std::chrono::high_resolution_clock::now();
 		double duration = double(std::chrono::duration_cast<std::chrono::microseconds>(start_time - end_time).count());
@@ -36,11 +35,11 @@ namespace control_data_time
 		return std::to_string(double(duration)) + result;
 	}
 
-	string timeOfWork(GraphAPI::Algorithm algorithm_name, Graph graph, int start, int finish)
+	string time_of_work(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph, int st, int fin)
 	{
 		std::chrono::high_resolution_clock::time_point start_time = std::chrono::high_resolution_clock::now();
 
-		GraphAPI::instance().start_algorithm_without_stops(algorithm_name, graph, start, finish);
+		GraphAPI::instance().start_algorithm_without_stops(current_algorithm, current_graph, st, fin);
 
 		std::chrono::high_resolution_clock::time_point end_time = std::chrono::high_resolution_clock::now();
 		double duration = double(std::chrono::duration_cast<std::chrono::microseconds>(start_time - end_time).count());
@@ -54,7 +53,7 @@ namespace control_data_time
 		return std::to_string(double(duration)) + result;
 	}
 
-	string dataUsed(GraphAPI::Algorithm algorithm_name, Graph graph)
+	string RAM_usage(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph)
 	{
 		double start_data_usage = 168.0;
 		double max_data_usage = 0;
@@ -62,9 +61,9 @@ namespace control_data_time
 		PROCESS_MEMORY_COUNTERS_EX memoryInfo;
 		ZeroMemory(&memoryInfo, sizeof(PROCESS_MEMORY_COUNTERS_EX));
 		GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&memoryInfo, sizeof(memoryInfo));
-		start_data_usage += (double)memoryInfo.PrivateUsage / 1024.0;
+		start_data_usage += double(memoryInfo.PrivateUsage) / 1024.0;
 		
-		std::thread control_data(start_algorithm_for_data, algorithm_name, graph, std::ref(can_move));
+		std::thread control_data(start_algorithm_for_data, current_algorithm, current_graph, std::ref(can_move));
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 		
 		control_data.detach();
@@ -75,14 +74,14 @@ namespace control_data_time
 			{
 				ZeroMemory(&memoryInfo, sizeof(PROCESS_MEMORY_COUNTERS_EX));
 				GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&memoryInfo, sizeof(memoryInfo));
-				max_data_usage = max(max_data_usage, memoryInfo.PrivateUsage / 1024.0 - start_data_usage);
+				max_data_usage = max(max_data_usage, double(memoryInfo.PrivateUsage) / 1024.0 - start_data_usage);
 				can_move = 1;
 			}
 		}
-		return std::to_string((double)max_data_usage) + " KB";
+		return std::to_string(double(max_data_usage)) + " KB";
 	}
 
-	string dataUsed(GraphAPI::Algorithm algorithm_name, Graph graph, int start, int finish)
+	string RAM_usage(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph, int st, int fin)
 	{
 		double start_data_usage = 168.0;
 		double max_data_usage = 0;
@@ -90,9 +89,9 @@ namespace control_data_time
 		PROCESS_MEMORY_COUNTERS_EX memoryInfo;
 		ZeroMemory(&memoryInfo, sizeof(PROCESS_MEMORY_COUNTERS_EX));
 		GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&memoryInfo, sizeof(memoryInfo));
-		start_data_usage += (double)memoryInfo.PrivateUsage / 1024.0;
+		start_data_usage += double(memoryInfo.PrivateUsage) / 1024.0;
 
-		std::thread control_data(start_algorithm_for_data_start_finish, algorithm_name, graph, start, finish, std::ref(can_move));
+		std::thread control_data(start_algorithm_for_data_start_finish, current_algorithm, current_graph, st, fin, std::ref(can_move));
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
 		control_data.detach();
@@ -103,10 +102,10 @@ namespace control_data_time
 			{
 				ZeroMemory(&memoryInfo, sizeof(PROCESS_MEMORY_COUNTERS_EX));
 				GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&memoryInfo, sizeof(memoryInfo));
-				max_data_usage = max(max_data_usage, memoryInfo.PrivateUsage / 1024.0 - start_data_usage);
+				max_data_usage = max(max_data_usage, double(memoryInfo.PrivateUsage) / 1024.0 - start_data_usage);
 				can_move = 1;
 			}
 		}
-		return std::to_string((double)max_data_usage) + " KB";
+		return std::to_string(double(max_data_usage)) + " KB";
 	}
 }

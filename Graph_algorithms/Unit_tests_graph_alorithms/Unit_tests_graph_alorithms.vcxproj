@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Graph_algorithms\Build_dots\Build_dots.h" />
+    <ClInclude Include="..\Graph_algorithms\Control_data_time\Control_data_time.h" />
     <ClInclude Include="..\Graph_algorithms\GraphAPI\GraphAPI.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm.h" />
     <ClInclude Include="..\Graph_algorithms\Graph_data\Algorithm_factory.h" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Graph_algorithms\Build_dots\Build_dots.cpp" />
+    <ClCompile Include="..\Graph_algorithms\Control_data_time\Control_data_time.cpp" />
     <ClCompile Include="..\Graph_algorithms\GraphAPI\GraphAPI.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm.cpp" />
     <ClCompile Include="..\Graph_algorithms\Graph_data\Algorithm_factory.cpp" />

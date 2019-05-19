@@ -63,6 +63,12 @@ public:
 	void start_algorithm(Algorithm algorithm_name, Graph graph, int start, int finish, int &can_move_on);
 	void start_algorithm_without_stops(Algorithm algorithm_name, Graph graph, int start, int finish);
 
+	string get_time_of_work(Algorithm algorithm_name, Graph graph);
+	string get_time_of_work(Algorithm algorithm_name, Graph graph, int start, int finish);
+
+	string get_RAM_usage(Algorithm algorithm_name, Graph graph);
+	string get_RAM_usage(Algorithm algorithm_name, Graph graph, int start, int finish);
+
     vector<Point> get_vertices_coordinates(string graph_file_name);
     Graph get_graph(string graph_file_name);
 	static GraphAPI& instance()

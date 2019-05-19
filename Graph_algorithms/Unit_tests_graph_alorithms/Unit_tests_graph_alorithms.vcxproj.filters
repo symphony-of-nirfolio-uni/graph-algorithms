@@ -60,6 +60,9 @@
     <ClInclude Include="..\Graph_algorithms\Build_dots\Build_dots.h">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Graph_algorithms\Control_data_time\Control_data_time.h">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -105,6 +108,9 @@
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\Graph_algorithms\Build_dots\Build_dots.cpp">
+      <Filter>Algorithms_on_graphs_test\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graph_algorithms\Control_data_time\Control_data_time.cpp">
       <Filter>Algorithms_on_graphs_test\Data</Filter>
     </ClCompile>
   </ItemGroup>

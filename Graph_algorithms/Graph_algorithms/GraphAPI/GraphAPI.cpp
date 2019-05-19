@@ -1,6 +1,6 @@
 #include "GraphAPI.h"
 #include "../Graph_data/Graph_algo.h"
-
+#include "../Control_data_time/Control_data_time.h"
 
 #include <cmath>
 
@@ -170,6 +170,26 @@ void GraphAPI::start_algorithm_without_stops(Algorithm algorithm_name, Graph gra
 	algorithms_on_graphs::Graph_algo graph_algo(algorithm);
 
 	graph_algo.work_without_stops(graph, start, finish);
+}
+
+string GraphAPI::get_time_of_work(Algorithm algorithm_name, Graph graph)
+{
+	return control_data_time::time_of_work(algorithm_name, graph);
+}
+
+string GraphAPI::get_time_of_work(Algorithm algorithm_name, Graph graph, int start, int finish)
+{
+	return control_data_time::time_of_work(algorithm_name, graph, start, finish);
+}
+
+string GraphAPI::get_RAM_usage(Algorithm algorithm_name, Graph graph)
+{
+	return control_data_time::RAM_usage(algorithm_name, graph);
+}
+
+string GraphAPI::get_RAM_usage(Algorithm algorithm_name, Graph graph, int start, int finish)
+{
+	return control_data_time::RAM_usage(algorithm_name, graph, start, finish);
 }
 
 
