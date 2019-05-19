@@ -6,14 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>559</height>
+    <width>596</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>597</width>
+     <height>523</height>
+    </rect>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <spacer name="horizontalSpacer_2">
@@ -146,19 +154,6 @@ and start</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="back_button">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Back</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="stop_button">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -230,7 +225,7 @@ and start</string>
          <x>0</x>
          <y>0</y>
          <width>498</width>
-         <height>498</height>
+         <height>519</height>
         </rect>
        </property>
       </widget>
@@ -248,7 +243,16 @@ and start</string>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>3</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

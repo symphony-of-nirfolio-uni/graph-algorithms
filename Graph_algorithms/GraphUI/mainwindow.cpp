@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->loadGraphButton, SIGNAL(clicked()), this, SLOT(load_graph_dialog()));
-    connect(ui->newGraphButton, SIGNAL(clicked()), this, SLOT(show_graph_window()));
+    //connect(ui->newGraphButton, SIGNAL(clicked()), this, SLOT(show_graph_window()));
 }
 
 MainWindow::~MainWindow()

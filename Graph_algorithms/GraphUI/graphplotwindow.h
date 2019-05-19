@@ -47,6 +47,9 @@ private:
     vector<unsigned> used_v;
     status current_status;
 
+    unsigned algo_start;
+    unsigned algo_end;
+
 
 
 
@@ -85,7 +88,9 @@ private slots:
     void end_algo();
     void end_algo_mute();
 
-    void closeEvent(QCloseEvent *event);
+    void get_start_end(unsigned, unsigned);
+
+    void closeEvent(QCloseEvent*);
 };
 
 #endif // GRAPHPLOTWINDOW_H

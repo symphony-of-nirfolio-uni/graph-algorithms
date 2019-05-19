@@ -57,7 +57,8 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
     messagedialog.cpp \
     ../Graph_algorithms/Control_data_time/Control_data_time.cpp \
-    ../Graph_algorithms/Control_data_time/Control_data_time.cpp
+    ../Graph_algorithms/Control_data_time/Control_data_time.cpp \
+    startenddialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -88,14 +89,16 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Read_graph_builder.h \
     messagedialog.h \
     ../Graph_algorithms/Control_data_time/Control_data_time.h \
-    ../Graph_algorithms/Control_data_time/Control_data_time.h
+    ../Graph_algorithms/Control_data_time/Control_data_time.h \
+    startenddialog.h
 
 FORMS += \
         mainwindow.ui \
     newgraphdialog.ui \
     loadgraphdialog.ui \
     graphplotwindow.ui \
-    messagedialog.ui
+    messagedialog.ui \
+    startenddialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

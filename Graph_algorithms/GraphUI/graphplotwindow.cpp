@@ -2,6 +2,7 @@
 #include "ui_graphplotwindow.h"
 #include "../GraphUI/Factories/linefactory.h"
 #include "messagedialog.h"
+#include "startenddialog.h"
 
 GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     QDialog(parent),
@@ -266,7 +267,11 @@ void GraphPlotWindow::choose_algo()
         QString algo_name = ui->algo_list->currentText();
         if(algo_name == "Finding_shortest_path")
         {
-            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Finding_shortest_path, graph);
+
+            auto dialog = new StartEndDialog(this);
+            connect(dialog, SIGNAL(got_data(unsigned,unsigned)), this, SLOT(get_start_end(unsigned,unsigned)));
+            dialog->exec();
+            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Finding_shortest_path, graph, algo_start, algo_end);
         }
         else if(algo_name == "Graph_is_acyclic")
         {
@@ -306,7 +311,13 @@ void GraphPlotWindow::end_algo_mute()
     current_status = ended;
 }
 
-void GraphPlotWindow::closeEvent(QCloseEvent *event)
+void GraphPlotWindow::get_start_end(unsigned start, unsigned end)
+{
+    algo_start = start;
+    algo_end = end;
+}
+
+void GraphPlotWindow::closeEvent(QCloseEvent*)
 {
     end_algo_mute();
     delete dots;
