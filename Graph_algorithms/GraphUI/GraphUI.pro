@@ -55,7 +55,9 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
     ../Graph_algorithms/Graph_data/Read_graph.cpp \
     ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
-    messagedialog.cpp
+    messagedialog.cpp \
+    ../Graph_algorithms/Control_data_time/Control_data_time.cpp \
+    ../Graph_algorithms/Control_data_time/Control_data_time.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -84,7 +86,9 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Graph_is_connected.h \
     ../Graph_algorithms/Graph_data/Read_graph.h \
     ../Graph_algorithms/Graph_data/Read_graph_builder.h \
-    messagedialog.h
+    messagedialog.h \
+    ../Graph_algorithms/Control_data_time/Control_data_time.h \
+    ../Graph_algorithms/Control_data_time/Control_data_time.h
 
 FORMS += \
         mainwindow.ui \
@@ -98,5 +102,4 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    additions.qml
+DISTFILES +=
