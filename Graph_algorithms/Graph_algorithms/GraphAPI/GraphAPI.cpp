@@ -119,7 +119,7 @@ void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph)
 	graph_algo.work(graph);
 }
 
-void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph, bool &can_move_on)
+void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph, int &can_move_on)
 {
 	shared_ptr<algorithms_on_graphs::Algorithm> algorithm = get_algorithm_for_GraphAPI(algorithm_name);
 
@@ -154,7 +154,7 @@ void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph, int start,
 	graph_algo.work(graph, start, finish);
 }
 
-void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph, int start, int finish, bool &can_move_on)
+void GraphAPI::start_algorithm(Algorithm algorithm_name, Graph graph, int start, int finish, int &can_move_on)
 {
 	shared_ptr<algorithms_on_graphs::Algorithm> algorithm = get_algorithm_for_GraphAPI(algorithm_name);
 
