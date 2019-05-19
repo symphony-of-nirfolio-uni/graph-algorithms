@@ -3,7 +3,7 @@
 
 namespace algorithms_on_graphs
 {
-	bool Graph_is_acyclic::dfs(vector<int> &visit, Graph &graph, int vertex, int parent, int stop_type, bool &can_move_on)
+	bool Graph_is_acyclic::dfs(vector<int> &visit, Graph &graph, int vertex, int parent, int stop_type, int &can_move_on)
 	{
 		visit[vertex] = 1;
 
@@ -78,7 +78,7 @@ namespace algorithms_on_graphs
 	}
 
 
-	void Graph_is_acyclic::work(Graph graph, int stop_type, bool &can_move_on)
+	void Graph_is_acyclic::work(Graph graph, int stop_type, int &can_move_on)
 	{
 		vector<int> visit(graph.size(), 0);
 
@@ -112,6 +112,10 @@ namespace algorithms_on_graphs
 
 			GraphAPI::instance().set_result("Graph is acyclic");
 			GraphAPI::instance().end_of_the_algorithm();
+		}
+		else if (stop_type == -1)
+		{
+			can_move_on = -1;
 		}
 	}
 

@@ -3,7 +3,7 @@
 
 namespace algorithms_on_graphs
 {
-	bool Graph_is_connected::dfs(vector<bool> &visit, Graph &graph, int vertex, int stop_type, bool &can_move_on)
+	bool Graph_is_connected::dfs(vector<bool> &visit, Graph &graph, int vertex, int stop_type, int &can_move_on)
 	{
 		visit[vertex] = true;
 
@@ -73,7 +73,7 @@ namespace algorithms_on_graphs
 	}
 
 
-	void Graph_is_connected::work(Graph graph, int stop_type, bool &can_move_on)
+	void Graph_is_connected::work(Graph graph, int stop_type, int &can_move_on)
 	{
 		vector<bool> visit(graph.size(), false);
 
@@ -108,6 +108,10 @@ namespace algorithms_on_graphs
 		{
 			GraphAPI::instance().set_result("Graph is connected");
 			GraphAPI::instance().end_of_the_algorithm();
+		}
+		else if (stop_type == -1)
+		{
+			can_move_on = -1;
 		}
 	}
 
