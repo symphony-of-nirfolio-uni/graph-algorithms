@@ -1,5 +1,7 @@
 #include "mainwindow.h"
+#include "messagedialog.h"
 #include <QApplication>
+#include <exception>
 
 
 int main(int argc, char *argv[])
