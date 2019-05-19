@@ -37,7 +37,7 @@ namespace algorithms_on_graphs
 		thread_algo.detach();
 	}
 
-	void Graph_algo::work(Graph graph, bool &can_move_on)
+	void Graph_algo::work(Graph graph, int &can_move_on)
 	{
 		algorithm->work(graph, -1, can_move_on);
 	}
@@ -57,7 +57,7 @@ namespace algorithms_on_graphs
 		thread_algo.detach();
 	}
 
-	void Graph_algo::work(Graph graph, int start, int finish, bool &can_move_on)
+	void Graph_algo::work(Graph graph, int start, int finish, int &can_move_on)
 	{
 		algorithm->work(graph, start, finish, -1, can_move_on);
 	}

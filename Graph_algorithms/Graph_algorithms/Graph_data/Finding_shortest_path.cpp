@@ -3,7 +3,7 @@
 
 namespace algorithms_on_graphs
 {
-	void Finding_shortest_path::bfs(Graph &graph, queue<int> &next_verteces, vector<int> &direction, int finish, int stop_type, bool &can_move_on)
+	void Finding_shortest_path::bfs(Graph &graph, queue<int> &next_verteces, vector<int> &direction, int finish, int stop_type, int &can_move_on)
 	{
 		while (!next_verteces.empty())
 		{
@@ -83,7 +83,7 @@ namespace algorithms_on_graphs
 	}
 
 
-	void Finding_shortest_path::work(Graph graph, int start, int finish, int stop_type, bool &can_move_on)
+	void Finding_shortest_path::work(Graph graph, int start, int finish, int stop_type, int &can_move_on)
 	{
 		vector<int> direction(graph.size(), -1);
 
@@ -119,6 +119,11 @@ namespace algorithms_on_graphs
 				GraphAPI::instance().set_result("Route exist");
 				GraphAPI::instance().end_of_the_algorithm();
 			}
+		}
+
+		if (stop_type == -1)
+		{
+			can_move_on = -1;
 		}
 	}
 

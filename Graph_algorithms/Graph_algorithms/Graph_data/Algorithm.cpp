@@ -11,7 +11,7 @@ namespace algorithms_on_graphs
         }
 	}
 
-    void Algorithm::waiting_for_the_next_move(bool &can_move_on)
+    void Algorithm::waiting_for_the_next_move(int &can_move_on)
 	{
         while (!get_can_move_on(can_move_on))
 		{
@@ -20,11 +20,11 @@ namespace algorithms_on_graphs
 	}
 
 
-	bool Algorithm::get_can_move_on(bool &can_move_on)
+	bool Algorithm::get_can_move_on(int &can_move_on)
 	{
-		if (can_move_on)
+		if (can_move_on == 1)
 		{
-			can_move_on = false;
+			can_move_on = 0;
 			return true;
 		}
 		return false;
@@ -33,13 +33,13 @@ namespace algorithms_on_graphs
 
 	void Algorithm::work(Graph graph, int stop_type)
 	{
-		bool can_move_on = true;
+		int can_move_on = 1;
 		work(graph, stop_type, can_move_on);
 	}
 
 	void Algorithm::work(Graph graph, int start, int finish, int stop_type)
 	{
-		bool can_move_on = true;
+		int can_move_on = 1;
 		work(graph, start, finish, stop_type, can_move_on);
 	}
 }

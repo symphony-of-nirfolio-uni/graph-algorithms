@@ -19,11 +19,11 @@ namespace algorithms_on_graphs
 		~Graph_algo();
 
 		void work(Graph graph);
-		void work(Graph graph, bool &can_move_on);
+		void work(Graph graph, int &can_move_on);
 		void work_without_stops(Graph graph);
 
 		void work(Graph graph, int start, int finish);
-		void work(Graph graph, int start, int finish, bool &can_move_on);
+		void work(Graph graph, int start, int finish, int &can_move_on);
 		void work_without_stops(Graph graph, int start, int finish);
 	};
 }
