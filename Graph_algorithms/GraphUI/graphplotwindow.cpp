@@ -2,6 +2,7 @@
 #include "ui_graphplotwindow.h"
 #include "../GraphUI/Factories/linefactory.h"
 #include "messagedialog.h"
+#include "startenddialog.h"
 
 GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     QDialog(parent),
@@ -13,6 +14,7 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
     current_status = preparing;
     graph_name = graph_file_name + ".dat";
     timer = new QTimer();
+    time_registrer = new QTime();
     setWindowTitle(graph_file_name);
     scatter_radius = 50;
     //connect(this, SIGNAL(close()), this, SLOT(end_algo()));
@@ -23,9 +25,10 @@ GraphPlotWindow::GraphPlotWindow(QString graph_file_name, QWidget *parent) :
 
     axis_and_legend_setup();
     ui->plot->setWidget(plot);
-    //setup_update_timer();
+    setup_update_timer();
     setup_buttons();
     setup_algo_list();
+    setup_slider();
 
 }
 
@@ -138,11 +141,30 @@ void GraphPlotWindow::make_scatter(QCPGraph* graph, QColor color, double radius)
 
 void GraphPlotWindow::setup_update_timer()
 {
-
-    timer->setInterval(200);
-    timer->start();
+    timer->setInterval(5000);
+    connect(ui->speedSlider, SIGNAL(valueChanged(int)), this, SLOT(update_timer(int)));
+    connect(timer, SIGNAL(timeout()), this, SLOT(update_graph()));
 
 }
+void GraphPlotWindow::update_timer(int slider_progres)
+{
+    timer->stop();
+    if(slider_progres != 0)
+    {
+
+        timer->setInterval(5000/slider_progres);
+        if(current_status == working)
+        {
+            timer->start();
+        }
+    }
+}
+
+void GraphPlotWindow::end_timer()
+{
+    timer->stop();
+}
+
 
 void GraphPlotWindow::add_used_vertex(unsigned vertex)
 {
@@ -164,11 +186,17 @@ void GraphPlotWindow::setup_buttons()
     connect(ui->next_step_button, SIGNAL(clicked()), this, SLOT(update_graph()));
     connect(ui->choose_algo_button, SIGNAL(clicked()), this, SLOT(choose_algo()));
     connect(ui->stop_button, SIGNAL(clicked()), this, SLOT(end_algo()));
+    connect(ui->start_algo_button,  SIGNAL(clicked()), this, SLOT(start_algo()));
 }
 
 void GraphPlotWindow::setup_algo_list()
 {
     ui->algo_list->addItems({"Graph_is_connected", "Graph_is_acyclic", "Finding_shortest_path"});
+}
+
+void GraphPlotWindow::setup_slider()
+{
+    ui->speedSlider->setTickInterval(10);
 }
 
 void GraphPlotWindow::update_status()
@@ -181,6 +209,41 @@ void GraphPlotWindow::get_algo_result()
     algo_result = QString::fromStdString(GraphAPI::instance().get_result());
 }
 
+void GraphPlotWindow::get_algo_stats()
+{
+    QString algo_name = ui->algo_list->currentText();
+    auto algo_enum = get_algo_enum(algo_name);
+    algo_stats = "Stats:\n";
+    if(algo_enum == GraphAPI::Finding_shortest_path)
+    {
+        algo_stats += "Time: " + QString::fromStdString(GraphAPI::instance().get_time_of_work(algo_enum, graph, algo_start, algo_end)) + "\n";
+        //algo_stats += "RAM: " + QString::fromStdString(GraphAPI::instance().get_RAM_usage(algo_enum, graph, algo_start, algo_end)) + "\n";
+    }
+    else
+    {
+        algo_stats += "Time: " + QString::fromStdString(GraphAPI::instance().get_time_of_work(algo_enum, graph)) + "\n";
+        //algo_stats += "RAM: " + QString::fromStdString(GraphAPI::instance().get_RAM_usage(algo_enum, graph)) + "\n";
+    }
+
+}
+
+GraphAPI::Algorithm GraphPlotWindow::get_algo_enum(QString algo_name)
+{
+    if(algo_name == "Finding_shortest_path")
+    {
+
+        return GraphAPI::Algorithm::Finding_shortest_path;
+    }
+    else if(algo_name == "Graph_is_acyclic")
+    {
+        return GraphAPI::Algorithm::Graph_is_acyclic;
+    }
+    else if(algo_name == "Graph_is_connected")
+    {
+        return GraphAPI::Algorithm::Graph_is_connected;
+    }
+}
+
 void GraphPlotWindow::dots_reset()
 {
     used->setData({},{});
@@ -188,6 +251,7 @@ void GraphPlotWindow::dots_reset()
     highlighted->setData({},{});
     used_v.clear();
     black_v.clear();
+    plot->replot();
 }
 
 void GraphPlotWindow::exec_message_dialog(QString message)
@@ -214,7 +278,6 @@ void GraphPlotWindow::update_graph()
             plot->replot();
             update_status();
         }
-
     }
     else
     {
@@ -225,7 +288,7 @@ void GraphPlotWindow::update_graph()
         }
         else
         {
-            message = "Algorithm ended with result:\n" + algo_result;
+            message = "Algorithm ended with result:\n" + algo_result + "\n" + algo_stats;
         }
         exec_message_dialog(message);
     }
@@ -263,26 +326,51 @@ void GraphPlotWindow::choose_algo()
 {
     if(current_status != working)
     {
-        QString algo_name = ui->algo_list->currentText();
+        ui->algo_name_label->setText(ui->algo_list->currentText());
+        start_algo();
+    }
+}
+
+void GraphPlotWindow::start_algo()
+{
+    QString algo_name = ui->algo_name_label->text();
+    if(current_status != working)
+    {
+        QString algo_name = ui->algo_name_label->text();
+        if(algo_name == "None")
+        {
+            QString message = "Choose your algorithm.";
+            exec_message_dialog(message);
+            return;
+        }
+        auto algo_enum = get_algo_enum(algo_name);
         if(algo_name == "Finding_shortest_path")
         {
-            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Finding_shortest_path, graph);
+
+            auto dialog = new StartEndDialog(this);
+            connect(dialog, SIGNAL(got_data(unsigned,unsigned)), this, SLOT(get_start_end(unsigned,unsigned)));
+            dialog->exec();
+            GraphAPI::instance().start_algorithm(algo_enum, graph, algo_start, algo_end);
         }
         else if(algo_name == "Graph_is_acyclic")
         {
-            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Graph_is_acyclic, graph);
+            GraphAPI::instance().start_algorithm(algo_enum, graph);
         }
         else if(algo_name == "Graph_is_connected")
         {
-            GraphAPI::instance().start_algorithm(GraphAPI::Algorithm::Graph_is_connected, graph);
+            GraphAPI::instance().start_algorithm(algo_enum, graph);
         }
 
         ui->algo_name_label->setText(algo_name);
         algo_result = "None";
+
         if(current_status == ended)
         {
             dots_reset();
         }
+
+        get_algo_stats();
+        time_registrer->restart();
         current_status = working;
 
     }
@@ -291,13 +379,15 @@ void GraphPlotWindow::choose_algo()
         QString message = "Algorithm is still working. Stop it before change.";
         exec_message_dialog(message);
     }
-
 }
 
 void GraphPlotWindow::end_algo()
 {
+    end_timer();
     end_algo_mute();
-    exec_message_dialog("algorithm ended with result\n" + algo_result);
+    time_registrer->elapsed();
+    QString ui_status = "Program work time: " + QString::number(double(time_registrer->elapsed())/1000) + " seconds";
+    exec_message_dialog("Algorithm ended with result:\n" + algo_result + "\n" + algo_stats + "\n" + ui_status);
 }
 
 void GraphPlotWindow::end_algo_mute()
@@ -306,7 +396,13 @@ void GraphPlotWindow::end_algo_mute()
     current_status = ended;
 }
 
-void GraphPlotWindow::closeEvent(QCloseEvent *event)
+void GraphPlotWindow::get_start_end(unsigned start, unsigned end)
+{
+    algo_start = start;
+    algo_end = end;
+}
+
+void GraphPlotWindow::closeEvent(QCloseEvent*)
 {
     end_algo_mute();
     delete dots;
