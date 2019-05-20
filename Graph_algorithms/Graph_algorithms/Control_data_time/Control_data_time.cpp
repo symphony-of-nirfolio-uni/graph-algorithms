@@ -16,34 +16,19 @@ namespace control_data_time
 		GraphAPI::instance().start_algorithm(current_algorithm, current_graph, st, fin, can_move);
 	}
 
-
-	string time_of_work(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph)
-	{
-		std::chrono::high_resolution_clock::time_point start_time = std::chrono::high_resolution_clock::now();
-
-		GraphAPI::instance().start_algorithm_without_stops(current_algorithm, current_graph);
-
-		std::chrono::high_resolution_clock::time_point end_time = std::chrono::high_resolution_clock::now();
-		double duration = double(std::chrono::duration_cast<std::chrono::microseconds>(start_time - end_time).count());
-
-		string result = " mcs";
-		if (duration/1000.0 > 10.0)
-		{
-			duration = duration / 1000.0;
-			result = " ms";
-		}
-		return std::to_string(double(duration)) + result;
-	}
-
 	string time_of_work(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph, int st, int fin)
 	{
+		double duration;
 		std::chrono::high_resolution_clock::time_point start_time = std::chrono::high_resolution_clock::now();
-
-		GraphAPI::instance().start_algorithm_without_stops(current_algorithm, current_graph, st, fin);
+		
+		if (st != -1) 
+			GraphAPI::instance().start_algorithm_without_stops(current_algorithm, current_graph, st, fin);
+		else
+			GraphAPI::instance().start_algorithm_without_stops(current_algorithm, current_graph);
 
 		std::chrono::high_resolution_clock::time_point end_time = std::chrono::high_resolution_clock::now();
-		double duration = double(std::chrono::duration_cast<std::chrono::microseconds>(start_time - end_time).count());
-
+		duration = double(std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count());
+		
 		string result = " mcs";
 		if (duration / 1000.0 > 10.0)
 		{
