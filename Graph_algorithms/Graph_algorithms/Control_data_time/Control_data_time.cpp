@@ -39,8 +39,8 @@ namespace control_data_time
 
 	string RAM_usage(GraphAPI::Algorithm current_algorithm, algorithms_on_graphs::Graph current_graph, int st, int fin)
 	{
-		double start_data_usage = 168.0;
-		double max_data_usage = 0;
+		double start_data_usage = 0.0;
+		double max_data_usage = 0.0;
 		int can_move = 0;
 		PROCESS_MEMORY_COUNTERS_EX memoryInfo;
 		ZeroMemory(&memoryInfo, sizeof(PROCESS_MEMORY_COUNTERS_EX));
