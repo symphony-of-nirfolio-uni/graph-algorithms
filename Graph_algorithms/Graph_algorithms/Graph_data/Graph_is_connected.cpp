@@ -98,6 +98,10 @@ namespace algorithms_on_graphs
 					GraphAPI::instance().set_result("Graph is not connected");
 					GraphAPI::instance().end_of_the_algorithm();
 				}
+				else if (stop_type == -1)
+				{
+					can_move_on = -1;
+				}
 
 				return;
 			}
