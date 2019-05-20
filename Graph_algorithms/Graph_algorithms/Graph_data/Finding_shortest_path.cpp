@@ -29,7 +29,7 @@ namespace algorithms_on_graphs
 
 			for (auto new_vertex : graph.at(vertex))
 			{
-				if (direction[new_vertex] != -1)
+				if (direction[new_vertex] == -1)
 				{
 					next_verteces.push(new_vertex);
 					direction[new_vertex] = vertex;
