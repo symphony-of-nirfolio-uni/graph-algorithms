@@ -8,7 +8,7 @@ QT += core gui
 QT += charts
 QT += qml
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = GraphUI
 TEMPLATE = app
@@ -30,7 +30,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    graphwindow.cpp \
     newgraphdialog.cpp \
     ../Graph_algorithms/GraphAPI/GraphAPI.cpp \
     ../Graph_algorithms/Graph_data/Graph.cpp \
@@ -43,11 +42,26 @@ SOURCES += \
     ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
     ../Graph_algorithms/Graph_data/Read_graph.cpp \
     ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
-    ../Graph_algorithms/Build_dots/Build_dots.cpp
+    ../Graph_algorithms/Build_dots/Build_dots.cpp \
+    QtCustomPlot/qcustomplot.cpp \
+    graphplotwindow.cpp \
+    Factories/linefactory.cpp \
+    ../Graph_algorithms/Graph_data/Algorithm.cpp \
+    ../Graph_algorithms/Graph_data/Algorithm_factory.cpp \
+    ../Graph_algorithms/Graph_data/Finding_shortest_path.cpp \
+    ../Graph_algorithms/Graph_data/Graph.cpp \
+    ../Graph_algorithms/Graph_data/Graph_algo.cpp \
+    ../Graph_algorithms/Graph_data/Graph_is_acyclic.cpp \
+    ../Graph_algorithms/Graph_data/Graph_is_connected.cpp \
+    ../Graph_algorithms/Graph_data/Read_graph.cpp \
+    ../Graph_algorithms/Graph_data/Read_graph_builder.cpp \
+    messagedialog.cpp \
+    ../Graph_algorithms/Control_data_time/Control_data_time.cpp \
+    ../Graph_algorithms/Control_data_time/Control_data_time.cpp \
+    startenddialog.cpp
 
 HEADERS += \
         mainwindow.h \
-    graphwindow.h \
     ../Graph_algorithms/GraphAPI/GraphAPI.h \
     ../Graph_algorithms/Graph_data/Graph.h \
     newgraphdialog.h \
@@ -60,18 +74,35 @@ HEADERS += \
     ../Graph_algorithms/Graph_data/Graph_is_connected.h \
     ../Graph_algorithms/Graph_data/Read_graph.h \
     ../Graph_algorithms/Graph_data/Read_graph_builder.h \
-    ../Graph_algorithms/Build_dots/Build_dots.h
+    ../Graph_algorithms/Build_dots/Build_dots.h \
+    QtCustomPlot/qcustomplot.h \
+    graphplotwindow.h \
+    Factories/linefactory.h \
+    ../Graph_algorithms/Graph_data/Algorithm.h \
+    ../Graph_algorithms/Graph_data/Algorithm_factory.h \
+    ../Graph_algorithms/Graph_data/Finding_shortest_path.h \
+    ../Graph_algorithms/Graph_data/Graph.h \
+    ../Graph_algorithms/Graph_data/Graph_algo.h \
+    ../Graph_algorithms/Graph_data/Graph_is_acyclic.h \
+    ../Graph_algorithms/Graph_data/Graph_is_connected.h \
+    ../Graph_algorithms/Graph_data/Read_graph.h \
+    ../Graph_algorithms/Graph_data/Read_graph_builder.h \
+    messagedialog.h \
+    ../Graph_algorithms/Control_data_time/Control_data_time.h \
+    ../Graph_algorithms/Control_data_time/Control_data_time.h \
+    startenddialog.h
 
 FORMS += \
         mainwindow.ui \
-    graphwindow.ui \
     newgraphdialog.ui \
-    loadgraphdialog.ui
+    loadgraphdialog.ui \
+    graphplotwindow.ui \
+    messagedialog.ui \
+    startenddialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    additions.qml
+DISTFILES +=

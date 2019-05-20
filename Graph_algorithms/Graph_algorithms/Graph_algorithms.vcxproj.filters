@@ -27,6 +27,15 @@
     <Filter Include="Build_dots\Source Files">
       <UniqueIdentifier>{15957b7c-7733-4b4e-86fe-25760a15693e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Control_data_time">
+      <UniqueIdentifier>{ca4a3a59-e999-4b75-a197-49c17a8abcab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control_data_time\Header Files">
+      <UniqueIdentifier>{88d3c35c-31a9-4744-874c-6ff077431e72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control_data_time\Source Files">
+      <UniqueIdentifier>{b60df5c6-28f8-44fa-bdf4-9196ec71e135}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph_data\Algorithm.h">
@@ -58,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="Build_dots\Build_dots.h">
       <Filter>Build_dots\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph_data\Finding_shortest_path.h">
+      <Filter>Algorithms_on_graphs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Control_data_time\Control_data_time.h">
+      <Filter>Control_data_time\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +108,12 @@
     </ClCompile>
     <ClCompile Include="Build_dots\Build_dots.cpp">
       <Filter>Build_dots\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_data\Finding_shortest_path.cpp">
+      <Filter>Algorithms_on_graphs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Control_data_time\Control_data_time.cpp">
+      <Filter>Control_data_time\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

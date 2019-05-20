@@ -2,6 +2,7 @@
 #define LOADGRAPHDIALOG_H
 
 #include <QDialog>
+#include "graphplotwindow.h"
 
 namespace Ui {
 class LoadGraphDialog;
@@ -23,6 +24,9 @@ private:
 
 private slots:
     void create_graph_visualisation();
+
+signals:
+    void new_window(GraphPlotWindow*);
 };
 
 #endif // LOADGRAPHDIALOG_H

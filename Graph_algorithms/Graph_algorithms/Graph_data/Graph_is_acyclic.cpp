@@ -3,22 +3,29 @@
 
 namespace algorithms_on_graphs
 {
-	bool Graph_is_acyclic::dfs(vector<int> &visit, Graph &graph, int vertex, int parent, bool need_to_stop)
+	bool Graph_is_acyclic::dfs(vector<int> &visit, Graph &graph, int vertex, int parent, int stop_type, int &can_move_on)
 	{
 		visit[vertex] = 1;
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
-			//GraphAPI::getInstance().highlight_vertex(vertex);
-			//waiting_for_the_next_move();
+			GraphAPI::instance().set_highlighted(vertex);
+			waiting_for_the_next_move();
+
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return false;
+			}
 		}
-		//
-
-		for (int i = 0; i < int(graph.at(vertex).adjacent().size()); ++i)
+		else if (stop_type == -1)
 		{
-			int new_vertex = graph.at(vertex).adjacent()[i];
+			waiting_for_the_next_move(can_move_on);
+		}
 
+
+		for (auto new_vertex : graph.at(vertex))
+		{
 			if (graph.is_direct() && visit[new_vertex] == 1)
 			{
 				return false;
@@ -29,54 +36,91 @@ namespace algorithms_on_graphs
 			}
 			else if (visit[new_vertex] == 0)
 			{
-				if (!dfs(visit, graph, new_vertex, vertex, need_to_stop))
+				//GraphAPI part
+				if (stop_type == 1)
+				{
+					GraphAPI::instance().set_used_mark(vertex);
+				}
+
+				if (!dfs(visit, graph, new_vertex, vertex, stop_type, can_move_on))
 				{
 					return false;
+				}
+
+				//GraphAPI part
+				if (stop_type == 1)
+				{
+					GraphAPI::instance().set_highlighted(vertex);
+					waiting_for_the_next_move();
+
+					if (GraphAPI::instance().algorithm_is_ended())
+					{
+						return false;
+					}
+				}
+				else if (stop_type == -1)
+				{
+					waiting_for_the_next_move(can_move_on);
 				}
 			}
 		}
 
 		visit[vertex] = 2;
 
+
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
-			//GraphAPI:::getInstance().mark_vertex(vertex);
-			//waiting_for_the_next_move();
+			GraphAPI::instance().set_black_mark(vertex);
 		}
-		//
 
 		return true;
 	}
 
 
-	void Graph_is_acyclic::work(Graph graph, bool need_to_stop)
+	void Graph_is_acyclic::work(Graph graph, int stop_type, int &can_move_on)
 	{
-		vector<int> visit(graph.get_size(), 0);
+		vector<int> visit(graph.size(), 0);
 
-		for (int i = 0; i < graph.get_size(); ++i)
+		for (auto vertex : graph)
 		{
-			if (visit[i] == 0 && !dfs(visit, graph, i, -1, need_to_stop))
+			if (visit[vertex.id()] == 0 && !dfs(visit, graph, vertex.id(), -1, stop_type, can_move_on))
 			{
 				//GraphAPI part
-				if (need_to_stop)
+				if (stop_type == 1)
 				{
-					//GraphAPI::instance.result(false);
-					//GraphAPI::instance.end_of_the_algorithm();
+					if (GraphAPI::instance().algorithm_is_ended())
+					{
+						return;
+					}
+
+					GraphAPI::instance().set_result("Graph is not acyclic");
+					GraphAPI::instance().end_of_the_algorithm();
 				}
-				//
+				else if (stop_type == -1)
+				{
+					can_move_on = -1;
+				}
 
 				return;
 			}
 		}
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
-			//GraphAPI::instance.result(true);
-			//GraphAPI::instance.end_of_the_algorithm();
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return;
+			}
+
+			GraphAPI::instance().set_result("Graph is acyclic");
+			GraphAPI::instance().end_of_the_algorithm();
 		}
-		//
+		else if (stop_type == -1)
+		{
+			can_move_on = -1;
+		}
 	}
 
 }

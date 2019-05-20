@@ -16,21 +16,59 @@ class GraphAPI // singleton
 {
 private:
 
-    GraphAPI() {}
+    GraphAPI();
     GraphAPI(const GraphAPI&) {}
     GraphAPI operator=(GraphAPI&);
 
-    atomic<int> current_highlighted;
-    vector<atomic<int> > marked;
+    unsigned current_highlighted;
+    vector<unsigned> black_marked;
+    vector<unsigned> use_marked;
+    string result;
+
+    atomic<bool> can_move;
+    atomic<bool> algo_ended;
 
 public:
-	void highlight_vertex(int vertex);
-    void black_mark_vertex(int vertex);
-    void used_mark_vertex(int vertex);
-	void result(bool result);
+	enum Algorithm
+	{
+		Graph_is_acyclic,
+		Graph_is_connected,
+		Finding_shortest_path
+	};
+
+
+    void set_highlighted(unsigned vertex);
+    void set_black_mark(unsigned vertex);
+    void set_used_mark(unsigned vertex);
+
+    unsigned get_current_highlighted();
+    vector<unsigned> get_black_marked();
+    vector<unsigned> get_used_marked();
+
+
+    void set_result(string result);
 	void end_of_the_algorithm();
-	bool can_move_on();
-	bool ui_idle();
+    bool can_move_on();
+
+    void continue_algo();
+    bool algorithm_is_ended();
+    string get_result();
+
+
+	void start_algorithm(Algorithm algorithm_name, Graph graph);
+	void start_algorithm(Algorithm algorithm_name, Graph graph, int &can_move_on);
+	void start_algorithm_without_stops(Algorithm algorithm_name, Graph graph);
+
+	void start_algorithm(Algorithm algorithm_name, Graph graph, int start, int finish);
+	void start_algorithm(Algorithm algorithm_name, Graph graph, int start, int finish, int &can_move_on);
+	void start_algorithm_without_stops(Algorithm algorithm_name, Graph graph, int start, int finish);
+
+	string get_time_of_work(Algorithm algorithm_name, Graph graph);
+	string get_time_of_work(Algorithm algorithm_name, Graph graph, int start, int finish);
+
+	string get_RAM_usage(Algorithm algorithm_name, Graph graph);
+	string get_RAM_usage(Algorithm algorithm_name, Graph graph, int start, int finish);
+
     vector<Point> get_vertices_coordinates(string graph_file_name);
     Graph get_graph(string graph_file_name);
 	static GraphAPI& instance()

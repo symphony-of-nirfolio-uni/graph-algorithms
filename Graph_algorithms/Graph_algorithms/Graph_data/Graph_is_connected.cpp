@@ -3,61 +3,120 @@
 
 namespace algorithms_on_graphs
 {
-	bool Graph_is_connected::dfs(vector<bool> &visit, Graph &graph, int vertex, bool need_to_stop)
+	bool Graph_is_connected::dfs(vector<bool> &visit, Graph &graph, int vertex, int stop_type, int &can_move_on)
 	{
 		visit[vertex] = true;
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
-			//GraphAPI::instance.mark_vertex(vertex);
-			//waiting_for_the_next_move();
+			GraphAPI::instance().set_highlighted(vertex);
+            waiting_for_the_next_move();
+
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return false;
+			}
 		}
-		//
-
-		for (int i = 0; i < int(graph.at(vertex).adjacent().size()); ++i)
+		else if (stop_type == -1)
 		{
-			int new_vertex = graph.at(vertex).adjacent()[i];
+			waiting_for_the_next_move(can_move_on);
+		}
 
+
+		for (auto new_vertex : graph.at(vertex))
+		{
 			if (visit[new_vertex] == false)
 			{
-				dfs(visit, graph, new_vertex, need_to_stop);
+				//GraphAPI part
+				if (stop_type == 1)
+				{
+					GraphAPI::instance().set_used_mark(vertex);
+				}
+
+				dfs(visit, graph, new_vertex, stop_type, can_move_on);
+
+				//GraphAPI part
+				if (stop_type == 1)
+				{
+					if (GraphAPI::instance().algorithm_is_ended())
+					{
+						return false;
+					}
+				}
+
+				//GraphAPI part
+				if (stop_type == 1)
+				{
+					GraphAPI::instance().set_highlighted(vertex);
+					waiting_for_the_next_move();
+
+					if (GraphAPI::instance().algorithm_is_ended())
+					{
+						return false;
+					}
+				}
+				else if (stop_type == -1)
+				{
+					waiting_for_the_next_move(can_move_on);
+				}
 			}
+		}
+
+		//GraphAPI part
+		if (stop_type == 1)
+		{
+			GraphAPI::instance().set_black_mark(vertex);
 		}
 
 		return true;
 	}
 
 
-	void Graph_is_connected::work(Graph graph, bool need_to_stop)
+	void Graph_is_connected::work(Graph graph, int stop_type, int &can_move_on)
 	{
-		vector<bool> visit(graph.get_size(), false);
+		vector<bool> visit(graph.size(), false);
 
-		dfs(visit, graph, 0, need_to_stop);
+		dfs(visit, graph, 0, stop_type, can_move_on);
 
-		for (int i = 0; i < graph.get_size(); ++i)
+		//GraphAPI part
+		if (stop_type == 1)
 		{
-			if (visit[i] == false)
+			if (GraphAPI::instance().algorithm_is_ended())
+			{
+				return;
+			}
+		}
+
+		for (auto vertex : graph)
+		{
+			if (visit[vertex.id()] == false)
 			{
 				//GraphAPI part
-				if (need_to_stop)
+				if (stop_type == 1)
 				{
-					//GraphAPI::instance.result(false);
-					//GraphAPI::instance.end_of_the_algorithm();
+					GraphAPI::instance().set_result("Graph is not connected");
+					GraphAPI::instance().end_of_the_algorithm();
 				}
-				//
+				else if (stop_type == -1)
+				{
+					can_move_on = -1;
+				}
 
 				return;
 			}
 		}
 
 		//GraphAPI part
-		if (need_to_stop)
+		if (stop_type == 1)
 		{
-			//GraphAPI::instance.result(true);
-			//GraphAPI::instance.end_of_the_algorithm();
+			GraphAPI::instance().set_result("Graph is connected");
+			GraphAPI::instance().end_of_the_algorithm();
 		}
-		//
+		else if (stop_type == -1)
+		{
+			can_move_on = -1;
+		}
 	}
 
 }

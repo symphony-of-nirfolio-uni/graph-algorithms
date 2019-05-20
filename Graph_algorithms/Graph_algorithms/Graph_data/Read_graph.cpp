@@ -69,6 +69,11 @@ namespace algorithms_on_graphs
 
 		graph.resize(number);
 
+
+		file_in >> number_str;
+		number_str.erase(0, 9);
+		direct = bool(atoi(number_str.c_str()));
+
 		string typeGraph;
 		file_in >> typeGraph;
 

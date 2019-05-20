@@ -2,41 +2,7 @@
 
 
 #include "../GraphAPI/GraphAPI.h"
-#include "Graph.h"
 
-//#include <iostream>
-//#include <atomic>
-//using std::cout;
-//
-//class TempAPI
-//{
-//public:
-//	std::atomic_bool canm;
-//	TempAPI()
-//	{
-//		canm = false;
-//	}
-//
-//	static TempAPI& getInstance() {
-//		static TempAPI  instance;
-//		return instance;
-//	}
-//
-//	bool can_move_on()
-//	{
-//		if (canm)
-//		{
-//			canm = false;
-//			return true;
-//		}
-//		return canm;
-//	}
-//
-//	void highlight_vertex()
-//	{
-//		cout << "\n*****\n";
-//	}
-//};
 
 namespace algorithms_on_graphs
 {
@@ -44,10 +10,26 @@ namespace algorithms_on_graphs
 	{
 
 	protected:
-		void waiting_for_the_next_move();
+        void waiting_for_the_next_move();
+        void waiting_for_the_next_move(int &can_move_on);
+
+		bool get_can_move_on(int &can_move_on);
 
 	public:
-		virtual void work(Graph graph, bool) {};
-		virtual void work(Graph graph, int, int, bool) {};
+		virtual ~Algorithm() {}
+
+		virtual void work(Graph, int, int &) {}
+		//stop_type:
+		//0 - without stop
+		//1 - stop for GraphAPI
+		//-1 - stop for memory check
+		void work(Graph graph, int stop_type);
+
+		virtual void work(Graph, int, int, int, int &) {}
+		//stop_type:
+		//0 - without stop
+		//1 - stop for GraphAPI
+		//-1 - stop for memory check
+		void work(Graph graph, int start, int finish, int stop_type);
 	};
 }

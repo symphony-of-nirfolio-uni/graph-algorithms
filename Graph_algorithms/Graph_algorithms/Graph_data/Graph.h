@@ -17,13 +17,19 @@ using std::make_shared;
 namespace algorithms_on_graphs
 {
 	class Vertex
-	{
-		vector<int> adjacent_vertices;
+    {
+        int vertex;
+        vector<int> adjacent_vertices;
 
 	public:
 		Vertex(vector<int> vertices);
+		Vertex(vector<int> vertices, int vertex);
 		~Vertex();
 
+		vector<int>::iterator begin();
+		vector<int>::iterator end();
+
+		int id();
 		vector<int> adjacent();
 	};
 
@@ -42,7 +48,7 @@ namespace algorithms_on_graphs
 		unsigned get_index();
 
 		Graph_iterator &operator ++();
-		vector<int> operator *();
+		Vertex operator *();
 
 		bool operator != (Graph_iterator &right);
 	};
@@ -53,6 +59,11 @@ namespace algorithms_on_graphs
 		bool direct;
 
 		vector<Vertex> vertices;
+
+		vector<int> used_mark,
+			black_mark;
+
+		int highlight;
 
 	public:
 		Graph();
@@ -67,7 +78,19 @@ namespace algorithms_on_graphs
 
 
 		bool is_direct();
-		int get_size();
+		unsigned size();
 		Vertex at(int index);
+		Vertex at(unsigned index);
+
+		void set_used_mark(vector<int> verteces);
+		void add_used_mark(int vertex);
+		vector<int> get_used_mark();
+
+		void set_black_mark(vector<int> verteces);
+		void add_black_mark(int vertex);
+		vector<int> get_black_mark();
+
+		void set_highlight(int vertex);
+		int get_highlight();
 	};
 }
