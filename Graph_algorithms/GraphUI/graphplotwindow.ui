@@ -103,6 +103,20 @@ and start</string>
       </spacer>
      </item>
      <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Auto speed</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="speedSlider">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="start_algo_button">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -199,7 +213,7 @@ and start</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>501</width>
+        <width>498</width>
         <height>539</height>
        </rect>
       </property>
