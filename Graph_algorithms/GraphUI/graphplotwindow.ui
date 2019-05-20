@@ -30,7 +30,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QComboBox" name="algo_list"/>
+      <widget class="QComboBox" name="algo_list">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="choose_algo_button">
@@ -111,6 +118,12 @@ and start</string>
      </item>
      <item>
       <widget class="QSlider" name="speedSlider">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
